@@ -81,7 +81,6 @@ textarea{min-height:75px;resize:vertical}.full{grid-column:1/-1}
 main>section{display:none !important}
 main>section:target{display:block !important}
 main>section:first-of-type:not(:target){display:block !important}
-main>section:not(:target){display:none !important}
 
 @media(max-width:800px){.stats,.recent-grid,.favorite-grid{grid-template-columns:repeat(2,1fr)}.category-summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.grid{grid-template-columns:1fr}.item,.catalog-row{align-items:flex-start;flex-direction:column}.actions{width:100%;justify-content:flex-start}.budget-numbers{grid-template-columns:1fr}.stats,.recent-grid,.favorite-grid,.category-summary{grid-template-columns:1fr}nav button{font-size:12px;padding:13px 3px}}
@@ -2468,6 +2467,78 @@ window.saveBudget=function(){
 const __renderAllOriginal=window.renderAll;
 if(typeof __renderAllOriginal==='function'){
   window.renderAll=function(){__renderAllOriginal();refreshBudgetDetails();};
-}</script>
+}
+
+<style id="final-all-features">
+.final-advanced-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:0 0 12px}
+.final-advanced-row select,.final-advanced-row input{width:100%}
+@media(max-width:650px){.final-advanced-row{grid-template-columns:1fr}}
+</style>
+<script id="final-all-features-js">
+(function(){
+"use strict";
+function addAdvancedFilters(sectionId,listId){
+ const section=document.getElementById(sectionId), list=document.getElementById(listId);
+ if(!section||!list||section.querySelector('.final-advanced-row'))return;
+ const box=list.parentElement;
+ const row=document.createElement('div'); row.className='final-advanced-row';
+ row.innerHTML='<input placeholder="🔎 Gelişmiş ara..." data-fa-q>'+
+ '<select data-fa-status><option value="">Tüm durumlar</option><option value="pending">Alınacak</option><option value="bought">Alındı</option></select>'+
+ '<select data-fa-fav><option value="">Favori: Tümü</option><option value="fav">❤️ Favoriler</option><option value="normal">♡ Favori olmayan</option></select>'+
+ '<select data-fa-sort><option value="default">Sıralama</option><option value="name">Ada göre (A-Z)</option><option value="price">Fiyata göre</option><option value="qty">Miktara göre</option></select>';
+ box.insertBefore(row,list);
+ row.addEventListener('input',()=>apply(section,list)); row.addEventListener('change',()=>apply(section,list));
+}
+function apply(section,list){
+ const row=section.querySelector('.final-advanced-row'); if(!row)return;
+ const q=(row.querySelector('[data-fa-q]')?.value||'').toLocaleLowerCase('tr-TR').trim();
+ const st=row.querySelector('[data-fa-status]')?.value||'';
+ const fav=row.querySelector('[data-fa-fav]')?.value||'';
+ const sort=row.querySelector('[data-fa-sort]')?.value||'default';
+ let rows=[...list.children];
+ rows.forEach(el=>{
+   const txt=(el.textContent||'').toLocaleLowerCase('tr-TR');
+   const isBought=/✓\s*alındı|✓\s*aldım|alındı|aldım/.test(txt);
+   const isFav=/❤️|♥/.test(txt) || el.querySelector('.favorite-active');
+   let ok=!q||txt.includes(q);
+   if(st==='bought')ok=ok&&isBought; if(st==='pending')ok=ok&&!isBought;
+   if(fav==='fav')ok=ok&&!!isFav; if(fav==='normal')ok=ok&&!isFav;
+   el.dataset.faVisible=ok?'1':'0';
+ });
+ if(sort!=='default'){
+   rows.sort((a,b)=>{
+     const ta=a.textContent||'', tb=b.textContent||'';
+     const na=ta.trim().toLocaleLowerCase('tr-TR'), nb=tb.trim().toLocaleLowerCase('tr-TR');
+     if(sort==='name')return na.localeCompare(nb,'tr');
+     if(sort==='qty'){
+       const qa=Number((ta.match(/(\d+)\s*adet/i)||[,0])[1]); const qb=Number((tb.match(/(\d+)\s*adet/i)||[,0])[1]); return qb-qa;
+     }
+     if(sort==='price'){
+       const parse=s=>{const m=s.replace(/\./g,'').match(/(\d+(?:,\d+)?)/); return m?Number(m[1].replace(',','.')):0};
+       return parse(tb)-parse(ta);
+     }
+     return 0;
+   });
+   rows.forEach(r=>list.appendChild(r));
+ }
+ rows.forEach(el=>el.style.display=el.dataset.faVisible==='1'?'':'none');
+}
+function boot(){
+ addAdvancedFilters('shopping','shoppingList'); addAdvancedFilters('products','productsList');
+ // Refresh budget view after any normal application update.
+ const original=window.renderAll;
+ if(typeof original==='function' && !original.__finalWrapped){
+   const wrapped=function(){ original.apply(this,arguments); setTimeout(()=>{
+     addAdvancedFilters('shopping','shoppingList'); addAdvancedFilters('products','productsList');
+     if(typeof refreshBudgetDetails==='function')refreshBudgetDetails();
+   },50); };
+   wrapped.__finalWrapped=true; window.renderAll=wrapped;
+ }
+ if(typeof refreshBudgetDetails==='function')refreshBudgetDetails();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,50));else setTimeout(boot,50);
+})();
+</script>
+
 </body>
 </html>
