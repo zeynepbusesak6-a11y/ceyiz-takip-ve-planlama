@@ -3,210 +3,281 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Çeyiz Takip ve Planlama</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  background:#fffaf7;
-  color:#5a443b;
-  font-family:Arial,sans-serif;
+margin:0;
+background:#fffaf7;
+color:#5a443b;
+font-family:Arial,sans-serif;
 }
 
 header{
-  background:#dda4ab;
-  color:white;
-  text-align:center;
-  padding:28px 15px;
+background:#dda4ab;
+color:white;
+text-align:center;
+padding:26px 15px;
 }
 
 .logo{
-  margin:auto auto 10px;
-  width:70px;
-  height:70px;
-  border:2px solid #fff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font:48px Georgia;
-  color:#fff4cf;
+margin:auto auto 8px;
+width:64px;
+height:64px;
+border:2px solid #fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font:42px Georgia;
+color:#fff4cf;
 }
 
 h1{
-  margin:0;
-  font:30px Georgia;
+margin:0;
+font:30px Georgia;
 }
 
 .sub{
-  margin-top:7px;
+margin-top:6px;
 }
 
 nav{
-  display:flex;
-  background:white;
-  position:sticky;
-  top:0;
-  border-bottom:1px solid #eadbd7;
-  z-index:2;
+display:flex;
+background:#fff;
+position:sticky;
+top:0;
+border-bottom:1px solid #eadbd7;
+z-index:5;
 }
 
 nav button{
-  flex:1;
-  padding:16px;
-  border:0;
-  background:white;
-  color:#80675d;
-  font-size:16px;
-  cursor:pointer;
+flex:1;
+padding:15px;
+border:0;
+background:#fff;
+color:#80675d;
+font-size:16px;
+cursor:pointer;
 }
 
 nav .on{
-  color:#b76f78;
-  font-weight:bold;
-  border-bottom:3px solid #dda4ab;
+color:#b76f78;
+font-weight:bold;
+border-bottom:3px solid #dda4ab;
 }
 
 main{
-  max-width:850px;
-  margin:auto;
-  padding:20px 15px 60px;
+max-width:950px;
+margin:auto;
+padding:20px 15px 60px;
 }
 
 .box{
-  background:#fff;
-  border:1px solid #eadbd7;
-  border-radius:18px;
-  padding:18px;
-  margin-bottom:18px;
+background:#fff;
+border:1px solid #eadbd7;
+border-radius:18px;
+padding:18px;
+margin-bottom:18px;
+box-shadow:0 2px 10px rgba(90,68,59,.04);
 }
 
 h2{
-  font:24px Georgia;
-  margin:0 0 15px;
+font:24px Georgia;
+margin:0 0 15px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:10px;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:10px;
 }
 
-input,textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #dfceca;
-  border-radius:10px;
-  font-size:15px;
-  background:#fffdfc;
+input,select,textarea{
+width:100%;
+padding:13px;
+border:1px solid #dfceca;
+border-radius:10px;
+font-size:15px;
+background:#fffdfc;
+color:#5a443b;
 }
 
 textarea{
-  min-height:75px;
+min-height:75px;
+resize:vertical;
 }
 
 .full{
-  grid-column:1/-1;
+grid-column:1/-1;
 }
 
 .add{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:10px;
-  background:#dda4ab;
-  color:white;
-  font-weight:bold;
-  font-size:15px;
-  cursor:pointer;
+width:100%;
+padding:13px;
+border:0;
+border-radius:10px;
+background:#dda4ab;
+color:#fff;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+}
+
+.summary{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+}
+
+.stat{
+background:#fff7f5;
+border:1px solid #eadbd7;
+border-radius:14px;
+padding:15px;
+text-align:center;
+}
+
+.stat b{
+display:block;
+font-size:25px;
+color:#b76f78;
+margin-bottom:4px;
+}
+
+.stat span{
+font-size:13px;
+color:#927d74;
+}
+
+.tools{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:10px;
+margin-bottom:15px;
 }
 
 .item{
-  padding:15px 0;
-  border-bottom:1px solid #eee2df;
-  display:flex;
-  gap:12px;
-  align-items:center;
+padding:15px 0;
+border-bottom:1px solid #eee2df;
+display:flex;
+gap:12px;
+align-items:center;
 }
 
 .item:last-child{
-  border:0;
+border:0;
 }
 
 .info{
-  flex:1;
+flex:1;
+min-width:0;
 }
 
 .name{
-  font:19px Georgia;
-  font-weight:bold;
+font:19px Georgia;
+font-weight:bold;
+word-break:break-word;
 }
 
 .meta{
-  font-size:13px;
-  color:#927d74;
-  margin-top:5px;
+font-size:13px;
+color:#927d74;
+margin-top:6px;
 }
 
 .badge{
-  display:inline-block;
-  background:#f5dfe2;
-  color:#9a6068;
-  border-radius:15px;
-  padding:4px 8px;
-  margin-right:4px;
+display:inline-block;
+background:#f5dfe2;
+color:#9a6068;
+border-radius:15px;
+padding:4px 8px;
+margin:2px 4px 2px 0;
 }
 
 .actions{
-  display:flex;
-  gap:6px;
+display:flex;
+gap:6px;
+flex-wrap:wrap;
 }
 
-.buy,.del{
-  padding:9px 11px;
-  border-radius:9px;
-  font-size:13px;
-  cursor:pointer;
+.actions button{
+padding:8px 10px;
+border-radius:9px;
+font-size:13px;
+cursor:pointer;
 }
 
 .buy{
-  border:0;
-  background:#e7eee5;
-  color:#587051;
+border:0;
+background:#e7eee5;
+color:#587051;
+}
+
+.edit{
+border:1px solid #d8c8c3;
+background:#fff;
+color:#80675d;
 }
 
 .del{
-  border:1px solid #e0bfc3;
-  background:white;
-  color:#b26d76;
+border:1px solid #e0bfc3;
+background:#fff;
+color:#b26d76;
 }
 
 .empty{
-  text-align:center;
-  color:#9b8982;
-  padding:30px;
+text-align:center;
+color:#9b8982;
+padding:30px;
 }
 
 .big{
-  font-size:40px;
+font-size:40px;
 }
 
-@media(max-width:650px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+.hidden{
+display:none!important;
+}
 
-  .item{
-    align-items:flex-start;
-    flex-direction:column;
-  }
+.form-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
 
-  .actions{
-    width:100%;
-  }
+.small-btn{
+border:1px solid #dfceca;
+background:#fff;
+border-radius:9px;
+padding:8px 10px;
+color:#80675d;
+cursor:pointer;
+}
+
+@media(max-width:700px){
+
+.grid,
+.tools{
+grid-template-columns:1fr;
+}
+
+.summary{
+grid-template-columns:repeat(2,1fr);
+}
+
+.item{
+align-items:flex-start;
+flex-direction:column;
+}
+
+.actions{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -214,606 +285,1248 @@ textarea{
 <body>
 
 <header>
-  <div class="logo">Ç</div>
-  <h1>Çeyiz Takip ve Planlama</h1>
-  <div class="sub">Çeyizini kolayca takip et ♡</div>
+
+<div class="logo">Ç</div>
+
+<h1>
+Çeyiz Takip ve Planlama
+</h1>
+
+<div class="sub">
+Çeyizini kolayca takip et ♡
+</div>
+
 </header>
 
-<nav>
-  <button id="b1" class="on" onclick="tab('shopping')">
-    🛒 Alınacaklar
-  </button>
 
-  <button id="b2" onclick="tab('products')">
-    📦 Ürünler
-  </button>
+<nav>
+
+<button
+id="b1"
+class="on"
+onclick="tab('shopping')">
+
+🛒 Alınacaklar
+
+</button>
+
+<button
+id="b2"
+onclick="tab('products')">
+
+📦 Ürünler
+
+</button>
+
 </nav>
+
 
 <main>
 
+
+<div class="box">
+
+<h2>
+Çeyiz Özeti
+</h2>
+
+<div class="summary">
+
+<div class="stat">
+
+<b id="sCount">
+0
+</b>
+
+<span>
+Alınacak ürün
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<b id="pCount">
+0
+</b>
+
+<span>
+Alınmış ürün
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<b id="sTotal">
+₺0
+</b>
+
+<span>
+Tahmini alışveriş
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<b id="pTotal">
+₺0
+</b>
+
+<span>
+Alınanların toplamı
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+
 <section id="shopping">
 
-  <div class="box">
-    <h2>Alınacak Ürün Ekle</h2>
 
-    <div class="grid">
+<div class="box">
 
-      <input id="sn" placeholder="Ürün adı">
+<div class="form-title">
 
-      <input
-        id="sq"
-        type="number"
-        min="1"
-        value="1"
-        placeholder="Miktar"
-      >
+<h2 id="shoppingTitle">
+Alınacak Ürün Ekle
+</h2>
 
-      <input
-        id="sp"
-        type="number"
-        min="0"
-        step=".01"
-        placeholder="Tahmini fiyat"
-      >
+<button
+id="shoppingCancel"
+class="small-btn hidden"
+onclick="cancelEdit('shopping')">
 
-      <input
-        id="ss"
-        class="full"
-        placeholder="Mağaza / link (isteğe bağlı)"
-      >
+İptal
 
-      <textarea
-        id="st"
-        class="full"
-        placeholder="Not (isteğe bağlı)"
-      ></textarea>
+</button>
 
-      <button class="add full" onclick="addItem('shopping')">
-        + Alınacaklara Ekle
-      </button>
+</div>
 
-    </div>
-  </div>
 
-  <div class="box">
-    <h2>Alınacaklar</h2>
-    <div id="sl"></div>
-  </div>
+<div class="grid">
+
+
+<input
+id="sn"
+placeholder="Ürün adı">
+
+
+<input
+id="sq"
+type="number"
+min="1"
+value="1"
+placeholder="Miktar">
+
+
+<input
+id="sp"
+type="number"
+min="0"
+step=".01"
+placeholder="Tahmini fiyat">
+
+
+<select id="sc">
+
+<option value="">
+Kategori seç
+</option>
+
+<option>
+Mutfak
+</option>
+
+<option>
+Yatak Odası
+</option>
+
+<option>
+Banyo
+</option>
+
+<option>
+Salon
+</option>
+
+<option>
+Elektronik
+</option>
+
+<option>
+Temizlik
+</option>
+
+<option>
+Tekstil
+</option>
+
+<option>
+Diğer
+</option>
+
+</select>
+
+
+<input
+id="ss"
+placeholder="Mağaza / link (isteğe bağlı)">
+
+
+<textarea
+id="st"
+class="full"
+placeholder="Not (isteğe bağlı)">
+</textarea>
+
+
+<button
+id="shoppingAdd"
+class="add full"
+onclick="addOrUpdate('shopping')">
+
++ Alınacaklara Ekle
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="box">
+
+<h2>
+Alınacaklar
+</h2>
+
+
+<div class="tools">
+
+<input
+id="searchS"
+placeholder="🔎 Alınacaklarda ara..."
+oninput="render()">
+
+
+<select
+id="filterS"
+onchange="render()">
+
+<option value="">
+Tüm kategoriler
+</option>
+
+<option>
+Mutfak
+</option>
+
+<option>
+Yatak Odası
+</option>
+
+<option>
+Banyo
+</option>
+
+<option>
+Salon
+</option>
+
+<option>
+Elektronik
+</option>
+
+<option>
+Temizlik
+</option>
+
+<option>
+Tekstil
+</option>
+
+<option>
+Diğer
+</option>
+
+</select>
+
+</div>
+
+
+<div id="sl"></div>
+
+</div>
 
 </section>
 
 
-<section id="products" style="display:none">
 
-  <div class="box">
-
-    <h2>Ürün Ekle</h2>
-
-    <div class="grid">
-
-      <input id="pn" placeholder="Ürün adı">
-
-      <input
-        id="pq"
-        type="number"
-        min="1"
-        value="1"
-        placeholder="Miktar"
-      >
-
-      <input
-        id="pp"
-        type="number"
-        min="0"
-        step=".01"
-        placeholder="Fiyat"
-      >
-
-      <input
-        id="ps"
-        class="full"
-        placeholder="Mağaza"
-      >
-
-      <textarea
-        id="pt"
-        class="full"
-        placeholder="Not (isteğe bağlı)"
-      ></textarea>
-
-      <button class="add full" onclick="addItem('products')">
-        + Ürünlere Ekle
-      </button>
-
-    </div>
-
-  </div>
+<section
+id="products"
+class="hidden">
 
 
-  <div class="box">
+<div class="box">
 
-    <h2>Ürünler</h2>
 
-    <div id="pl"></div>
+<div class="form-title">
 
-  </div>
+<h2 id="productsTitle">
+Ürün Ekle
+</h2>
+
+<button
+id="productsCancel"
+class="small-btn hidden"
+onclick="cancelEdit('products')">
+
+İptal
+
+</button>
+
+</div>
+
+
+<div class="grid">
+
+
+<input
+id="pn"
+placeholder="Ürün adı">
+
+
+<input
+id="pq"
+type="number"
+min="1"
+value="1"
+placeholder="Miktar">
+
+
+<input
+id="pp"
+type="number"
+min="0"
+step=".01"
+placeholder="Fiyat">
+
+
+<select id="pc">
+
+<option value="">
+Kategori seç
+</option>
+
+<option>
+Mutfak
+</option>
+
+<option>
+Yatak Odası
+</option>
+
+<option>
+Banyo
+</option>
+
+<option>
+Salon
+</option>
+
+<option>
+Elektronik
+</option>
+
+<option>
+Temizlik
+</option>
+
+<option>
+Tekstil
+</option>
+
+<option>
+Diğer
+</option>
+
+</select>
+
+
+<input
+id="ps"
+placeholder="Mağaza (isteğe bağlı)">
+
+
+<textarea
+id="pt"
+class="full"
+placeholder="Not (isteğe bağlı)">
+</textarea>
+
+
+<button
+id="productsAdd"
+class="add full"
+onclick="addOrUpdate('products')">
+
++ Ürünlere Ekle
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="box">
+
+<h2>
+Ürünler
+</h2>
+
+
+<div class="tools">
+
+<input
+id="searchP"
+placeholder="🔎 Ürünlerde ara..."
+oninput="render()">
+
+
+<select
+id="filterP"
+onchange="render()">
+
+<option value="">
+Tüm kategoriler
+</option>
+
+<option>
+Mutfak
+</option>
+
+<option>
+Yatak Odası
+</option>
+
+<option>
+Banyo
+</option>
+
+<option>
+Salon
+</option>
+
+<option>
+Elektronik
+</option>
+
+<option>
+Temizlik
+</option>
+
+<option>
+Tekstil
+</option>
+
+<option>
+Diğer
+</option>
+
+</select>
+
+</div>
+
+
+<div id="pl"></div>
+
+</div>
 
 </section>
+
 
 </main>
 
 
+
 <script>
 
-/* --------------------------------
-   VERİLER
--------------------------------- */
+const K = "ceyiz_v4";
 
-const STORAGE_KEY = "ceyiz_v3";
 
-let data;
+let d;
 
-try {
 
-  data = JSON.parse(
-    localStorage.getItem(STORAGE_KEY)
-    || '{"shopping":[],"products":[]}'
-  );
+try{
 
-} catch(error) {
+d = JSON.parse(
+localStorage.getItem(K)
+|| '{"shopping":[],"products":[]}'
+);
 
-  data = {
-    shopping:[],
-    products:[]
-  };
+}catch(error){
+
+d = {
+shopping:[],
+products:[]
+};
 
 }
 
 
-/* --------------------------------
-   KAYDET
--------------------------------- */
+let editing = {
+shopping:null,
+products:null
+};
 
-function saveData(){
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
-  );
+
+const $ = id =>
+document.getElementById(id);
+
+
+
+function save(){
+
+localStorage.setItem(
+K,
+JSON.stringify(d)
+);
 
 }
 
 
-/* --------------------------------
-   GÜVENLİ METİN
--------------------------------- */
 
 function esc(value){
 
-  return String(value || "")
-    .replace(/[&<>"']/g,function(match){
+return String(value ?? "")
+.replace(/[&<>"']/g,function(match){
 
-      return {
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
+return {
 
-      }[match];
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
 
-    });
+}[match];
 
-}
-
-
-/* --------------------------------
-   SEKME
--------------------------------- */
-
-function tab(type){
-
-  document.getElementById("shopping").style.display =
-    type === "shopping" ? "block" : "none";
-
-  document.getElementById("products").style.display =
-    type === "products" ? "block" : "none";
-
-  document.getElementById("b1").classList.toggle(
-    "on",
-    type === "shopping"
-  );
-
-  document.getElementById("b2").classList.toggle(
-    "on",
-    type === "products"
-  );
+});
 
 }
 
 
-/* --------------------------------
-   ID OLUŞTUR
--------------------------------- */
-
-function createId(){
-
-  if(window.crypto && crypto.randomUUID){
-
-    return crypto.randomUUID();
-
-  }
-
-  return Date.now().toString()
-    + "-"
-    + Math.random().toString(16).slice(2);
-
-}
-
-
-/* --------------------------------
-   ÜRÜN EKLE
--------------------------------- */
-
-function addItem(type){
-
-  const prefix =
-    type === "shopping" ? "s" : "p";
-
-  const name =
-    document.getElementById(prefix + "n")
-      .value
-      .trim();
-
-  if(!name){
-
-    alert("Lütfen ürün adını yaz.");
-
-    return;
-  }
-
-
-  const qty =
-    Number(
-      document.getElementById(prefix + "q").value
-    ) || 1;
-
-
-  const price =
-    Number(
-      document.getElementById(prefix + "p").value
-    ) || 0;
-
-
-  const store =
-    document.getElementById(prefix + "s")
-      .value
-      .trim();
-
-
-  const note =
-    document.getElementById(prefix + "t")
-      .value
-      .trim();
-
-
-  data[type].push({
-
-    id:createId(),
-
-    name:name,
-
-    qty:qty,
-
-    price:price,
-
-    store:store,
-
-    note:note
-
-  });
-
-
-  saveData();
-
-  clearForm(prefix);
-
-  render();
-
-  tab(type);
-
-}
-
-
-/* --------------------------------
-   FORM TEMİZLE
--------------------------------- */
-
-function clearForm(prefix){
-
-  document.getElementById(prefix + "n").value = "";
-
-  document.getElementById(prefix + "q").value = "1";
-
-  document.getElementById(prefix + "p").value = "";
-
-  document.getElementById(prefix + "s").value = "";
-
-  document.getElementById(prefix + "t").value = "";
-
-}
-
-
-/* --------------------------------
-   ALDIM
--------------------------------- */
-
-function moveToProducts(id){
-
-  const index =
-    data.shopping.findIndex(
-      item => String(item.id) === String(id)
-    );
-
-
-  if(index === -1){
-
-    return;
-  }
-
-
-  const item =
-    data.shopping[index];
-
-
-  data.products.push({
-
-    ...item,
-
-    id:createId()
-
-  });
-
-
-  data.shopping.splice(index,1);
-
-
-  saveData();
-
-  render();
-
-}
-
-
-/* --------------------------------
-   SİL
--------------------------------- */
-
-function deleteItem(type,id){
-
-  const confirmed =
-    confirm(
-      "Bu ürünü silmek istediğine emin misin?"
-    );
-
-
-  if(!confirmed){
-
-    return;
-  }
-
-
-  const index =
-    data[type].findIndex(
-      item => String(item.id) === String(id)
-    );
-
-
-  if(index === -1){
-
-    return;
-  }
-
-
-  /* Ürünü gerçekten listeden kaldır */
-
-  data[type].splice(index,1);
-
-
-  /* Değişikliği kalıcı olarak kaydet */
-
-  saveData();
-
-
-  /* Ekranı yenile */
-
-  render();
-
-}
-
-
-/* --------------------------------
-   FİYAT
--------------------------------- */
 
 function money(value){
 
-  if(!value){
-
-    return "";
-
-  }
-
-
-  return Number(value).toLocaleString(
-    "tr-TR",
-    {
-      style:"currency",
-      currency:"TRY"
-    }
-  );
+return Number(value || 0)
+.toLocaleString(
+"tr-TR",
+{
+style:"currency",
+currency:"TRY"
+}
+);
 
 }
 
 
-/* --------------------------------
-   ÜRÜN KARTI
--------------------------------- */
 
-function createCard(item,type){
+function tab(type){
 
-  let html = "";
+$("shopping")
+.classList.toggle(
+"hidden",
+type !== "shopping"
+);
 
-  html += '<div class="item">';
+$("products")
+.classList.toggle(
+"hidden",
+type !== "products"
+);
 
-  html += '<div class="info">';
+$("b1")
+.classList.toggle(
+"on",
+type === "shopping"
+);
 
-  html +=
-    '<div class="name">'
-    + esc(item.name)
-    + '</div>';
-
-
-  html += '<div class="meta">';
-
-
-  html +=
-    '<span class="badge">'
-    + item.qty
-    + ' adet'
-    + '</span>';
-
-
-  if(item.price){
-
-    html +=
-      '<span class="badge">'
-      + money(item.price)
-      + '</span>';
-
-  }
-
-
-  if(item.store){
-
-    html +=
-      ' · '
-      + esc(item.store);
-
-  }
-
-
-  html += '</div>';
-
-
-  if(item.note){
-
-    html +=
-      '<div class="meta">📝 '
-      + esc(item.note)
-      + '</div>';
-
-  }
-
-
-  html += '</div>';
-
-
-  html += '<div class="actions">';
-
-
-  if(type === "shopping"){
-
-    html +=
-      '<button class="buy" '
-      + 'onclick="moveToProducts(\''
-      + item.id
-      + '\')">'
-      + '✓ Aldım'
-      + '</button>';
-
-  }
-
-
-  html +=
-    '<button class="del" '
-    + 'onclick="deleteItem(\''
-    + type
-    + '\',\''
-    + item.id
-    + '\')">'
-    + 'Sil'
-    + '</button>';
-
-
-  html += '</div>';
-
-  html += '</div>';
-
-
-  return html;
+$("b2")
+.classList.toggle(
+"on",
+type === "products"
+);
 
 }
 
 
-/* --------------------------------
-   EKRANI GÜNCELLE
--------------------------------- */
+
+function fields(type){
+
+let p =
+type === "shopping"
+? "s"
+: "p";
+
+return {
+
+name:$(p+"n"),
+
+qty:$(p+"q"),
+
+price:$(p+"p"),
+
+cat:$(p+"c"),
+
+store:$(p+"s"),
+
+note:$(p+"t")
+
+};
+
+}
+
+
+
+function clearForm(type){
+
+let f =
+fields(type);
+
+f.name.value = "";
+
+f.qty.value = "1";
+
+f.price.value = "";
+
+f.cat.value = "";
+
+f.store.value = "";
+
+f.note.value = "";
+
+editing[type] = null;
+
+
+$(type === "shopping"
+? "shoppingTitle"
+: "productsTitle")
+.textContent =
+type === "shopping"
+? "Alınacak Ürün Ekle"
+: "Ürün Ekle";
+
+
+$(type === "shopping"
+? "shoppingAdd"
+: "productsAdd")
+.textContent =
+type === "shopping"
+? "+ Alınacaklara Ekle"
+: "+ Ürünlere Ekle";
+
+
+$(type === "shopping"
+? "shoppingCancel"
+: "productsCancel")
+.classList.add("hidden");
+
+}
+
+
+
+function addOrUpdate(type){
+
+let f =
+fields(type);
+
+
+let name =
+f.name.value.trim();
+
+
+if(!name){
+
+alert(
+"Lütfen ürün adını yaz."
+);
+
+f.name.focus();
+
+return;
+
+}
+
+
+let obj = {
+
+name:name,
+
+qty:Number(f.qty.value) || 1,
+
+price:Number(f.price.value) || 0,
+
+category:f.cat.value,
+
+store:f.store.value.trim(),
+
+note:f.note.value.trim()
+
+};
+
+
+if(editing[type] !== null){
+
+let i =
+d[type].findIndex(
+x =>
+String(x.id)
+===
+String(editing[type])
+);
+
+
+if(i >= 0){
+
+d[type][i] = {
+
+...d[type][i],
+
+...obj
+
+};
+
+}
+
+}else{
+
+d[type].push({
+
+id:
+Date.now()
++
+Math.floor(
+Math.random()*1000
+),
+
+...obj
+
+});
+
+}
+
+
+save();
+
+clearForm(type);
+
+render();
+
+}
+
+
+
+function edit(type,id){
+
+let x =
+d[type].find(
+x =>
+String(x.id)
+===
+String(id)
+);
+
+
+if(!x){
+
+return;
+
+}
+
+
+let f =
+fields(type);
+
+
+f.name.value =
+x.name || "";
+
+f.qty.value =
+x.qty || 1;
+
+f.price.value =
+x.price || "";
+
+f.cat.value =
+x.category || "";
+
+f.store.value =
+x.store || "";
+
+f.note.value =
+x.note || "";
+
+
+editing[type] = x.id;
+
+
+$(type === "shopping"
+? "shoppingTitle"
+: "productsTitle")
+textContent =
+"Ürünü Düzenle";
+
+
+$(type === "shopping"
+? "shoppingAdd"
+: "productsAdd")
+textContent =
+"✓ Değişiklikleri Kaydet";
+
+
+$(type === "shopping"
+? "shoppingCancel"
+: "productsCancel")
+.classList.remove(
+"hidden"
+);
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+
+function cancelEdit(type){
+
+clearForm(type);
+
+}
+
+
+
+function move(id){
+
+let i =
+d.shopping.findIndex(
+x =>
+String(x.id)
+===
+String(id)
+);
+
+
+if(i < 0){
+
+return;
+
+}
+
+
+let x =
+d.shopping[i];
+
+
+d.products.push({
+
+...x,
+
+id:
+Date.now()
++
+Math.floor(
+Math.random()*1000
+)
+
+});
+
+
+d.shopping.splice(
+i,
+1
+);
+
+
+save();
+
+render();
+
+}
+
+
+
+function del(type,id){
+
+if(
+!confirm(
+"Bu ürünü silmek istediğine emin misin?"
+)
+){
+
+return;
+
+}
+
+
+let oldLength =
+d[type].length;
+
+
+d[type] =
+d[type].filter(
+x =>
+String(x.id)
+!==
+String(id)
+);
+
+
+if(
+d[type].length === oldLength
+){
+
+return;
+
+}
+
+
+save();
+
+render();
+
+}
+
+
+
+function card(x,type){
+
+let store = "";
+
+
+if(x.store){
+
+if(
+x.store.startsWith("http://")
+||
+x.store.startsWith("https://")
+){
+
+store =
+' · <a class="link" target="_blank" href="'
++
+esc(x.store)
++
+'">Mağaza</a>';
+
+}else{
+
+store =
+" · "
++
+esc(x.store);
+
+}
+
+}
+
+
+return `
+
+<div class="item">
+
+<div class="info">
+
+<div class="name">
+${esc(x.name)}
+</div>
+
+<div class="meta">
+
+<span class="badge">
+${x.qty} adet
+</span>
+
+${
+x.price
+?
+'<span class="badge">'
++
+money(x.price)
++
+'</span>'
+:""
+}
+
+${
+x.category
+?
+'<span class="badge">'
++
+esc(x.category)
++
+'</span>'
+:""
+}
+
+${store}
+
+</div>
+
+
+${
+x.note
+?
+'<div class="meta">📝 '
++
+esc(x.note)
++
+'</div>'
+:""
+}
+
+</div>
+
+
+<div class="actions">
+
+
+${
+type === "shopping"
+?
+'<button class="buy" onclick="move(\''+
+x.id+
+'\')">✓ Aldım</button>'
+:""
+}
+
+
+<button
+class="edit"
+onclick="edit('"+
+type+
+"','"+
+x.id+
+"')">
+
+✎ Düzenle
+
+</button>
+
+
+<button
+class="del"
+onclick="del('"+
+type+
+"','"+
+x.id+
+"')">
+
+Sil
+
+</button>
+
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+
+function filtered(type){
+
+let search =
+$(type === "shopping"
+? "searchS"
+: "searchP")
+.value
+.toLowerCase()
+.trim();
+
+
+let category =
+$(type === "shopping"
+? "filterS"
+: "filterP")
+.value;
+
+
+return d[type].filter(x=>{
+
+let text =
+(
+x.name
++
+" "
++
+x.store
++
+" "
++
+x.note
++
+" "
++
+x.category
+)
+.toLowerCase();
+
+
+return (
+
+!search
+||
+text.includes(search)
+
+)
+&&
+(
+
+!category
+||
+x.category === category
+
+);
+
+});
+
+}
+
+
 
 function render(){
 
-  const shoppingList =
-    document.getElementById("sl");
+let shopping =
+filtered("shopping");
 
-  const productsList =
-    document.getElementById("pl");
-
-
-  if(data.shopping.length){
-
-    shoppingList.innerHTML =
-      data.shopping
-        .map(item =>
-          createCard(item,"shopping")
-        )
-        .join("");
-
-  }else{
-
-    shoppingList.innerHTML =
-      '<div class="empty">'
-      + '<div class="big">🛒</div>'
-      + 'Alınacaklar listen henüz boş.'
-      + '</div>';
-
-  }
+let products =
+filtered("products");
 
 
-  if(data.products.length){
+$("sl").innerHTML =
+shopping.length
 
-    productsList.innerHTML =
-      data.products
-        .map(item =>
-          createCard(item,"products")
-        )
-        .join("");
+?
 
-  }else{
+shopping
+.map(
+x =>
+card(x,"shopping")
+)
+.join("")
 
-    productsList.innerHTML =
-      '<div class="empty">'
-      + '<div class="big">📦</div>'
-      + 'Henüz ürün eklenmedi.'
-      + '</div>';
+:
 
-  }
+`
+
+<div class="empty">
+
+<div class="big">
+🛒
+</div>
+
+Alınacaklar listen boş.
+
+</div>
+
+`;
+
+
+$("pl").innerHTML =
+products.length
+
+?
+
+products
+.map(
+x =>
+card(x,"products")
+)
+.join("")
+
+:
+
+`
+
+<div class="empty">
+
+<div class="big">
+📦
+</div>
+
+Henüz ürün eklenmedi.
+
+</div>
+
+`;
+
+
+$("sCount").textContent =
+d.shopping.length;
+
+
+$("pCount").textContent =
+d.products.length;
+
+
+$("sTotal").textContent =
+money(
+d.shopping.reduce(
+(total,x)=>
+total
++
+(
+Number(x.price)||0
+)
+*
+(
+Number(x.qty)||1
+),
+0
+)
+);
+
+
+$("pTotal").textContent =
+money(
+d.products.reduce(
+(total,x)=>
+total
++
+(
+Number(x.price)||0
+)
+*
+(
+Number(x.qty)||1
+),
+0
+)
+);
 
 }
 
-
-/* --------------------------------
-   BAŞLANGIÇ
--------------------------------- */
 
 render();
 
