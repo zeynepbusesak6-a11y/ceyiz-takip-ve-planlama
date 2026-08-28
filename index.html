@@ -8,15 +8,28 @@
 <style>
 *{box-sizing:border-box}
 
+:root{
+--pink:#ddb2b8;
+--pink-light:#f5e7e8;
+--pink-soft:#f9f1f0;
+--cream:#fcf8f6;
+--gold:#c9aa72;
+--brown:#6b5750;
+--muted:#927d74;
+--border:#e8dcd7;
+--green:#647b66;
+--green-light:#e8eee6;
+}
+
 body{
 margin:0;
-background:#FCF8F6;
-color:#6B5750;
+background:var(--cream);
+color:var(--brown);
 font-family:Arial,sans-serif
 }
 
 header{
-background:#DDB2B8;
+background:linear-gradient(135deg,#dcb1b7,#e8c9cc);
 color:white;
 text-align:center;
 padding:28px 15px
@@ -24,15 +37,15 @@ padding:28px 15px
 
 .logo{
 margin:auto auto 10px;
-width:70px;
-height:70px;
+width:72px;
+height:72px;
 border:2px solid white;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
 font:48px Georgia;
-color:#F3E2B8
+color:#f3e2b8
 }
 
 h1{
@@ -48,23 +61,23 @@ background:white;
 position:sticky;
 top:0;
 z-index:20;
-border-bottom:1px solid #E8DCD7
+border-bottom:1px solid var(--border)
 }
 
 nav button{
 flex:1;
-padding:15px 8px;
+padding:15px 7px;
 border:0;
 background:white;
-color:#6B5750;
-font-size:15px;
+color:var(--brown);
+font-size:14px;
 cursor:pointer
 }
 
 nav button.on{
-color:#A97880;
+color:#a97880;
 font-weight:bold;
-border-bottom:3px solid #DDB2B8
+border-bottom:3px solid var(--pink)
 }
 
 main{
@@ -75,7 +88,7 @@ padding:20px 15px 70px
 
 .box{
 background:white;
-border:1px solid #E8DCD7;
+border:1px solid var(--border);
 border-radius:18px;
 padding:18px;
 margin-bottom:18px
@@ -84,6 +97,235 @@ margin-bottom:18px
 h2{
 font:24px Georgia;
 margin:0 0 15px
+}
+
+.hero{
+background:linear-gradient(135deg,#f6e8e9,#fffaf7);
+border:1px solid #ead9da;
+border-radius:24px;
+padding:27px 22px;
+margin-bottom:18px;
+position:relative;
+overflow:hidden
+}
+
+.hero:after{
+content:"♡";
+position:absolute;
+right:20px;
+top:0;
+font:115px Georgia;
+color:rgba(201,170,114,.18)
+}
+
+.hero-kicker{
+font-size:12px;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:#a97880;
+font-weight:bold
+}
+
+.hero h2{
+font-size:30px;
+margin:8px 0;
+position:relative;
+z-index:1
+}
+
+.hero p{
+color:var(--muted);
+margin:0;
+position:relative;
+z-index:1
+}
+
+.home-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:20px;
+position:relative;
+z-index:2
+}
+
+.home-action{
+padding:13px;
+border:1px solid #ddcacc;
+border-radius:12px;
+background:white;
+color:var(--brown);
+font-weight:bold;
+cursor:pointer
+}
+
+.summary{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px
+}
+
+.stat{
+background:#fffafa;
+border:1px solid var(--border);
+border-radius:15px;
+padding:17px 10px;
+text-align:center
+}
+
+.stat-icon{
+font-size:23px;
+margin-bottom:5px
+}
+
+.stat strong{
+display:block;
+font-size:24px;
+color:#a97880;
+margin-bottom:5px
+}
+
+.stat span{
+font-size:12px
+}
+
+.progress-head,
+.section-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
+}
+
+.section-head h2,
+.progress-head h2{
+margin:0
+}
+
+.progress-percent{
+font-weight:bold;
+color:#a97880
+}
+
+.progress-wrap{
+height:14px;
+background:#eee1df;
+border-radius:20px;
+overflow:hidden;
+margin-top:8px
+}
+
+.progress{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#d7aeb4,#c9aa72);
+transition:.3s
+}
+
+.budget-numbers{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:15px
+}
+
+.budget-number{
+padding:13px;
+background:#fffafa;
+border:1px solid var(--border);
+border-radius:12px
+}
+
+.budget-number small{
+display:block;
+color:var(--muted);
+margin-bottom:4px
+}
+
+.budget-number strong{
+font-size:17px
+}
+
+.recent-list{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.recent-card{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px;
+border:1px solid var(--border);
+border-radius:14px;
+background:#fffdfc;
+cursor:pointer
+}
+
+.recent-card img,
+.recent-placeholder{
+width:58px;
+height:58px;
+border-radius:11px;
+object-fit:cover;
+flex-shrink:0
+}
+
+.recent-placeholder{
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f4eae6;
+font-size:25px
+}
+
+.recent-name{
+font:bold 16px Georgia
+}
+
+.recent-meta{
+font-size:12px;
+color:var(--muted);
+margin-top:4px
+}
+
+.favorite-preview{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
+}
+
+.favorite-mini{
+border:1px solid var(--border);
+border-radius:14px;
+padding:13px;
+background:white;
+cursor:pointer
+}
+
+.favorite-mini .mini-icon{
+font-size:23px
+}
+
+.favorite-mini strong{
+display:block;
+font:16px Georgia;
+margin:5px 0
+}
+
+.favorite-mini small{
+color:var(--muted)
+}
+
+.section-link{
+border:0;
+background:var(--pink-light);
+color:#9a7076;
+padding:8px 11px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
 }
 
 .grid{
@@ -95,11 +337,11 @@ gap:10px
 input,textarea,select{
 width:100%;
 padding:13px;
-border:1px solid #DCCBC5;
+border:1px solid #dccbc5;
 border-radius:10px;
 font-size:15px;
-background:#FFFCFA;
-color:#6B5750
+background:#fffdfc;
+color:var(--brown)
 }
 
 textarea{
@@ -116,7 +358,7 @@ width:100%;
 padding:13px;
 border:0;
 border-radius:10px;
-background:#DDB2B8;
+background:var(--pink);
 color:white;
 font-weight:bold;
 font-size:15px;
@@ -132,29 +374,25 @@ margin-bottom:15px
 
 .item{
 padding:15px 0;
-border-bottom:1px solid #EEE4E0;
+border-bottom:1px solid #eee4e0;
 display:flex;
 gap:12px;
 align-items:center
 }
 
-.item:last-child{
-border-bottom:0
-}
+.item:last-child{border-bottom:0}
 
 .photo,.no-photo{
-width:70px;
-height:70px;
+width:72px;
+height:72px;
 border-radius:12px;
 flex-shrink:0
 }
 
-.photo{
-object-fit:cover
-}
+.photo{object-fit:cover}
 
 .no-photo{
-background:#F4EAE6;
+background:#f4eae6;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -167,20 +405,19 @@ min-width:0
 }
 
 .name{
-font:19px Georgia;
-font-weight:bold
+font:bold 19px Georgia
 }
 
 .meta{
 font-size:13px;
-color:#8D7A72;
+color:var(--muted);
 margin-top:5px
 }
 
 .badge{
 display:inline-block;
-background:#F4E3E5;
-color:#9A7076;
+background:var(--pink-light);
+color:#9a7076;
 border-radius:15px;
 padding:4px 8px;
 margin-right:4px;
@@ -202,99 +439,49 @@ cursor:pointer
 
 .buy{
 border:0;
-background:#E8EEE6;
-color:#5F735F
+background:var(--green-light);
+color:var(--green)
 }
 
 .del{
-border:1px solid #DFC5C8;
+border:1px solid #dfc5c8;
 background:white;
-color:#A86F77
+color:#a86f77
 }
 
 .edit,.detail{
-border:1px solid #D9C9C4;
+border:1px solid #d9c9c4;
 background:white;
-color:#6B5750
+color:var(--brown)
 }
 
 .fav{
 border:0;
 background:white;
 font-size:22px;
-color:#B97880
+color:#b97880
 }
 
 .favorite-active{
-color:#C95F6B!important
+color:#c95f6b!important
 }
 
 .empty{
 text-align:center;
-color:#98867F;
+color:#98867f;
 padding:30px
 }
 
-.big{
-font-size:40px
-}
-
-.summary{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px
-}
-
-.stat{
-background:#fff8f5;
-border:1px solid #E8DCD7;
-border-radius:14px;
-padding:18px 10px;
-text-align:center
-}
-
-.stat strong{
-display:block;
-font-size:24px;
-color:#A97880;
-margin-bottom:5px
-}
-
-.stat span{
-font-size:13px
-}
-
-.progress-wrap{
-background:#E8DCD7;
-border-radius:20px;
-height:13px;
-overflow:hidden
-}
-
-.progress{
-height:100%;
-background:#DDB2B8;
-width:0%;
-transition:.3s
-}
-
-.progress-text{
-margin-bottom:8px
-}
-
-.budget-info{
-margin-top:12px;
-line-height:1.7
-}
+.big{font-size:40px}
 
 .file-box{
-border:1px dashed #D7C2C4;
+border:1px dashed #d7c2c4;
 border-radius:10px;
 padding:12px
 }
 
 .link{
-color:#A97880;
+color:#a97880;
 text-decoration:none
 }
 
@@ -326,7 +513,7 @@ align-items:center
 
 .close{
 border:0;
-background:#F3E9E5;
+background:#f3e9e5;
 border-radius:50%;
 width:35px;
 height:35px;
@@ -344,12 +531,12 @@ margin-bottom:15px
 
 .detail-row{
 padding:10px 0;
-border-bottom:1px solid #EEE4E0
+border-bottom:1px solid #eee4e0
 }
 
 .detail-label{
 font-size:12px;
-color:#98867F
+color:#98867f
 }
 
 .detail-value{
@@ -361,7 +548,7 @@ position:fixed;
 bottom:20px;
 left:50%;
 transform:translateX(-50%);
-background:#6B5750;
+background:#6b5750;
 color:white;
 padding:11px 17px;
 border-radius:12px;
@@ -375,10 +562,7 @@ z-index:200
 grid-template-columns:1fr 1fr
 }
 
-.filters{
-grid-template-columns:1fr
-}
-
+.filters,
 .grid{
 grid-template-columns:1fr
 }
@@ -392,17 +576,31 @@ flex-wrap:wrap
 width:100%
 }
 
+.recent-list{
+grid-template-columns:1fr
+}
+
+.favorite-preview{
+grid-template-columns:1fr
+}
+
+.budget-numbers{
+grid-template-columns:1fr
+}
+
 }
 
 @media(max-width:480px){
 
-h1{
-font-size:25px
-}
+h1{font-size:25px}
 
 nav button{
-font-size:12px;
+font-size:11px;
 padding:13px 3px
+}
+
+.home-actions{
+grid-template-columns:1fr
 }
 
 }
@@ -426,6 +624,8 @@ padding:13px 3px
 
 <main>
 
+<!-- ANA SAYFA -->
+
 <section id="home">
 
 <div class="hero">
@@ -434,12 +634,18 @@ padding:13px 3px
 <p>Alacaklarını, aldıklarını, favorilerini ve bütçeni tek yerden takip et.</p>
 
 <div class="home-actions">
-<button class="home-action" onclick="tab('shopping')">🛒 Alınacaklara Git</button>
-<button class="home-action" onclick="tab('products')">📦 Ürünlerimi Gör</button>
+<button class="home-action" onclick="tab('shopping')">
+🛒 Alınacaklara Git
+</button>
+
+<button class="home-action" onclick="tab('products')">
+📦 Ürünlerimi Gör
+</button>
 </div>
 </div>
 
 <div class="box">
+
 <h2>Çeyiz Özeti</h2>
 
 <div class="summary">
@@ -447,13 +653,13 @@ padding:13px 3px
 <div class="stat">
 <div class="stat-icon">🛒</div>
 <strong id="sShopping">0</strong>
-<span>Alınacak Ürün</span>
+<span>Alınacak</span>
 </div>
 
 <div class="stat">
 <div class="stat-icon">✅</div>
 <strong id="sBought">0</strong>
-<span>Alınmış Ürün</span>
+<span>Alınmış</span>
 </div>
 
 <div class="stat">
@@ -478,31 +684,33 @@ padding:13px 3px
 <span id="progressPercent" class="progress-percent">0%</span>
 </div>
 
-<div class="progress-text">
-<span id="progressText">Henüz ürün alınmadı</span>
+<div id="progressText" class="progress-text">
+Henüz ürün eklenmedi.
 </div>
 
 <div class="progress-wrap">
-<div id="progress" class="progress"></div>
+<div id="progress"></div>
 </div>
 
 </div>
 
-<div class="box budget-card">
+<div class="box">
 
-<h2>💰 Bütçe Durumu</h2>
+<h2>💰 Bütçe</h2>
 
 <input
 id="budgetInput"
 type="number"
 min="0"
 step=".01"
-placeholder="Toplam çeyiz bütçeniz (₺)"
+placeholder="Toplam çeyiz bütçesi (₺)"
 >
 
 <br><br>
 
-<button class="add" onclick="saveBudget()">💰 Bütçeyi Kaydet</button>
+<button class="add" onclick="saveBudget()">
+💰 Bütçeyi Kaydet
+</button>
 
 <div id="budgetInfo" class="budget-info">
 Henüz bütçe belirlenmedi.
@@ -516,7 +724,13 @@ Henüz bütçe belirlenmedi.
 
 <div class="section-head">
 <h2>🆕 Son Eklenenler</h2>
-<button class="section-link" onclick="tab('products')">Tümünü Gör</button>
+
+<button
+class="section-link"
+onclick="tab('products')"
+>
+Tümünü Gör
+</button>
 </div>
 
 <div id="recentList" class="recent-list"></div>
@@ -527,7 +741,14 @@ Henüz bütçe belirlenmedi.
 
 <div class="section-head">
 <h2>❤️ Favoriler</h2>
-<button class="section-link" onclick="tab('favorites')">Favorileri Gör</button>
+
+<button
+class="section-link"
+onclick="tab('favorites')"
+>
+Favorileri Gör
+</button>
+
 </div>
 
 <div id="favoritePreview" class="favorite-preview"></div>
@@ -569,7 +790,10 @@ placeholder="Tahmini fiyat"
 <option value="">Kategori seç</option>
 </select>
 
-<input id="ss" placeholder="Mağaza">
+<input
+id="ss"
+placeholder="Mağaza"
+>
 
 <input
 id="slink"
@@ -584,7 +808,11 @@ placeholder="Not (isteğe bağlı)"
 ></textarea>
 
 <div class="file-box full">
-<input id="sf" type="file" accept="image/*">
+<input
+id="sf"
+type="file"
+accept="image/*"
+>
 </div>
 
 <button
@@ -595,7 +823,6 @@ onclick="addItem('shopping')"
 </button>
 
 </div>
-
 </div>
 
 
@@ -667,7 +894,10 @@ placeholder="Fiyat"
 <option value="">Kategori seç</option>
 </select>
 
-<input id="ps" placeholder="Mağaza">
+<input
+id="ps"
+placeholder="Mağaza"
+>
 
 <input
 id="plink"
@@ -682,7 +912,11 @@ placeholder="Not (isteğe bağlı)"
 ></textarea>
 
 <div class="file-box full">
-<input id="pf" type="file" accept="image/*">
+<input
+id="pf"
+type="file"
+accept="image/*"
+>
 </div>
 
 <button
@@ -693,7 +927,6 @@ onclick="addItem('products')"
 </button>
 
 </div>
-
 </div>
 
 
@@ -751,9 +984,12 @@ onchange="renderProducts()"
 </main>
 
 
-<!-- DETAY MODALI -->
+<!-- DETAY PENCERESİ -->
 
-<div class="modal-bg" id="detailModal">
+<div
+class="modal-bg"
+id="detailModal"
+>
 
 <div class="modal">
 
@@ -775,13 +1011,15 @@ onclick="closeModal()"
 <div id="detailContent"></div>
 
 </div>
-
 </div>
 
 
-<!-- DÜZENLEME MODALI -->
+<!-- DÜZENLEME PENCERESİ -->
 
-<div class="modal-bg" id="editModal">
+<div
+class="modal-bg"
+id="editModal"
+>
 
 <div class="modal">
 
@@ -800,7 +1038,10 @@ onclick="closeEdit()"
 
 <div class="grid">
 
-<input id="en" placeholder="Ürün adı">
+<input
+id="en"
+placeholder="Ürün adı"
+>
 
 <input
 id="eq"
@@ -819,9 +1060,16 @@ placeholder="Fiyat"
 
 <select id="ec"></select>
 
-<input id="es" placeholder="Mağaza">
+<input
+id="es"
+placeholder="Mağaza"
+>
 
-<input id="el" placeholder="Ürün linki">
+<input
+id="el"
+class="full"
+placeholder="Ürün linki"
+>
 
 <textarea
 id="et"
@@ -837,16 +1085,19 @@ onclick="saveEdit()"
 </button>
 
 </div>
-
 </div>
-
 </div>
-
 
 <div id="toast" class="toast"></div>
 
+
 <script>
-     const KEY="ceyiz_final_v3";
+
+/* =========================
+   VERİ
+========================= */
+
+const KEY="ceyiz_final_v3";
 
 const defaultCategories=[
 "Mutfak",
@@ -868,130 +1119,30 @@ budget:0
 
 
 /* =========================
-   VERİYİ YÜKLE
-========================= */
-
-function loadData(){
-
-try{
-
-const saved=JSON.parse(
-localStorage.getItem(KEY)
-);
-
-if(saved){
-d=saved;
-}
-
-}catch(e){
-
-console.log("Veri yükleme hatası:",e);
-
-}
-
-d.shopping=
-Array.isArray(d.shopping)
-?d.shopping
-:[];
-
-d.products=
-Array.isArray(d.products)
-?d.products
-:[];
-
-d.categories=
-Array.isArray(d.categories)&&d.categories.length
-?d.categories
-:[...defaultCategories];
-
-d.budget=
-Number(d.budget)||0;
-
-d.shopping=
-d.shopping.map(normalize);
-
-d.products=
-d.products.map(normalize);
-
-save();
-
-}
-
-
-function normalize(x){
-
-return{
-
-id:x.id||Date.now()+Math.random(),
-
-name:String(x.name||""),
-
-qty:Number(x.qty)||1,
-
-price:Number(x.price)||0,
-
-category:String(x.category||""),
-
-store:String(x.store||""),
-
-link:String(x.link||""),
-
-note:String(x.note||""),
-
-image:String(x.image||""),
-
-favorite:Boolean(x.favorite),
-
-bought:Boolean(x.bought)
-
-};
-
-}
-
-
-function save(){
-
-localStorage.setItem(
-KEY,
-JSON.stringify(d)
-);
-
-}
-
-
-loadData();
-
-
-/* =========================
    YARDIMCI
 ========================= */
 
-const $=id=>
-document.getElementById(id);
+const $=id=>document.getElementById(id);
 
+function save(){
+localStorage.setItem(KEY,JSON.stringify(d));
+}
 
 function esc(x){
-
 return String(x||"").replace(
 /[&<>"']/g,
 m=>({
-
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
-
 }[m])
 );
-
 }
 
-
 function money(x){
-
 if(!Number(x))return "";
-
 return Number(x).toLocaleString(
 "tr-TR",
 {
@@ -999,9 +1150,7 @@ style:"currency",
 currency:"TRY"
 }
 );
-
 }
-
 
 function toast(text){
 
@@ -1023,7 +1172,75 @@ el.style.display="none";
 
 
 /* =========================
-   SEKME SİSTEMİ
+   VERİYİ YÜKLE
+========================= */
+
+function normalize(x){
+
+return {
+id:x.id||Date.now()+Math.random(),
+name:String(x.name||""),
+qty:Number(x.qty)||1,
+price:Number(x.price)||0,
+category:String(x.category||""),
+store:String(x.store||""),
+link:String(x.link||""),
+note:String(x.note||""),
+image:String(x.image||""),
+favorite:Boolean(x.favorite),
+bought:Boolean(x.bought)
+};
+
+}
+
+function loadData(){
+
+try{
+
+const saved=
+JSON.parse(
+localStorage.getItem(KEY)
+);
+
+if(saved){
+
+d=saved;
+
+}
+
+}catch(e){
+
+console.log(e);
+
+}
+
+d.shopping=
+Array.isArray(d.shopping)
+?d.shopping.map(normalize)
+:[];
+
+d.products=
+Array.isArray(d.products)
+?d.products.map(normalize)
+:[];
+
+d.categories=
+Array.isArray(d.categories)&&d.categories.length
+?d.categories
+:[...defaultCategories];
+
+d.budget=
+Number(d.budget)||0;
+
+save();
+
+}
+
+loadData();
+
+
+/* =========================
+   SEKME
 ========================= */
 
 function tab(name){
@@ -1035,21 +1252,18 @@ const sections=[
 "favorites"
 ];
 
-sections.forEach(section=>{
+sections.forEach(id=>{
 
-const el=$(section);
+const el=$(id);
 
 if(el){
-
 el.style.display=
-section===name
+id===name
 ?"block"
 :"none";
-
 }
 
 });
-
 
 const buttons={
 home:"b1",
@@ -1060,18 +1274,18 @@ favorites:"b4"
 
 Object.values(buttons).forEach(id=>{
 
-const button=$(id);
+const btn=$(id);
 
-if(button){
-button.classList.remove("on");
+if(btn){
+btn.classList.remove("on");
 }
 
 });
 
-const activeButton=$(buttons[name]);
+const active=$(buttons[name]);
 
-if(activeButton){
-activeButton.classList.add("on");
+if(active){
+active.classList.add("on");
 }
 
 renderAll();
@@ -1090,13 +1304,13 @@ behavior:"smooth"
 
 function fillCategories(){
 
-const forms=[
+const selects=[
 $("sc"),
 $("pc"),
 $("ec")
 ];
 
-forms.forEach(select=>{
+selects.forEach(select=>{
 
 if(!select)return;
 
@@ -1121,13 +1335,10 @@ if(
 [...select.options]
 .some(o=>o.value===old)
 ){
-
 select.value=old;
-
 }
 
 });
-
 
 const filters=[
 $("filterShoppingCategory"),
@@ -1159,9 +1370,7 @@ if(
 [...select.options]
 .some(o=>o.value===old)
 ){
-
 select.value=old;
-
 }
 
 });
@@ -1210,7 +1419,7 @@ input.files[0]
 
 
 /* =========================
-   ÜRÜN EKLE
+   EKLE
 ========================= */
 
 async function addItem(type){
@@ -1221,9 +1430,7 @@ type==="shopping"
 :"p";
 
 const name=
-$(p+"n")
-.value
-.trim();
+$(p+"n").value.trim();
 
 if(!name){
 
@@ -1248,14 +1455,10 @@ Date.now()+Math.random(),
 name:name,
 
 qty:
-Number(
-$(p+"q").value
-)||1,
+Number($(p+"q").value)||1,
 
 price:
-Number(
-$(p+"p").value
-)||0,
+Number($(p+"p").value)||0,
 
 category:
 $(p+"c").value,
@@ -1264,11 +1467,10 @@ store:
 $(p+"s").value.trim(),
 
 link:
-$(p==="s"
+$(type==="shopping"
 ?"slink"
 :"plink"
-)
-.value.trim(),
+).value.trim(),
 
 note:
 $(p+"t").value.trim(),
@@ -1290,9 +1492,7 @@ clearForm(type);
 
 renderAll();
 
-toast(
-"✓ Ürün başarıyla eklendi."
-);
+toast("✓ Ürün eklendi.");
 
 }
 
@@ -1313,13 +1513,9 @@ $(p+"t").value="";
 $(p+"f").value="";
 
 if(type==="shopping"){
-
 $("slink").value="";
-
 }else{
-
 $("plink").value="";
-
 }
 
 }
@@ -1367,12 +1563,11 @@ x=>String(x.id)===String(id)
 
 if(index<0)return;
 
-const item=
-d.shopping[index];
+const old=d.shopping[index];
 
 d.products.push({
 
-...item,
+...old,
 
 id:
 Date.now()+Math.random(),
@@ -1423,15 +1618,13 @@ save();
 
 renderAll();
 
-toast(
-"🗑️ Ürün silindi."
-);
+toast("🗑️ Ürün silindi.");
 
 }
 
 
 /* =========================
-   ÜRÜN KARTI
+   KART
 ========================= */
 
 function card(item,type){
@@ -1521,10 +1714,7 @@ item.note
 <div class="actions">
 
 <button
-class="fav ${
-item.favorite
-?"favorite-active":""
-}"
+class="fav ${item.favorite?"favorite-active":""}"
 onclick="
 toggleFavorite(
 '${type}',
@@ -1621,21 +1811,11 @@ if(search){
 
 list=list.filter(item=>
 
-item.name
-.toLowerCase()
-.includes(search)
+item.name.toLowerCase().includes(search)||
 
-||
+item.store.toLowerCase().includes(search)||
 
-item.store
-.toLowerCase()
-.includes(search)
-
-||
-
-item.note
-.toLowerCase()
-.includes(search)
+item.note.toLowerCase().includes(search)
 
 );
 
@@ -1644,8 +1824,7 @@ item.note
 if(category){
 
 list=list.filter(
-item=>
-item.category===category
+item=>item.category===category
 );
 
 }
@@ -1655,33 +1834,19 @@ $("shoppingList");
 
 if(!container)return;
 
-if(list.length){
-
 container.innerHTML=
-list
-.map(item=>
-card(item,"shopping")
-)
-.join("");
-
-}else{
-
-container.innerHTML=`
-
+list.length
+?
+list.map(
+item=>card(item,"shopping")
+).join("")
+:
+`
 <div class="empty">
-
-<div class="big">
-🛒
+<div class="big">🛒</div>
+Alınacaklar listende henüz ürün yok.
 </div>
-
-Alınacaklar listende
-henüz ürün yok.
-
-</div>
-
 `;
-
-}
 
 }
 
@@ -1713,21 +1878,11 @@ if(search){
 
 list=list.filter(item=>
 
-item.name
-.toLowerCase()
-.includes(search)
+item.name.toLowerCase().includes(search)||
 
-||
+item.store.toLowerCase().includes(search)||
 
-item.store
-.toLowerCase()
-.includes(search)
-
-||
-
-item.note
-.toLowerCase()
-.includes(search)
+item.note.toLowerCase().includes(search)
 
 );
 
@@ -1736,8 +1891,7 @@ item.note
 if(category){
 
 list=list.filter(
-item=>
-item.category===category
+item=>item.category===category
 );
 
 }
@@ -1763,32 +1917,19 @@ $("productsList");
 
 if(!container)return;
 
-if(list.length){
-
 container.innerHTML=
-list
-.map(item=>
-card(item,"products")
-)
-.join("");
-
-}else{
-
-container.innerHTML=`
-
+list.length
+?
+list.map(
+item=>card(item,"products")
+).join("")
+:
+`
 <div class="empty">
-
-<div class="big">
-📦
-</div>
-
+<div class="big">📦</div>
 Henüz ürün eklenmedi.
-
 </div>
-
 `;
-
-}
 
 }
 
@@ -1818,38 +1959,25 @@ $("favoritesList");
 
 if(!container)return;
 
-if(list.length){
-
 container.innerHTML=
-list
-.map(item=>
-card(item,item._type)
-)
-.join("");
-
-}else{
-
-container.innerHTML=`
-
+list.length
+?
+list.map(
+item=>card(item,item._type)
+).join("")
+:
+`
 <div class="empty">
-
-<div class="big">
-❤️
-</div>
-
+<div class="big">❤️</div>
 Henüz favori ürün yok.
-
 </div>
-
 `;
-
-}
 
 }
 
 
 /* =========================
-   SON EKLENEN 4 ÜRÜN
+   SON 4 ÜRÜN
 ========================= */
 
 function allItemsNewest(){
@@ -1884,20 +2012,13 @@ allItemsNewest().slice(0,4);
 if(!list.length){
 
 container.innerHTML=`
-
 <div
 class="empty"
 style="grid-column:1/-1"
 >
-
-<div class="big">
-🧺
-</div>
-
+<div class="big">🧺</div>
 Henüz ürün eklenmedi.
-
 </div>
-
 `;
 
 return;
@@ -1984,20 +2105,13 @@ x=>x.favorite
 if(!list.length){
 
 container.innerHTML=`
-
 <div
 class="empty"
 style="grid-column:1/-1"
 >
-
-<div class="big">
-♡
-</div>
-
+<div class="big">♡</div>
 Henüz favori ürün yok.
-
 </div>
-
 `;
 
 return;
@@ -2055,14 +2169,14 @@ d.shopping.length;
 const bought=
 d.products.length;
 
-const estimated=
-d.shopping.reduce(
-(sum,x)=>
-sum+
-(Number(x.price)||0)*
-(Number(x.qty)||1),
-0
-);
+const favorites=[
+
+...d.shopping,
+...d.products
+
+].filter(
+x=>x.favorite
+).length;
 
 const spent=
 d.products.reduce(
@@ -2072,15 +2186,6 @@ sum+
 (Number(x.qty)||1),
 0
 );
-
-const favorites=[
-
-...d.shopping,
-...d.products
-
-].filter(
-x=>x.favorite
-).length;
 
 $("sShopping").textContent=
 shopping;
@@ -2116,7 +2221,7 @@ total
 ?
 bought+" / "+total+" ürün tamamlandı"
 :
-"Henüz ürün eklenmedi";
+"Henüz ürün eklenmedi.";
 
 $("budgetInput").value=
 d.budget||"";
@@ -2126,57 +2231,35 @@ if(d.budget){
 const remaining=
 d.budget-spent;
 
-$("budgetInfo").innerHTML=
-remaining>=0
-?
-"Bütçenin "+
+const used=
 Math.round(
 (spent/d.budget)*100
-)+
-"%'i kullanıldı."
+);
+
+$("budgetInfo").textContent=
+remaining>=0
+?
+"Bütçenin "+used+"%'i kullanıldı."
 :
-"⚠️ Bütçen "+
-money(
+"⚠️ Bütçe "+money(
 Math.abs(remaining)
-)+
-" aşıldı.";
+)+" aşıldı.";
 
 $("budgetNumbers").innerHTML=`
 
 <div class="budget-number">
-
-<small>
-Toplam
-</small>
-
-<strong>
-${money(d.budget)}
-</strong>
-
+<small>Toplam bütçe</small>
+<strong>${money(d.budget)}</strong>
 </div>
 
 <div class="budget-number">
-
-<small>
-Harcanan
-</small>
-
-<strong>
-${money(spent)}
-</strong>
-
+<small>Harcanan</small>
+<strong>${money(spent)}</strong>
 </div>
 
 <div class="budget-number">
-
-<small>
-Kalan
-</small>
-
-<strong>
-${money(remaining)}
-</strong>
-
+<small>Kalan</small>
+<strong>${money(remaining)}</strong>
 </div>
 
 `;
@@ -2191,14 +2274,13 @@ $("budgetNumbers").innerHTML="";
 }
 
 renderRecent();
-
 renderFavoritePreview();
 
 }
 
 
 /* =========================
-   BÜTÇE
+   BÜTÇE KAYDET
 ========================= */
 
 function saveBudget(){
@@ -2240,13 +2322,11 @@ let html="";
 if(item.image){
 
 html+=`
-
 <img
 class="detail-photo"
 src="${item.image}"
 alt="${esc(item.name)}"
 >
-
 `;
 
 }
@@ -2254,81 +2334,35 @@ alt="${esc(item.name)}"
 html+=`
 
 <div class="detail-row">
-
-<div class="detail-label">
-Ürün adı
-</div>
-
-<div class="detail-value">
-${esc(item.name)}
-</div>
-
+<div class="detail-label">Ürün adı</div>
+<div class="detail-value">${esc(item.name)}</div>
 </div>
 
 <div class="detail-row">
-
-<div class="detail-label">
-Miktar
-</div>
-
-<div class="detail-value">
-${item.qty} adet
-</div>
-
+<div class="detail-label">Miktar</div>
+<div class="detail-value">${item.qty} adet</div>
 </div>
 
 <div class="detail-row">
-
-<div class="detail-label">
-Kategori
-</div>
-
-<div class="detail-value">
-${esc(item.category||"Belirtilmedi")}
-</div>
-
+<div class="detail-label">Kategori</div>
+<div class="detail-value">${esc(item.category||"Belirtilmedi")}</div>
 </div>
 
 <div class="detail-row">
-
-<div class="detail-label">
-Fiyat
-</div>
-
-<div class="detail-value">
-${item.price?money(item.price):"Belirtilmedi"}
-</div>
-
+<div class="detail-label">Fiyat</div>
+<div class="detail-value">${item.price?money(item.price):"Belirtilmedi"}</div>
 </div>
 
 <div class="detail-row">
-
-<div class="detail-label">
-Mağaza
-</div>
-
-<div class="detail-value">
-${esc(item.store||"Belirtilmedi")}
-</div>
-
+<div class="detail-label">Mağaza</div>
+<div class="detail-value">${esc(item.store||"Belirtilmedi")}</div>
 </div>
 
 <div class="detail-row">
-
-<div class="detail-label">
-Durum
-</div>
-
+<div class="detail-label">Durum</div>
 <div class="detail-value">
-${
-item.bought
-?
-"✅ Alındı"
-:
-"🛒 Alınacak"
-}
+${item.bought?"✅ Alındı":"🛒 Alınacak"}
 </div>
-
 </div>
 
 `;
@@ -2338,11 +2372,7 @@ if(item.link){
 html+=`
 
 <div class="detail-row">
-
-<div class="detail-label">
-Ürün linki
-</div>
-
+<div class="detail-label">Ürün linki</div>
 <div class="detail-value">
 
 <a
@@ -2355,7 +2385,6 @@ rel="noopener"
 </a>
 
 </div>
-
 </div>
 
 `;
@@ -2367,15 +2396,10 @@ if(item.note){
 html+=`
 
 <div class="detail-row">
-
-<div class="detail-label">
-Not
-</div>
-
+<div class="detail-label">Not</div>
 <div class="detail-value">
 ${esc(item.note)}
 </div>
-
 </div>
 
 `;
@@ -2406,7 +2430,6 @@ $("detailModal").style.display=
 let editType="";
 let editId="";
 
-
 function openEdit(type,id){
 
 const item=
@@ -2417,29 +2440,15 @@ x=>String(x.id)===String(id)
 if(!item)return;
 
 editType=type;
-
 editId=id;
 
-$("en").value=
-item.name;
-
-$("eq").value=
-item.qty;
-
-$("ep").value=
-item.price;
-
-$("ec").value=
-item.category;
-
-$("es").value=
-item.store;
-
-$("el").value=
-item.link;
-
-$("et").value=
-item.note;
+$("en").value=item.name;
+$("eq").value=item.qty;
+$("ep").value=item.price;
+$("ec").value=item.category;
+$("es").value=item.store;
+$("el").value=item.link;
+$("et").value=item.note;
 
 $("editModal").style.display=
 "flex";
