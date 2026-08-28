@@ -1,373 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Çeyiz Takip ve Planlama</title>
-
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#fff9f8;
-  color:#3d302d;
-}
-header{
-  background:#e2a5ad;
-  color:white;
-  padding:25px 20px;
-  text-align:center;
-}
-header h1{
-  margin:0;
-  font-size:27px;
-}
-header p{
-  margin:7px 0 0;
-  font-size:14px;
-}
-nav{
-  display:flex;
-  background:white;
-  border-bottom:1px solid #ddd;
-  position:sticky;
-  top:0;
-  z-index:5;
-}
-nav button{
-  flex:1;
-  border:0;
-  background:white;
-  padding:15px 5px;
-  font-size:14px;
-  color:#777;
-}
-nav button.active{
-  color:#c9828c;
-  border-bottom:3px solid #c9828c;
-  font-weight:bold;
-}
-main{
-  padding:18px;
-  max-width:700px;
-  margin:auto;
-}
-.section{
-  display:none;
-}
-.section.active{
-  display:block;
-}
-h2{
-  font-size:24px;
-  margin-top:8px;
-}
-.card{
-  background:white;
-  border-radius:15px;
-  padding:16px;
-  margin:12px 0;
-  box-shadow:0 2px 10px rgba(0,0,0,.07);
-}
-.product-name{
-  font-size:19px;
-  font-weight:bold;
-}
-.info{
-  color:#806f69;
-  margin-top:7px;
-  font-size:14px;
-}
-.badge{
-  display:inline-block;
-  margin-top:10px;
-  padding:6px 10px;
-  border-radius:20px;
-  background:#f5d6da;
-  color:#9b5962;
-  font-size:13px;
-}
-.badge.alindi{
-  background:#dcebd8;
-  color:#4f7547;
-}
-.empty{
-  text-align:center;
-  padding:50px 15px;
-  color:#999;
-}
-.add{
-  width:100%;
-  border:0;
-  border-radius:14px;
-  padding:16px;
-  background:#d99ba4;
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-  margin-bottom:15px;
-}
-input,select,textarea{
-  width:100%;
-  padding:13px;
-  margin:6px 0 14px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  font-size:15px;
-  background:white;
-}
-label{
-  font-size:14px;
-  font-weight:bold;
-}
-.save{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:15px;
-  background:#d99ba4;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-}
-.delete{
-  border:0;
-  background:#f5eeee;
-  color:#a85c66;
-  padding:8px 12px;
-  border-radius:8px;
-  margin-top:12px;
-}
-.check{
-  border:0;
-  background:#dcebd8;
-  color:#4f7547;
-  padding:9px 12px;
-  border-radius:8px;
-  margin-top:12px;
-  margin-left:5px;
-}
-.logo{
-  font-size:35px;
-  color:#d4af37;
-  font-family:Georgia,serif;
-}
+*{box-sizing:border-box}body{margin:0;background:#fffaf7;color:#5a443b;font-family:Arial,sans-serif}
+header{background:#dda4ab;color:white;text-align:center;padding:28px 15px}
+.logo{margin:auto auto 10px;width:70px;height:70px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font:48px Georgia;color:#fff4cf}
+h1{margin:0;font:30px Georgia}.sub{margin-top:7px}
+nav{display:flex;background:white;position:sticky;top:0;border-bottom:1px solid #eadbd7;z-index:2}
+nav button{flex:1;padding:16px;border:0;background:white;color:#80675d;font-size:16px}
+nav .on{color:#b76f78;font-weight:bold;border-bottom:3px solid #dda4ab}
+main{max-width:850px;margin:auto;padding:20px 15px 60px}.box{background:#fff;border:1px solid #eadbd7;border-radius:18px;padding:18px;margin-bottom:18px}
+h2{font:24px Georgia;margin:0 0 15px}
+.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+input,textarea{width:100%;padding:13px;border:1px solid #dfceca;border-radius:10px;font-size:15px;background:#fffdfc}
+textarea{min-height:75px}.full{grid-column:1/-1}
+.add{width:100%;padding:13px;border:0;border-radius:10px;background:#dda4ab;color:white;font-weight:bold;font-size:15px}
+.item{padding:15px 0;border-bottom:1px solid #eee2df;display:flex;gap:12px;align-items:center}.item:last-child{border:0}
+.info{flex:1}.name{font:19px Georgia;font-weight:bold}.meta{font-size:13px;color:#927d74;margin-top:5px}
+.badge{display:inline-block;background:#f5dfe2;color:#9a6068;border-radius:15px;padding:4px 8px;margin-right:4px}
+.actions{display:flex;gap:6px}.buy,.del{padding:9px 11px;border-radius:9px;font-size:13px}
+.buy{border:0;background:#e7eee5;color:#587051}.del{border:1px solid #e0bfc3;background:white;color:#b26d76}
+.empty{text-align:center;color:#9b8982;padding:30px}.big{font-size:40px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.item{align-items:flex-start;flex-direction:column}.actions{width:100%}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="logo">Ç</div>
-  <h1>Çeyiz Takip ve Planlama</h1>
-  <p>Çeyizini kolayca takip et</p>
-</header>
-
-<nav>
-  <button class="active" onclick="showSection('home',this)">Ana Sayfa</button>
-  <button onclick="showSection('todo',this)">Alınacaklar</button>
-  <button onclick="showSection('products',this)">Ürünler</button>
-</nav>
-
+<header><div class="logo">Ç</div><h1>Çeyiz Takip ve Planlama</h1><div class="sub">Çeyizini kolayca takip et ♡</div></header>
+<nav><button id="b1" class="on" onclick="tab('shopping')">🛒 Alınacaklar</button><button id="b2" onclick="tab('products')">📦 Ürünler</button></nav>
 <main>
-
-<section id="home" class="section active">
-  <h2>Hoş Geldin 🌸</h2>
-
-  <div class="card">
-    <h3>Çeyiz Takip ve Planlama</h3>
-    <p>Alınacak ürünlerini ekle, takip et ve aldıklarını işaretle.</p>
-  </div>
-
-  <button class="add" onclick="showSection('todo')">
-    + Alınacak Ürün Ekle
-  </button>
-
-  <div class="card">
-    <b id="homeTodo">0</b> ürün alınmayı bekliyor.
-    <br><br>
-    <b id="homeDone">0</b> ürün alındı.
-  </div>
+<section id="shopping">
+<div class="box"><h2>Alınacak Ürün Ekle</h2><div class="grid">
+<input id="sn" placeholder="Ürün adı"><input id="sq" type="number" min="1" value="1" placeholder="Miktar"><input id="sp" type="number" min="0" step=".01" placeholder="Tahmini fiyat">
+<input id="ss" class="full" placeholder="Mağaza / link (isteğe bağlı)"><textarea id="st" class="full" placeholder="Not (isteğe bağlı)"></textarea>
+<button class="add full" onclick="add('shopping')">+ Alınacaklara Ekle</button></div></div>
+<div class="box"><h2>Alınacaklar</h2><div id="sl"></div></div>
 </section>
-
-<section id="todo" class="section">
-  <h2>Alınacaklar</h2>
-
-  <div class="card">
-    <label>Ürün Adı</label>
-    <input id="name" placeholder="Örn: Yemek takımı">
-
-    <label>Kategori</label>
-    <select id="category">
-      <option>Salon</option>
-      <option>Mutfak</option>
-      <option>Yatak Odası</option>
-      <option>Banyo</option>
-      <option>Balkon</option>
-      <option>Elektronik</option>
-      <option>Diğer</option>
-    </select>
-
-    <label>Gerekli Miktar</label>
-    <input id="quantity" type="number" value="1">
-
-    <label>Fiyat</label>
-    <input id="price" type="number" placeholder="₺">
-
-    <label>Mağaza</label>
-    <input id="store" placeholder="Örn: Karaca / Trendyol">
-
-    <label>Not</label>
-    <textarea id="note" placeholder="Not ekle..."></textarea>
-
-    <button class="save" onclick="addProduct()">Ürünü Alınacaklara Ekle</button>
-  </div>
-
-  <div id="todoList"></div>
+<section id="products" style="display:none">
+<div class="box"><h2>Ürün Ekle</h2><div class="grid">
+<input id="pn" placeholder="Ürün adı"><input id="pq" type="number" min="1" value="1" placeholder="Miktar"><input id="pp" type="number" min="0" step=".01" placeholder="Fiyat">
+<input id="ps" class="full" placeholder="Mağaza"><textarea id="pt" class="full" placeholder="Not (isteğe bağlı)"></textarea>
+<button class="add full" onclick="add('products')">+ Ürünlere Ekle</button></div></div>
+<div class="box"><h2>Ürünler</h2><div id="pl"></div></div>
 </section>
-
-<section id="products" class="section">
-  <h2>Ürünler</h2>
-  <p style="color:#887773">
-    Burada yalnızca satın aldığın ürünler bulunur.
-  </p>
-  <div id="productList"></div>
-</section>
-
 </main>
-
 <script>
-let products = JSON.parse(localStorage.getItem("ceyizProducts") || "[]");
-
-function save(){
-  localStorage.setItem("ceyizProducts", JSON.stringify(products));
+const K='ceyiz_v3';let d=JSON.parse(localStorage.getItem(K)||'{"shopping":[],"products":[]}');
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(K,JSON.stringify(d))}
+function esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function tab(t){$('shopping').style.display=t==='shopping'?'block':'none';$('products').style.display=t==='products'?'block':'none';$('b1').classList.toggle('on',t==='shopping');$('b2').classList.toggle('on',t==='products')}
+function add(type){
+ let p=type==='shopping'?'s':'p',name=$(p+'n').value.trim();if(!name){alert('Lütfen ürün adını yaz.');return}
+ d[type].push({id:Date.now(),name,qty:Number($(p+'q').value)||1,price:Number($(p+'p').value)||0,store:$(p+'s').value.trim(),note:$(p+'t').value.trim()});
+ save();['n','q','p','s','t'].forEach(x=>$(p+x).value=x==='q'?'1':'');render();tab(type)
 }
-
-function showSection(id,button){
-  document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-
-  document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
-  if(button) button.classList.add("active");
-
-  render();
-}
-
-function addProduct(){
-  const name=document.getElementById("name").value.trim();
-
-  if(!name){
-    alert("Lütfen ürün adını yaz.");
-    return;
-  }
-
-  products.push({
-    id:Date.now(),
-    name:name,
-    category:document.getElementById("category").value,
-    quantity:document.getElementById("quantity").value || 1,
-    price:document.getElementById("price").value,
-    store:document.getElementById("store").value,
-    note:document.getElementById("note").value,
-    bought:false
-  });
-
-  save();
-
-  document.getElementById("name").value="";
-  document.getElementById("quantity").value="1";
-  document.getElementById("price").value="";
-  document.getElementById("store").value="";
-  document.getElementById("note").value="";
-
-  alert("Ürün Alınacaklar listesine eklendi 🌸");
-  render();
-}
-
-function markBought(id){
-  const item=products.find(x=>x.id===id);
-  if(item){
-    item.bought=true;
-    save();
-    render();
-  }
-}
-
-function deleteProduct(id){
-  products=products.filter(x=>x.id!==id);
-  save();
-  render();
-}
-
-function card(item,bought){
-  return `
-  <div class="card">
-    <div class="product-name">${escapeHtml(item.name)}</div>
-
-    <div class="info">
-      Kategori: ${escapeHtml(item.category)}
-    </div>
-
-    <div class="info">
-      Miktar: ${item.quantity}
-    </div>
-
-    ${item.price ? `<div class="info">Fiyat: ${item.price} ₺</div>` : ""}
-
-    ${item.store ? `<div class="info">Mağaza: ${escapeHtml(item.store)}</div>` : ""}
-
-    ${item.note ? `<div class="info">Not: ${escapeHtml(item.note)}</div>` : ""}
-
-    <span class="badge ${bought ? "alindi" : ""}">
-      ${bought ? "Alındı ✓" : "Alınacak"}
-    </span>
-
-    <br>
-
-    ${!bought ? `
-      <button class="check" onclick="markBought(${item.id})">
-        ✓ Aldım
-      </button>
-    ` : ""}
-
-    <button class="delete" onclick="deleteProduct(${item.id})">
-      Sil
-    </button>
-  </div>
-  `;
-}
-
+function move(id){let i=d.shopping.findIndex(x=>x.id===id);if(i<0)return;d.products.push({...d.shopping[i],id:Date.now()});d.shopping.splice(i,1);save();render()}
+function del(type,id){if(confirm('Bu ürünü silmek istediğine emin misin?')){d[type]=d[type].filter(x=>x.id!==id);save();render()}}
+function money(x){return x?Number(x).toLocaleString('tr-TR',{style:'currency',currency:'TRY'}):''}
+function card(x,type){return `<div class="item"><div class="info"><div class="name">${esc(x.name)}</div><div class="meta"><span class="badge">${x.qty} adet</span>${x.price?'<span class="badge">'+money(x.price)+'</span>':''}${x.store?' · '+esc(x.store):''}</div>${x.note?'<div class="meta">📝 '+esc(x.note)+'</div>':''}</div><div class="actions">${type==='shopping'?'<button class="buy" onclick="move('+x.id+')">✓ Aldım</button>':''}<button class="del" onclick="del(''+type+'','+x.id+')">Sil</button></div></div>`}
 function render(){
-
-  const todo=products.filter(x=>!x.bought);
-  const bought=products.filter(x=>x.bought);
-
-  document.getElementById("todoList").innerHTML =
-    todo.length
-    ? todo.map(x=>card(x,false)).join("")
-    : `<div class="empty">Henüz alınacak ürün yok 🌸</div>`;
-
-  document.getElementById("productList").innerHTML =
-    bought.length
-    ? bought.map(x=>card(x,true)).join("")
-    : `<div class="empty">Henüz alınmış ürün yok.</div>`;
-
-  document.getElementById("homeTodo").textContent=todo.length;
-  document.getElementById("homeDone").textContent=bought.length;
-}
-
-function escapeHtml(text){
-  return String(text)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-render();
+ $('sl').innerHTML=d.shopping.length?d.shopping.map(x=>card(x,'shopping')).join(''):'<div class="empty"><div class="big">🛒</div>Alınacaklar listen henüz boş.</div>';
+ $('pl').innerHTML=d.products.length?d.products.map(x=>card(x,'products')).join(''):'<div class="empty"><div class="big">📦</div>Henüz ürün eklenmedi.</div>';
+}render();
 </script>
-
-</body>
-</html>
+</body></html>
