@@ -111,7 +111,7 @@ main>section:first-of-type:not(:target){display:block !important}
 <a href="#products" data-tab="products">📦 Ürünler</a>
 <a href="#favorites" data-tab="favorites">❤️ Favoriler</a>
 <a href="#catalog" data-tab="catalog">📋 Çeyiz Listesi</a>
-</nav>
+<a href="#finalExtras" data-tab="finalExtras">✨ Daha Fazla</a></nav>
 
 <main>
 
@@ -1496,6 +1496,18 @@ main>section:first-of-type:not(:target){display:block !important}
 
 </section>
 
+<section id="finalExtras" style="display:none">
+<div class="box">
+<h2>✨ Çeyiz Yönetim Merkezi</h2>
+<div class="final-tools">
+<div class="final-tool"><h3>💾 Yedekleme</h3><p>Çeyiz verilerini bilgisayarına kaydet veya daha sonra geri yükle.</p><div class="final-actions"><button class="final-btn" onclick="ceyizExport()">Yedeği İndir</button><button class="final-btn secondary" onclick="document.getElementById('ceyizImport').click()">Yedeği Yükle</button></div><input id="ceyizImport" type="file" accept="application/json" style="display:none" onchange="ceyizImportFile(event)"></div>
+<div class="final-tool"><h3>📅 Alışveriş Takvimi</h3><p>Alış tarihlerini takvim üzerinde gör.</p><div class="final-actions"><button class="final-btn" onclick="openCalendar()">Takvimi Aç</button></div></div>
+<div class="final-tool"><h3>🌙 Görünüm</h3><p>Gece kullanımında gözleri yormayan koyu tema.</p><div class="final-actions"><button class="final-btn secondary" onclick="toggleDarkMode()">Tema Değiştir</button></div></div>
+<div class="final-tool"><h3>📱 Telefon</h3><p>Mobil ekranda kartlar, butonlar ve filtreler daha rahat kullanılır.</p><div class="final-actions"><button class="final-btn secondary" onclick="toast('Mobil görünüm otomatik olarak etkin.')">Kontrol Et</button></div></div>
+</div></div>
+<div class="box" id="finalCalendarBox" style="display:none"><div class="final-month"><button class="final-btn secondary" onclick="calendarMove(-1)">‹</button><h3 id="finalMonthTitle"></h3><button class="final-btn secondary" onclick="calendarMove(1)">›</button></div><div id="finalCalendar" class="final-calendar"></div></div>
+<div class="box"><h2>📸 Ürün Fotoğraf Galerisi</h2><div id="finalGallery" class="final-gallery"></div></div>
+</section>
 </main>
 
 
@@ -2534,6 +2546,76 @@ function boot(){
  if(typeof refreshBudgetDetails==='function')refreshBudgetDetails();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,50));else setTimeout(boot,50);
+})();
+</script>
+<style id="ceyiz-final-10-css">
+/* 10 ozellik icin ek arayuz */
+.final-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.final-tool{border:1px solid #eadbd7;background:#fff;border-radius:14px;padding:12px}
+.final-tool h3{margin:0 0 7px;font:17px Georgia;color:#805d64}
+.final-tool p{margin:0;color:#927d74;font-size:12px;line-height:1.45}
+.final-btn{border:0;border-radius:10px;padding:10px 12px;background:#dca8af;color:#fff;font-weight:700;cursor:pointer}
+.final-btn.secondary{background:#f3e7e5;color:#765d56}
+.final-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.final-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:10px}
+.final-day{min-height:55px;border:1px solid #eadbd7;border-radius:8px;padding:6px;background:#fff;font-size:11px}
+.final-day b{display:block;margin-bottom:4px}.final-day.has{background:#faf0f2}.final-day small{color:#927d74}
+.final-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.final-gallery-card{border:1px solid #eadbd7;border-radius:12px;padding:8px;background:#fff}
+.final-gallery-card img,.final-gallery-placeholder{width:100%;height:110px;object-fit:cover;border-radius:8px;background:#f8efee;display:flex;align-items:center;justify-content:center;font-size:28px}
+.final-gallery-card strong{display:block;font-size:12px;margin-top:6px}.final-gallery-card small{color:#927d74}
+.final-month{display:flex;align-items:center;justify-content:space-between;gap:8px}.final-month h3{margin:0;font:20px Georgia}
+body.dark-mode{background:#211d1d;color:#eee4e1}body.dark-mode header{background:#5f3f45}body.dark-mode nav,body.dark-mode nav button,body.dark-mode #mainNav a{background:#2b2525;color:#e9dedd}body.dark-mode .box,body.dark-mode .stat,body.dark-mode .final-tool,body.dark-mode .final-gallery-card,body.dark-mode .final-day{background:#302a2a;border-color:#4b3e3e;color:#eee4e1}body.dark-mode input,body.dark-mode textarea,body.dark-mode select{background:#292424;color:#eee;border-color:#4b3e3e}body.dark-mode .meta,body.dark-mode .final-tool p,body.dark-mode .final-gallery-card small,body.dark-mode .final-day small{color:#c5b2ad}
+@media(max-width:800px){.final-tools{grid-template-columns:repeat(2,1fr)}.final-gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:550px){.final-tools,.final-gallery{grid-template-columns:1fr 1fr}.final-day{min-height:48px;font-size:10px}}
+</style>
+<script id="ceyiz-final-10-js">
+(function(){
+'use strict';
+const BK='ceyiz_final_backup_v1', DM='ceyiz_dark_mode_v1';
+const money=x=>Number(x||0).toLocaleString('tr-TR',{style:'currency',currency:'TRY'});
+function data(){
+  if(window.d) return window.d;
+  try{const raw=localStorage.getItem('ceyizData'); return raw?JSON.parse(raw):{};}catch(e){return {};}
+}
+function allItems(){const x=data(); return [...(x.shopping||[]),...(x.products||[])];}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+window.ceyizExport=function(){
+  const payload={version:1,createdAt:new Date().toISOString(),data:data(),budget:localStorage.getItem('ceyiz_budget_v2'),dark:localStorage.getItem(DM)};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ceyiz-takip-yedek-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href);toast('✓ Yedek dosyası indirildi.');
+};
+window.ceyizImportFile=function(ev){
+  const f=ev.target.files&&ev.target.files[0]; if(!f)return;
+  const r=new FileReader();r.onload=function(){try{const p=JSON.parse(r.result);if(!p||!p.data)throw Error('Geçersiz yedek');if(!confirm('Mevcut verilerin yerine bu yedek yüklensin mi?'))return;localStorage.setItem('ceyizData',JSON.stringify(p.data));if(p.budget!=null)localStorage.setItem('ceyiz_budget_v2',p.budget);location.reload();}catch(e){alert('Yedek dosyası okunamadı.');}};r.readAsText(f);
+};
+window.toggleDarkMode=function(){const on=!document.body.classList.contains('dark-mode');document.body.classList.toggle('dark-mode',on);localStorage.setItem(DM,on?'1':'0');};
+function loadTheme(){if(localStorage.getItem(DM)==='1')document.body.classList.add('dark-mode');}
+let calDate=new Date();
+window.calendarMove=function(n){calDate.setMonth(calDate.getMonth()+n);renderCalendar();};
+window.openCalendar=function(){const b=document.getElementById('finalCalendarBox');if(!b)return;b.style.display=b.style.display==='none'?'block':'none';renderCalendar();};
+function renderCalendar(){
+ const box=document.getElementById('finalCalendar');if(!box)return; const y=calDate.getFullYear(),m=calDate.getMonth();
+ document.getElementById('finalMonthTitle').textContent=new Intl.DateTimeFormat('tr-TR',{month:'long',year:'numeric'}).format(calDate);
+ const first=new Date(y,m,1).getDay(); const offset=(first+6)%7; const days=new Date(y,m+1,0).getDate();
+ const names=['Pzt','Sal','Çar','Per','Cum','Cmt','Paz']; let h=names.map(n=>'<div class="final-day"><b>'+n+'</b></div>').join('');
+ for(let i=0;i<offset;i++)h+='<div></div>';
+ const items=allItems();
+ for(let d=1;d<=days;d++){const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const dayItems=items.filter(x=>(x.purchaseDate||x.date||'').slice(0,10)===ds);h+='<div class="final-day '+(dayItems.length?'has':'')+'"><b>'+d+'</b>'+(dayItems.length?'<small>'+esc(dayItems[0].name||dayItems[0].title||'Ürün')+(dayItems.length>1?' +'+(dayItems.length-1):'')+'</small>':'')+'</div>';}
+ box.innerHTML=h;
+}
+function renderGallery(){
+ const box=document.getElementById('finalGallery');if(!box)return;
+ const items=allItems().filter(x=>x.image);
+ box.innerHTML=items.length?items.map(x=>'<div class="final-gallery-card"><img src="'+x.image+'" alt=""><strong>'+esc(x.name||x.title||'Ürün')+'</strong><small>'+money(x.price||x.realPrice)+'</small></div>').join(''):'<div class="empty">Henüz fotoğraf eklenmiş ürün yok.</div>';
+}
+function addExtrasNav(){
+ document.querySelectorAll('#mainNav [data-tab="finalExtras"]').forEach(a=>{a.onclick=function(e){e.preventDefault();if(typeof tab==='function')tab('finalExtras');else{location.hash='#finalExtras';document.getElementById('finalExtras').style.display='block';}};});
+}
+function refresh(){renderGallery();if(document.getElementById('finalCalendarBox')?.style.display==='block')renderCalendar();}
+function boot(){loadTheme();addExtrasNav();refresh();}
+window.addEventListener('hashchange',()=>setTimeout(refresh,100));document.addEventListener('click',()=>setTimeout(refresh,150),true);
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,80));else setTimeout(boot,80);
 })();
 </script>
 </body>
