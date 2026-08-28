@@ -2622,5 +2622,65 @@ window.addEventListener('hashchange',()=>setTimeout(refresh,100));document.addEv
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,80));else setTimeout(boot,80);
 })();
 </script>
+
+<script id="final-navigation-fix">
+(function(){
+  'use strict';
+  const PAGE_IDS=['home','shopping','products','favorites','catalog','finalExtras'];
+  function pageName(name){ return PAGE_IDS.includes(name) ? name : 'home'; }
+  function showPage(name, updateUrl){
+    name=pageName(name);
+    document.querySelectorAll('main > section').forEach(function(section){
+      const active=section.id===name;
+      section.hidden=!active;
+      section.style.setProperty('display', active ? 'block' : 'none', 'important');
+    });
+    document.querySelectorAll('#mainNav [data-tab]').forEach(function(link){
+      const active=link.getAttribute('data-tab')===name;
+      link.classList.toggle('on',active);
+      link.setAttribute('aria-current',active?'page':'false');
+    });
+    if(updateUrl){
+      const hash='#'+name;
+      if(location.hash!==hash){
+        history.pushState(null,'',hash);
+      }
+    }
+    try{
+      if(typeof window.renderAll==='function') window.renderAll();
+    }catch(e){ console.warn('Sayfa yenileme hatası:',e); }
+    window.scrollTo({top:0,behavior:'auto'});
+  }
+  window.tab=showPage;
+
+  function goFromHash(){
+    const raw=(location.hash||'#home').slice(1);
+    showPage(raw,false);
+  }
+
+  document.addEventListener('click',function(ev){
+    const link=ev.target.closest ? ev.target.closest('#mainNav a[data-tab]') : null;
+    if(!link) return;
+    const name=link.getAttribute('data-tab');
+    if(!PAGE_IDS.includes(name)) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    ev.stopImmediatePropagation();
+    showPage(name,true);
+  },true);
+
+  window.addEventListener('hashchange',goFromHash);
+  window.addEventListener('popstate',goFromHash);
+
+  function bootNav(){
+    goFromHash();
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',bootNav,{once:true});
+  }else{
+    bootNav();
+  }
+})();
+</script>
 </body>
 </html>
