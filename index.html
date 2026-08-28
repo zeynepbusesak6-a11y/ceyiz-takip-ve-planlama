@@ -9,471 +9,423 @@
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  background:#fffaf7;
-  color:#5a443b;
-  font-family:Arial,sans-serif;
+margin:0;
+background:#fffaf7;
+color:#5a443b;
+font-family:Arial,sans-serif
 }
 
 header{
-  background:#dda4ab;
-  color:white;
-  text-align:center;
-  padding:28px 15px;
+background:#dda4ab;
+color:white;
+text-align:center;
+padding:28px 15px
 }
 
 .logo{
-  margin:auto auto 10px;
-  width:70px;
-  height:70px;
-  border:2px solid #fff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font:48px Georgia;
-  color:#fff4cf;
+margin:auto auto 10px;
+width:70px;
+height:70px;
+border:2px solid white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font:48px Georgia;
+color:#fff4cf
 }
 
 h1{
-  margin:0;
-  font:30px Georgia;
+margin:0;
+font:30px Georgia
 }
 
 .sub{
-  margin-top:7px;
+margin-top:7px
 }
 
 nav{
-  display:flex;
-  background:white;
-  position:sticky;
-  top:0;
-  border-bottom:1px solid #eadbd7;
-  z-index:10;
+display:flex;
+background:white;
+position:sticky;
+top:0;
+z-index:20;
+border-bottom:1px solid #eadbd7
 }
 
 nav button{
-  flex:1;
-  padding:15px 8px;
-  border:0;
-  background:white;
-  color:#80675d;
-  font-size:15px;
-  cursor:pointer;
+flex:1;
+padding:15px 8px;
+border:0;
+background:white;
+color:#80675d;
+font-size:15px;
+cursor:pointer
 }
 
 nav button.on{
-  color:#b76f78;
-  font-weight:bold;
-  border-bottom:3px solid #dda4ab;
+color:#b76f78;
+font-weight:bold;
+border-bottom:3px solid #dda4ab
 }
 
 main{
-  max-width:950px;
-  margin:auto;
-  padding:20px 15px 70px;
+max-width:950px;
+margin:auto;
+padding:20px 15px 70px
 }
 
 .box{
-  background:#fff;
-  border:1px solid #eadbd7;
-  border-radius:18px;
-  padding:18px;
-  margin-bottom:18px;
-  box-shadow:0 2px 8px rgba(120,80,70,.04);
+background:white;
+border:1px solid #eadbd7;
+border-radius:18px;
+padding:18px;
+margin-bottom:18px;
+box-shadow:0 2px 8px rgba(120,80,70,.04)
 }
 
 h2{
-  font:24px Georgia;
-  margin:0 0 15px;
-}
-
-h3{
-  font:20px Georgia;
+font:24px Georgia;
+margin:0 0 15px
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:10px;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:10px
 }
 
-input,
-textarea,
-select{
-  width:100%;
-  padding:13px;
-  border:1px solid #dfceca;
-  border-radius:10px;
-  font-size:15px;
-  background:#fffdfc;
-  color:#5a443b;
+input,textarea,select{
+width:100%;
+padding:13px;
+border:1px solid #dfceca;
+border-radius:10px;
+font-size:15px;
+background:#fffdfc;
+color:#5a443b
 }
 
 textarea{
-  min-height:75px;
-  resize:vertical;
+min-height:75px;
+resize:vertical
 }
 
 .full{
-  grid-column:1/-1;
+grid-column:1/-1
 }
 
 .add{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:10px;
-  background:#dda4ab;
-  color:white;
-  font-weight:bold;
-  font-size:15px;
-  cursor:pointer;
-}
-
-.add:hover{
-  background:#cc8f98;
+width:100%;
+padding:13px;
+border:0;
+border-radius:10px;
+background:#dda4ab;
+color:white;
+font-weight:bold;
+font-size:15px;
+cursor:pointer
 }
 
 .item{
-  padding:15px 0;
-  border-bottom:1px solid #eee2df;
-  display:flex;
-  gap:12px;
-  align-items:center;
+padding:15px 0;
+border-bottom:1px solid #eee2df;
+display:flex;
+gap:12px;
+align-items:center
 }
 
 .item:last-child{
-  border:0;
+border-bottom:0
+}
+
+.photo,.no-photo{
+width:70px;
+height:70px;
+border-radius:12px;
+flex-shrink:0
 }
 
 .photo{
-  width:70px;
-  height:70px;
-  border-radius:12px;
-  object-fit:cover;
-  background:#f6ece8;
-  flex-shrink:0;
+object-fit:cover
 }
 
 .no-photo{
-  width:70px;
-  height:70px;
-  border-radius:12px;
-  background:#f6ece8;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  flex-shrink:0;
+background:#f6ece8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px
 }
 
 .info{
-  flex:1;
-  min-width:0;
+flex:1;
+min-width:0
 }
 
 .name{
-  font:19px Georgia;
-  font-weight:bold;
-  word-break:break-word;
+font:19px Georgia;
+font-weight:bold;
+word-break:break-word
 }
 
 .meta{
-  font-size:13px;
-  color:#927d74;
-  margin-top:5px;
+font-size:13px;
+color:#927d74;
+margin-top:5px
 }
 
 .badge{
-  display:inline-block;
-  background:#f5dfe2;
-  color:#9a6068;
-  border-radius:15px;
-  padding:4px 8px;
-  margin-right:4px;
-  margin-bottom:3px;
+display:inline-block;
+background:#f5dfe2;
+color:#9a6068;
+border-radius:15px;
+padding:4px 8px;
+margin-right:4px;
+margin-bottom:3px
 }
 
 .actions{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
+display:flex;
+gap:6px;
+flex-wrap:wrap;
+justify-content:flex-end
 }
 
-button{
-  cursor:pointer;
-}
-
-.buy,
-.del,
-.edit,
-.detail,
-.fav{
-  padding:9px 11px;
-  border-radius:9px;
-  font-size:13px;
+.buy,.del,.edit,.detail,.fav{
+padding:9px 11px;
+border-radius:9px;
+font-size:13px;
+cursor:pointer
 }
 
 .buy{
-  border:0;
-  background:#e7eee5;
-  color:#587051;
+border:0;
+background:#e7eee5;
+color:#587051
 }
 
 .del{
-  border:1px solid #e0bfc3;
-  background:white;
-  color:#b26d76;
+border:1px solid #e0bfc3;
+background:white;
+color:#b26d76
 }
 
-.edit{
-  border:1px solid #d8c5c0;
-  background:white;
-  color:#80675d;
-}
-
-.detail{
-  border:1px solid #d8c5c0;
-  background:white;
-  color:#80675d;
+.edit,.detail{
+border:1px solid #d8c5c0;
+background:white;
+color:#80675d
 }
 
 .fav{
-  border:0;
-  background:white;
-  font-size:22px;
-  color:#c66c78;
-}
-
-.empty{
-  text-align:center;
-  color:#9b8982;
-  padding:30px;
-}
-
-.big{
-  font-size:40px;
-}
-
-.filters{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.summary{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.stat{
-  background:#fff8f5;
-  border:1px solid #eadbd7;
-  border-radius:14px;
-  padding:18px 10px;
-  text-align:center;
-}
-
-.stat strong{
-  display:block;
-  font-size:24px;
-  color:#b76f78;
-  margin-bottom:5px;
-}
-
-.stat span{
-  font-size:13px;
-  color:#80675d;
-}
-
-.progress-wrap{
-  background:#eadbd7;
-  border-radius:20px;
-  height:13px;
-  overflow:hidden;
-}
-
-.progress{
-  height:100%;
-  background:#dda4ab;
-  width:0%;
-  transition:.3s;
-}
-
-.progress-text{
-  margin-bottom:8px;
-  font-size:14px;
-}
-
-.budget-info{
-  margin-top:12px;
-  line-height:1.7;
-}
-
-.link{
-  color:#b76f78;
-  text-decoration:none;
-}
-
-.link:hover{
-  text-decoration:underline;
+border:0;
+background:white;
+font-size:22px;
+color:#c66c78
 }
 
 .favorite-active{
-  color:#e64f65!important;
+color:#e64f65!important
 }
 
-.modal-bg{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(70,40,35,.45);
-  z-index:100;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+.filters{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:10px;
+margin-bottom:15px
 }
 
-.modal{
-  width:min(600px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:white;
-  border-radius:18px;
-  padding:20px;
+.summary{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px
 }
 
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:15px;
+.stat{
+background:#fff8f5;
+border:1px solid #eadbd7;
+border-radius:14px;
+padding:18px 10px;
+text-align:center
 }
 
-.close{
-  border:0;
-  background:#f5e9e5;
-  border-radius:50%;
-  width:35px;
-  height:35px;
-  font-size:20px;
-  color:#80675d;
+.stat strong{
+display:block;
+font-size:24px;
+color:#b76f78;
+margin-bottom:5px
 }
 
-.detail-photo{
-  width:100%;
-  max-height:300px;
-  object-fit:contain;
-  border-radius:14px;
-  background:#faf2ef;
-  margin-bottom:15px;
+.stat span{
+font-size:13px;
+color:#80675d
 }
 
-.detail-row{
-  padding:10px 0;
-  border-bottom:1px solid #eee2df;
+.progress-wrap{
+background:#eadbd7;
+border-radius:20px;
+height:13px;
+overflow:hidden
 }
 
-.detail-label{
-  font-size:12px;
-  color:#9b8982;
+.progress{
+height:100%;
+background:#dda4ab;
+width:0%;
+transition:.3s
 }
 
-.detail-value{
-  margin-top:3px;
+.progress-text{
+margin-bottom:8px;
+font-size:14px
+}
+
+.budget-info{
+margin-top:12px;
+line-height:1.7
+}
+
+.empty{
+text-align:center;
+color:#9b8982;
+padding:30px
+}
+
+.big{
+font-size:40px
 }
 
 .file-box{
-  border:1px dashed #d8bfc0;
-  border-radius:10px;
-  padding:12px;
-  background:#fffdfc;
+border:1px dashed #d8bfc0;
+border-radius:10px;
+padding:12px;
+background:#fffdfc
+}
+
+.link{
+color:#b76f78;
+text-decoration:none
+}
+
+.modal-bg{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(70,40,35,.45);
+z-index:100;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.modal{
+width:min(600px,100%);
+max-height:90vh;
+overflow:auto;
+background:white;
+border-radius:18px;
+padding:20px
+}
+
+.modal-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px
+}
+
+.close{
+border:0;
+background:#f5e9e5;
+border-radius:50%;
+width:35px;
+height:35px;
+font-size:20px;
+color:#80675d;
+cursor:pointer
+}
+
+.detail-photo{
+width:100%;
+max-height:300px;
+object-fit:contain;
+border-radius:14px;
+background:#faf2ef;
+margin-bottom:15px
+}
+
+.detail-row{
+padding:10px 0;
+border-bottom:1px solid #eee2df
+}
+
+.detail-label{
+font-size:12px;
+color:#9b8982
+}
+
+.detail-value{
+margin-top:3px
 }
 
 .toast{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#5a443b;
-  color:white;
-  padding:11px 17px;
-  border-radius:12px;
-  display:none;
-  z-index:200;
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#5a443b;
+color:white;
+padding:11px 17px;
+border-radius:12px;
+display:none;
+z-index:200
 }
 
 @media(max-width:750px){
 
-  .summary{
-    grid-template-columns:1fr 1fr;
-  }
+.summary{
+grid-template-columns:1fr 1fr
+}
 
-  .filters{
-    grid-template-columns:1fr;
-  }
+.filters{
+grid-template-columns:1fr
+}
 
-  .grid{
-    grid-template-columns:1fr;
-  }
+.grid{
+grid-template-columns:1fr
+}
 
-  .item{
-    align-items:flex-start;
-  }
+.item{
+align-items:flex-start;
+flex-wrap:wrap
+}
 
-  .actions{
-    width:100%;
-    justify-content:flex-start;
-  }
+.actions{
+width:100%;
+justify-content:flex-start
+}
 
 }
 
 @media(max-width:480px){
 
-  header{
-    padding:20px 10px;
-  }
+header{
+padding:20px 10px
+}
 
-  .logo{
-    width:58px;
-    height:58px;
-    font-size:38px;
-  }
+.logo{
+width:58px;
+height:58px;
+font-size:38px
+}
 
-  h1{
-    font-size:25px;
-  }
+h1{
+font-size:25px
+}
 
-  nav button{
-    font-size:12px;
-    padding:13px 3px;
-  }
-
-  .summary{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .stat{
-    padding:13px 5px;
-  }
-
-  .stat strong{
-    font-size:20px;
-  }
-
-  .item{
-    flex-wrap:wrap;
-  }
-
-  .info{
-    width:calc(100% - 82px);
-  }
+nav button{
+font-size:12px;
+padding:13px 3px
+}
 
 }
 </style>
@@ -482,353 +434,294 @@ button{
 <body>
 
 <header>
-  <div class="logo">Ç</div>
-  <h1>Çeyiz Takip ve Planlama</h1>
-  <div class="sub">Çeyizini kolayca takip et ♡</div>
+<div class="logo">Ç</div>
+<h1>Çeyiz Takip ve Planlama</h1>
+<div class="sub">Çeyizini kolayca takip et ♡</div>
 </header>
 
 <nav>
-  <button id="b1" class="on" onclick="tab('home')">🏠 Ana Sayfa</button>
-  <button id="b2" onclick="tab('shopping')">🛒 Alınacaklar</button>
-  <button id="b3" onclick="tab('products')">📦 Ürünler</button>
-  <button id="b4" onclick="tab('favorites')">❤️ Favoriler</button>
+<button id="b1" class="on" onclick="tab('home')">🏠 Ana Sayfa</button>
+<button id="b2" onclick="tab('shopping')">🛒 Alınacaklar</button>
+<button id="b3" onclick="tab('products')">📦 Ürünler</button>
+<button id="b4" onclick="tab('favorites')">❤️ Favoriler</button>
 </nav>
 
 <main>
 
-<!-- ANA SAYFA -->
-
 <section id="home">
 
-  <div class="box">
-    <h2>Çeyiz Özeti</h2>
+<div class="box">
 
-    <div class="summary">
+<h2>Çeyiz Özeti</h2>
 
-      <div class="stat">
-        <strong id="sShopping">0</strong>
-        <span>Alınacak Ürün</span>
-      </div>
+<div class="summary">
 
-      <div class="stat">
-        <strong id="sBought">0</strong>
-        <span>Alınmış Ürün</span>
-      </div>
+<div class="stat">
+<strong id="sShopping">0</strong>
+<span>Alınacak Ürün</span>
+</div>
 
-      <div class="stat">
-        <strong id="sEstimated">₺0,00</strong>
-        <span>Tahmini Tutar</span>
-      </div>
+<div class="stat">
+<strong id="sBought">0</strong>
+<span>Alınmış Ürün</span>
+</div>
 
-      <div class="stat">
-        <strong id="sSpent">₺0,00</strong>
-        <span>Harcanan Tutar</span>
-      </div>
+<div class="stat">
+<strong id="sEstimated">₺0,00</strong>
+<span>Tahmini Tutar</span>
+</div>
 
-    </div>
-  </div>
+<div class="stat">
+<strong id="sSpent">₺0,00</strong>
+<span>Harcanan Tutar</span>
+</div>
 
-  <div class="box">
+</div>
+</div>
 
-    <h2>Çeyiz İlerlemesi</h2>
+<div class="box">
 
-    <div class="progress-text">
-      <span id="progressText">0% tamamlandı</span>
-    </div>
+<h2>Çeyiz İlerlemesi</h2>
 
-    <div class="progress-wrap">
-      <div class="progress" id="progress"></div>
-    </div>
+<div class="progress-text">
+<span id="progressText">0% tamamlandı</span>
+</div>
 
-  </div>
+<div class="progress-wrap">
+<div class="progress" id="progress"></div>
+</div>
 
-  <div class="box">
+</div>
 
-    <h2>Bütçe</h2>
+<div class="box">
 
-    <input
-      id="budgetInput"
-      type="number"
-      min="0"
-      step=".01"
-      placeholder="Toplam çeyiz bütçeniz (₺)"
-    >
+<h2>Bütçe</h2>
 
-    <br><br>
+<input id="budgetInput" type="number" min="0" step=".01" placeholder="Toplam çeyiz bütçeniz (₺)">
 
-    <button class="add" onclick="saveBudget()">
-      💰 Bütçeyi Kaydet
-    </button>
+<br><br>
 
-    <div class="budget-info" id="budgetInfo">
-      Henüz bütçe belirlenmedi.
-    </div>
+<button class="add" onclick="saveBudget()">💰 Bütçeyi Kaydet</button>
 
-  </div>
+<div class="budget-info" id="budgetInfo">
+Henüz bütçe belirlenmedi.
+</div>
 
-  <div class="box">
+</div>
 
-    <h2>Hızlı İşlem</h2>
+<div class="box">
 
-    <button class="add" onclick="tab('shopping')">
-      + Alınacak Ürün Ekle
-    </button>
+<h2>Hızlı İşlem</h2>
 
-    <br><br>
+<button class="add" onclick="tab('shopping')">
++ Alınacak Ürün Ekle
+</button>
 
-    <button class="add" onclick="tab('products')">
-      + Ürün Ekle
-    </button>
+<br><br>
 
-  </div>
+<button class="add" onclick="tab('products')">
++ Ürün Ekle
+</button>
+
+</div>
 
 </section>
 
-
-<!-- ALINACAKLAR -->
 
 <section id="shopping" style="display:none">
 
-  <div class="box">
+<div class="box">
 
-    <h2>Alınacak Ürün Ekle</h2>
+<h2>Alınacak Ürün Ekle</h2>
 
-    <div class="grid">
+<div class="grid">
 
-      <input id="sn" placeholder="Ürün adı">
+<input id="sn" placeholder="Ürün adı">
 
-      <input
-        id="sq"
-        type="number"
-        min="1"
-        value="1"
-        placeholder="Miktar"
-      >
+<input id="sq" type="number" min="1" value="1" placeholder="Miktar">
 
-      <input
-        id="sp"
-        type="number"
-        min="0"
-        step=".01"
-        placeholder="Tahmini fiyat"
-      >
+<input id="sp" type="number" min="0" step=".01" placeholder="Tahmini fiyat">
 
-      <select id="sc">
-        <option value="">Kategori seç</option>
-      </select>
+<select id="sc">
+<option value="">Kategori seç</option>
+</select>
 
-      <input id="ss" placeholder="Mağaza">
+<input id="ss" placeholder="Mağaza">
 
-      <input id="sl" placeholder="Ürün linki (isteğe bağlı)">
+<input id="sl" placeholder="Ürün linki (isteğe bağlı)">
 
-      <textarea
-        id="st"
-        class="full"
-        placeholder="Not (isteğe bağlı)"
-      ></textarea>
+<textarea id="st" class="full" placeholder="Not (isteğe bağlı)"></textarea>
 
-      <div class="file-box full">
-        <input id="sf" type="file" accept="image/*">
-      </div>
+<div class="file-box full">
+<input id="sf" type="file" accept="image/*">
+</div>
 
-      <button class="add full" onclick="addItem('shopping')">
-        + Alınacaklara Ekle
-      </button>
+<button class="add full" onclick="addItem('shopping')">
++ Alınacaklara Ekle
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 
-  <div class="box">
+<div class="box">
 
-    <h2>Alınacaklar</h2>
+<h2>Alınacaklar</h2>
 
-    <div class="filters">
+<div class="filters">
 
-      <input
-        id="searchShopping"
-        placeholder="🔎 Alınacaklarda ara..."
-        oninput="render()"
-      >
+<input id="searchShopping"
+placeholder="🔎 Alınacaklarda ara..."
+oninput="renderShopping()">
 
-      <select id="filterShoppingCategory" onchange="render()">
-        <option value="">Tüm kategoriler</option>
-      </select>
+<select id="filterShoppingCategory" onchange="renderShopping()">
+<option value="">Tüm kategoriler</option>
+</select>
 
-      <select id="filterShoppingStatus" onchange="render()">
-        <option value="">Tümü</option>
-        <option value="waiting">Alınacak</option>
-      </select>
+<select id="filterShoppingStatus" onchange="renderShopping()">
+<option value="">Tümü</option>
+<option value="waiting">Alınacak</option>
+</select>
 
-    </div>
+</div>
 
-    <div id="sl"></div>
+<div id="sl"></div>
 
-  </div>
+</div>
 
 </section>
 
-
-<!-- ÜRÜNLER -->
 
 <section id="products" style="display:none">
 
-  <div class="box">
+<div class="box">
 
-    <h2>Ürün Ekle</h2>
+<h2>Ürün Ekle</h2>
 
-    <div class="grid">
+<div class="grid">
 
-      <input id="pn" placeholder="Ürün adı">
+<input id="pn" placeholder="Ürün adı">
 
-      <input
-        id="pq"
-        type="number"
-        min="1"
-        value="1"
-        placeholder="Miktar"
-      >
+<input id="pq" type="number" min="1" value="1" placeholder="Miktar">
 
-      <input
-        id="pp"
-        type="number"
-        min="0"
-        step=".01"
-        placeholder="Fiyat"
-      >
+<input id="pp" type="number" min="0" step=".01" placeholder="Fiyat">
 
-      <select id="pc">
-        <option value="">Kategori seç</option>
-      </select>
+<select id="pc">
+<option value="">Kategori seç</option>
+</select>
 
-      <input id="ps" placeholder="Mağaza">
+<input id="ps" placeholder="Mağaza">
 
-      <input id="pl" placeholder="Ürün linki (isteğe bağlı)">
+<input id="pl" placeholder="Ürün linki (isteğe bağlı)">
 
-      <textarea
-        id="pt"
-        class="full"
-        placeholder="Not (isteğe bağlı)"
-      ></textarea>
+<textarea id="pt" class="full" placeholder="Not (isteğe bağlı)"></textarea>
 
-      <div class="file-box full">
-        <input id="pf" type="file" accept="image/*">
-      </div>
+<div class="file-box full">
+<input id="pf" type="file" accept="image/*">
+</div>
 
-      <button class="add full" onclick="addItem('products')">
-        + Ürünlere Ekle
-      </button>
+<button class="add full" onclick="addItem('products')">
++ Ürünlere Ekle
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 
-  <div class="box">
+<div class="box">
 
-    <h2>Ürünler</h2>
+<h2>Ürünler</h2>
 
-    <div class="filters">
+<div class="filters">
 
-      <input
-        id="searchProducts"
-        placeholder="🔎 Ürünlerde ara..."
-        oninput="render()"
-      >
+<input id="searchProducts"
+placeholder="🔎 Ürünlerde ara..."
+oninput="renderProducts">
 
-      <select id="filterProductsCategory" onchange="render()">
-        <option value="">Tüm kategoriler</option>
-      </select>
+<select id="filterProductsCategory" onchange="renderProducts()">
+<option value="">Tüm kategoriler</option>
+</select>
 
-      <select id="filterProductsFav" onchange="render()">
-        <option value="">Tümü</option>
-        <option value="fav">Favoriler</option>
-        <option value="normal">Favori olmayanlar</option>
-      </select>
+<select id="filterProductsFav" onchange="renderProducts()">
+<option value="">Tümü</option>
+<option value="fav">Favoriler</option>
+<option value="normal">Favori olmayanlar</option>
+</select>
 
-    </div>
+</div>
 
-    <div id="pl"></div>
+<div id="pl"></div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- FAVORİLER -->
-
 <section id="favorites" style="display:none">
 
-  <div class="box">
+<div class="box">
 
-    <h2>❤️ Favorilerim</h2>
+<h2>❤️ Favorilerim</h2>
 
-    <div id="fl"></div>
+<div id="fl"></div>
 
-  </div>
+</div>
 
 </section>
 
 </main>
 
 
-<!-- DETAY MODALI -->
-
 <div class="modal-bg" id="detailModal">
 
-  <div class="modal">
+<div class="modal">
 
-    <div class="modal-head">
-      <h2 id="detailTitle">Ürün Detayı</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
+<div class="modal-head">
+<h2 id="detailTitle">Ürün Detayı</h2>
+<button class="close" onclick="closeModal()">×</button>
+</div>
 
-    <div id="detailContent"></div>
+<div id="detailContent"></div>
 
-  </div>
+</div>
 
 </div>
 
 
-<!-- DÜZENLEME MODALI -->
-
 <div class="modal-bg" id="editModal">
 
-  <div class="modal">
+<div class="modal">
 
-    <div class="modal-head">
-      <h2>Ürünü Düzenle</h2>
-      <button class="close" onclick="closeEdit()">×</button>
-    </div>
+<div class="modal-head">
+<h2>Ürünü Düzenle</h2>
+<button class="close" onclick="closeEdit()">×</button>
+</div>
 
-    <div class="grid">
+<div class="grid">
 
-      <input id="en" placeholder="Ürün adı">
+<input id="en" placeholder="Ürün adı">
 
-      <input id="eq" type="number" min="1" placeholder="Miktar">
+<input id="eq" type="number" min="1" placeholder="Miktar">
 
-      <input id="ep" type="number" min="0" step=".01" placeholder="Fiyat">
+<input id="ep" type="number" min="0" step=".01" placeholder="Fiyat">
 
-      <select id="ec"></select>
+<select id="ec"></select>
 
-      <input id="es" placeholder="Mağaza">
+<input id="es" placeholder="Mağaza">
 
-      <input id="el" placeholder="Ürün linki">
+<input id="el" placeholder="Ürün linki">
 
-      <textarea
-        id="et"
-        class="full"
-        placeholder="Not"
-      ></textarea>
+<textarea id="et" class="full" placeholder="Not"></textarea>
 
-      <button class="add full" onclick="saveEdit()">
-        💾 Değişiklikleri Kaydet
-      </button>
+<button class="add full" onclick="saveEdit()">
+💾 Değişiklikleri Kaydet
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </div>
 
@@ -838,1043 +731,1314 @@ button{
 
 <script>
 
-/* =====================================================
-   VERİ SİSTEMİ
-===================================================== */
+/* ==============================
+   VERİLER
+============================== */
 
-const KEY = "ceyiz_final_v1";
+const KEY="ceyiz_final_v2";
 
-const defaultData = {
-  shopping: [],
-  products: [],
-  categories: [
-    "Mutfak",
-    "Salon",
-    "Yatak Odası",
-    "Banyo",
-    "Elektronik",
-    "Tekstil",
-    "Dekorasyon",
-    "Diğer"
-  ],
-  budget: 0
+const defaultCategories=[
+"Mutfak",
+"Salon",
+"Yatak Odası",
+"Banyo",
+"Elektronik",
+"Tekstil",
+"Dekorasyon",
+"Diğer"
+];
+
+let d={
+shopping:[],
+products:[],
+categories:[...defaultCategories],
+budget:0
 };
 
-let d;
+
+/* ==============================
+   ESKİ VERİLERİ AL
+============================== */
+
+function loadData(){
 
 try{
-  d = JSON.parse(localStorage.getItem(KEY) || "null");
-}catch(e){
-  d = null;
+
+const current=JSON.parse(
+localStorage.getItem(KEY)||"null"
+);
+
+if(current){
+
+d=current;
+
+}else{
+
+const oldKeys=[
+"ceyiz_final_v1",
+"ceyiz_v3",
+"ceyiz_v4",
+"ceyiz_v5",
+"ceyiz_v6"
+];
+
+for(const key of oldKeys){
+
+try{
+
+const old=JSON.parse(
+localStorage.getItem(key)||"null"
+);
+
+if(old){
+
+d.shopping=Array.isArray(old.shopping)
+?old.shopping.map(normalize)
+:[];
+
+d.products=Array.isArray(old.products)
+?old.products.map(normalize)
+:[];
+
+if(Array.isArray(old.categories)){
+d.categories=old.categories;
 }
 
-if(!d){
-  d = defaultData;
+d.budget=Number(old.budget)||0;
+
+break;
+
 }
 
-d.shopping = Array.isArray(d.shopping) ? d.shopping : [];
-d.products = Array.isArray(d.products) ? d.products : [];
-d.categories = Array.isArray(d.categories) && d.categories.length
-  ? d.categories
-  : defaultData.categories;
-d.budget = Number(d.budget) || 0;
+}catch(e){}
 
-
-/* Eski sürüm verilerini mümkün olduğunca koru */
-
-function migrateOldData(){
-
-  const oldKeys = [
-    "ceyiz_v3",
-    "ceyiz_v4",
-    "ceyiz_v5",
-    "ceyiz_v6"
-  ];
-
-  if(d.shopping.length || d.products.length) return;
-
-  for(const key of oldKeys){
-
-    try{
-
-      const old = JSON.parse(localStorage.getItem(key) || "null");
-
-      if(old){
-
-        if(Array.isArray(old.shopping)){
-          d.shopping = old.shopping.map(normalizeItem);
-        }
-
-        if(Array.isArray(old.products)){
-          d.products = old.products.map(normalizeItem);
-        }
-
-        save();
-        break;
-      }
-
-    }catch(e){}
-  }
 }
 
-function normalizeItem(x){
-
-  return {
-    id: x.id || Date.now() + Math.random(),
-    name: x.name || "",
-    qty: Number(x.qty) || 1,
-    price: Number(x.price) || 0,
-    category: x.category || "",
-    store: x.store || "",
-    link: x.link || "",
-    note: x.note || "",
-    image: x.image || "",
-    favorite: Boolean(x.favorite),
-    bought: Boolean(x.bought),
-    created: x.created || new Date().toISOString()
-  };
 }
 
-d.shopping = d.shopping.map(normalizeItem);
-d.products = d.products.map(normalizeItem);
+}catch(e){}
 
-migrateOldData();
+d.shopping=Array.isArray(d.shopping)
+?d.shopping.map(normalize)
+:[];
 
+d.products=Array.isArray(d.products)
+?d.products.map(normalize)
+:[];
 
-/* =====================================================
-   YARDIMCI FONKSİYONLAR
-===================================================== */
+d.categories=
+Array.isArray(d.categories)&&d.categories.length
+?d.categories
+:[...defaultCategories];
 
-const $ = id => document.getElementById(id);
+d.budget=Number(d.budget)||0;
+
+save();
+
+}
+
+function normalize(x){
+
+return{
+
+id:x.id||Date.now()+Math.random(),
+
+name:String(x.name||""),
+
+qty:Number(x.qty)||1,
+
+price:Number(x.price)||0,
+
+category:String(x.category||""),
+
+store:String(x.store||""),
+
+link:String(x.link||""),
+
+note:String(x.note||""),
+
+image:String(x.image||""),
+
+favorite:Boolean(x.favorite),
+
+bought:Boolean(x.bought),
+
+created:x.created||new Date().toISOString()
+
+};
+
+}
 
 function save(){
-  localStorage.setItem(KEY, JSON.stringify(d));
+
+localStorage.setItem(
+KEY,
+JSON.stringify(d)
+);
+
 }
+
+loadData();
+
+
+/* ==============================
+   YARDIMCI
+============================== */
+
+const $=id=>document.getElementById(id);
 
 function esc(x){
 
-  return String(x || "").replace(
-    /[&<>"']/g,
-    m => ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-    }[m])
-  );
+return String(x||"").replace(
+/[&<>"']/g,
+m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m])
+);
 
 }
 
 function money(x){
 
-  if(!Number(x)) return "";
+if(!Number(x))return "";
 
-  return Number(x).toLocaleString("tr-TR",{
-    style:"currency",
-    currency:"TRY"
-  });
+return Number(x).toLocaleString(
+"tr-TR",
+{
+style:"currency",
+currency:"TRY"
+}
+);
 
 }
 
 function toast(text){
 
-  const t = $("toast");
+const el=$("toast");
 
-  t.textContent = text;
-  t.style.display = "block";
+el.textContent=text;
+el.style.display="block";
 
-  clearTimeout(window.toastTimer);
+clearTimeout(window.toastTimer);
 
-  window.toastTimer = setTimeout(()=>{
-    t.style.display = "none";
-  },1800);
+window.toastTimer=setTimeout(
+()=>el.style.display="none",
+1800
+);
 
 }
 
 
-/* =====================================================
+/* ==============================
    SEKME
-===================================================== */
+============================== */
 
-function tab(t){
+function tab(name){
 
-  const sections = [
-    "home",
-    "shopping",
-    "products",
-    "favorites"
-  ];
+const sections=[
+"home",
+"shopping",
+"products",
+"favorites"
+];
 
-  sections.forEach(x=>{
-    $(x).style.display = x === t ? "block" : "none";
-  });
+sections.forEach(x=>{
+$(x).style.display=
+x===name?"block":"none";
+});
 
-  ["b1","b2","b3","b4"].forEach(x=>{
-    $(x).classList.remove("on");
-  });
+["b1","b2","b3","b4"].forEach(x=>{
+$(x).classList.remove("on");
+});
 
-  const map = {
-    home:"b1",
-    shopping:"b2",
-    products:"b3",
-    favorites:"b4"
-  };
+const buttons={
+home:"b1",
+shopping:"b2",
+products:"b3",
+favorites:"b4"
+};
 
-  $(map[t]).classList.add("on");
+$(buttons[name]).classList.add("on");
 
-  render();
+renderAll();
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
-/* =====================================================
+/* ==============================
    KATEGORİLER
-===================================================== */
+============================== */
 
 function fillCategories(){
 
-  const selects = [
-    $("sc"),
-    $("pc"),
-    $("filterShoppingCategory"),
-    $("filterProductsCategory"),
-    $("ec")
-  ];
+const normal=[
+$("sc"),
+$("pc")
+];
 
-  selects.forEach(select=>{
+normal.forEach(select=>{
 
-    if(!select) return;
+if(!select)return;
 
-    const current = select.value;
+const value=select.value;
 
-    if(select.id === "filterShoppingCategory" ||
-       select.id === "filterProductsCategory"){
+select.innerHTML=
+'<option value="">Kategori seç</option>';
 
-      select.innerHTML =
-        '<option value="">Tüm kategoriler</option>';
+d.categories.forEach(cat=>{
 
-    }else{
+const option=document.createElement("option");
 
-      select.innerHTML =
-        '<option value="">Kategori seç</option>';
+option.value=cat;
+option.textContent=cat;
 
-    }
+select.appendChild(option);
 
-    d.categories.forEach(cat=>{
+});
 
-      const opt = document.createElement("option");
+if(
+[...select.options]
+.some(o=>o.value===value)
+){
+select.value=value;
+}
 
-      opt.value = cat;
-      opt.textContent = cat;
+});
 
-      select.appendChild(opt);
 
-    });
+const filters=[
+$("filterShoppingCategory"),
+$("filterProductsCategory")
+];
 
-    if([...select.options].some(o=>o.value===current)){
-      select.value = current;
-    }
+filters.forEach(select=>{
 
-  });
+if(!select)return;
+
+const value=select.value;
+
+select.innerHTML=
+'<option value="">Tüm kategoriler</option>';
+
+d.categories.forEach(cat=>{
+
+const option=document.createElement("option");
+
+option.value=cat;
+option.textContent=cat;
+
+select.appendChild(option);
+
+});
+
+if(
+[...select.options]
+.some(o=>o.value===value)
+){
+select.value=value;
+}
+
+});
 
 }
 
 
-/* =====================================================
-   DOSYA / FOTOĞRAF
-===================================================== */
+/* ==============================
+   FOTOĞRAF
+============================== */
 
-function readImage(input){
+function getImage(input){
 
-  return new Promise(resolve=>{
+return new Promise(resolve=>{
 
-    const file = input && input.files && input.files[0];
+if(!input||!input.files||!input.files[0]){
 
-    if(!file){
-      resolve("");
-      return;
-    }
+resolve("");
 
-    const reader = new FileReader();
+return;
 
-    reader.onload = e => resolve(e.target.result);
+}
 
-    reader.onerror = () => resolve("");
+const reader=new FileReader();
 
-    reader.readAsDataURL(file);
+reader.onload=e=>{
+resolve(e.target.result);
+};
 
-  });
+reader.onerror=()=>{
+resolve("");
+};
+
+reader.readAsDataURL(input.files[0]);
+
+});
 
 }
 
 
-/* =====================================================
-   ÜRÜN EKLEME
-===================================================== */
+/* ==============================
+   ÜRÜN EKLE
+============================== */
 
 async function addItem(type){
 
-  const p = type === "shopping" ? "s" : "p";
+const prefix=
+type==="shopping"?"s":"p";
 
-  const name = $(p+"n").value.trim();
+const name=$(prefix+"n")
+.value
+.trim();
 
-  if(!name){
+if(!name){
 
-    alert("Lütfen ürün adını yaz.");
+alert("Lütfen ürün adını yaz.");
 
-    return;
-  }
+return;
 
-  const image = await readImage($(p+"f"));
+}
 
-  const item = {
+const image=
+await getImage(
+$(prefix+"f")
+);
 
-    id: Date.now() + Math.random(),
+const item={
 
-    name:name,
+id:Date.now()+Math.random(),
 
-    qty:Number($(p+"q").value) || 1,
+name:name,
 
-    price:Number($(p+"p").value) || 0,
+qty:Number(
+$(prefix+"q").value
+)||1,
 
-    category:$(p+"c").value,
+price:Number(
+$(prefix+"p").value
+)||0,
 
-    store:$(p+"s").value.trim(),
+category:
+$(prefix+"c").value,
 
-    link:$(p+"l").value.trim(),
+store:
+$(prefix+"s").value.trim(),
 
-    note:$(p+"t").value.trim(),
+link:
+$(prefix+"l").value.trim(),
 
-    image:image,
+note:
+$(prefix+"t").value.trim(),
 
-    favorite:false,
+image:image,
 
-    bought:type === "products",
+favorite:false,
 
-    created:new Date().toISOString()
+bought:type==="products",
 
-  };
+created:new Date().toISOString()
 
-  d[type].push(item);
+};
 
-  save();
+d[type].push(item);
 
-  clearForm(type);
+save();
 
-  render();
+clearForm(type);
 
-  toast("Ürün başarıyla eklendi.");
+renderAll();
+
+toast("Ürün başarıyla eklendi.");
 
 }
 
 
 function clearForm(type){
 
-  const p = type === "shopping" ? "s" : "p";
+const p=
+type==="shopping"?"s":"p";
 
-  $(p+"n").value="";
-  $(p+"q").value="1";
-  $(p+"p").value="";
-  $(p+"c").value="";
-  $(p+"s").value="";
-  $(p+"l").value="";
-  $(p+"t").value="";
-  $(p+"f").value="";
+$(p+"n").value="";
+$(p+"q").value="1";
+$(p+"p").value="";
+$(p+"c").value="";
+$(p+"s").value="";
+$(p+"l").value="";
+$(p+"t").value="";
+$(p+"f").value="";
 
 }
 
 
-/* =====================================================
-   FAVORİ SİSTEMİ
-===================================================== */
+/* ==============================
+   FAVORİ
+============================== */
 
 function toggleFavorite(type,id){
 
-  const item = d[type].find(x=>String(x.id)===String(id));
+const list=d[type];
 
-  if(!item) return;
+const item=list.find(
+x=>String(x.id)===String(id)
+);
 
-  item.favorite = !Boolean(item.favorite);
+if(!item)return;
 
-  save();
+item.favorite=!item.favorite;
 
-  render();
+save();
 
-  toast(
-    item.favorite
-      ? "❤️ Favorilere eklendi."
-      : "Favorilerden çıkarıldı."
-  );
+renderAll();
+
+toast(
+item.favorite
+?"❤️ Favorilere eklendi."
+:"Favorilerden çıkarıldı."
+);
 
 }
 
 
-/* =====================================================
+/* ==============================
    ALDIM
-===================================================== */
+============================== */
 
 function moveToProducts(id){
 
-  const index = d.shopping.findIndex(
-    x=>String(x.id)===String(id)
-  );
+const index=d.shopping.findIndex(
+x=>String(x.id)===String(id)
+);
 
-  if(index < 0) return;
+if(index===-1)return;
 
-  const item = d.shopping[index];
+const item=d.shopping[index];
 
-  item.bought = true;
+const newItem={
+...item,
+id:Date.now()+Math.random(),
+bought:true
+};
 
-  d.products.push({
-    ...item,
-    id:Date.now()+Math.random()
-  });
+d.products.push(newItem);
 
-  d.shopping.splice(index,1);
+d.shopping.splice(index,1);
 
-  save();
+save();
 
-  render();
+renderAll();
 
-  toast("✓ Ürünler bölümüne taşındı.");
+toast("✓ Ürünler bölümüne taşındı.");
 
 }
 
 
-/* =====================================================
-   SİLME
-===================================================== */
+/* ==============================
+   SİL
+============================== */
 
 function del(type,id){
 
-  const item = d[type].find(
-    x=>String(x.id)===String(id)
-  );
+const item=d[type].find(
+x=>String(x.id)===String(id)
+);
 
-  if(!item) return;
+if(!item)return;
 
-  if(!confirm(
-    `"${item.name}" ürününü silmek istediğine emin misin?`
-  )){
-    return;
-  }
+const ok=confirm(
+'"'+item.name+
+'" ürününü silmek istediğine emin misin?'
+);
 
-  d[type] = d[type].filter(
-    x=>String(x.id)!==String(id)
-  );
+if(!ok)return;
 
-  save();
+d[type]=d[type].filter(
+x=>String(x.id)!==String(id)
+);
 
-  render();
+save();
 
-  toast("Ürün silindi.");
+renderAll();
 
-}
-
-
-/* =====================================================
-   DETAY
-===================================================== */
-
-function detail(type,id){
-
-  const item = d[type].find(
-    x=>String(x.id)===String(id)
-  );
-
-  if(!item) return;
-
-  $("detailTitle").textContent = item.name;
-
-  let html = "";
-
-  if(item.image){
-
-    html += `
-      <img
-        class="detail-photo"
-        src="${item.image}"
-        alt="${esc(item.name)}"
-      >
-    `;
-
-  }
-
-  html += `
-    <div class="detail-row">
-      <div class="detail-label">Ürün adı</div>
-      <div class="detail-value">${esc(item.name)}</div>
-    </div>
-
-    <div class="detail-row">
-      <div class="detail-label">Miktar</div>
-      <div class="detail-value">${item.qty} adet</div>
-    </div>
-
-    <div class="detail-row">
-      <div class="detail-label">Kategori</div>
-      <div class="detail-value">${esc(item.category || "Belirtilmedi")}</div>
-    </div>
-
-    <div class="detail-row">
-      <div class="detail-label">Fiyat</div>
-      <div class="detail-value">${item.price ? money(item.price) : "Belirtilmedi"}</div>
-    </div>
-
-    <div class="detail-row">
-      <div class="detail-label">Mağaza</div>
-      <div class="detail-value">${esc(item.store || "Belirtilmedi")}</div>
-    </div>
-
-    <div class="detail-row">
-      <div class="detail-label">Durum</div>
-      <div class="detail-value">
-        ${item.bought ? "✅ Alındı" : "🛒 Alınacak"}
-      </div>
-    </div>
-
-    <div class="detail-row">
-      <div class="detail-label">Favori</div>
-      <div class="detail-value">
-        ${item.favorite ? "❤️ Evet" : "♡ Hayır"}
-      </div>
-    </div>
-  `;
-
-  if(item.link){
-
-    html += `
-      <div class="detail-row">
-        <div class="detail-label">Ürün linki</div>
-        <div class="detail-value">
-          <a
-            class="link"
-            href="${esc(item.link)}"
-            target="_blank"
-            rel="noopener"
-          >
-            Ürüne git ↗
-          </a>
-        </div>
-      </div>
-    `;
-
-  }
-
-  if(item.note){
-
-    html += `
-      <div class="detail-row">
-        <div class="detail-label">Not</div>
-        <div class="detail-value">${esc(item.note)}</div>
-      </div>
-    `;
-
-  }
-
-  $("detailContent").innerHTML = html;
-
-  $("detailModal").style.display="flex";
-
-}
-
-function closeModal(){
-
-  $("detailModal").style.display="none";
+toast("Ürün silindi.");
 
 }
 
 
-/* =====================================================
-   DÜZENLEME
-===================================================== */
-
-let editType = "";
-let editId = "";
-
-function openEdit(type,id){
-
-  const item = d[type].find(
-    x=>String(x.id)===String(id)
-  );
-
-  if(!item) return;
-
-  editType = type;
-  editId = id;
-
-  $("en").value = item.name;
-  $("eq").value = item.qty;
-  $("ep").value = item.price;
-  $("ec").value = item.category || "";
-  $("es").value = item.store || "";
-  $("el").value = item.link || "";
-  $("et").value = item.note || "";
-
-  $("editModal").style.display="flex";
-
-}
-
-function saveEdit(){
-
-  const item = d[editType].find(
-    x=>String(x.id)===String(editId)
-  );
-
-  if(!item) return;
-
-  const name = $("en").value.trim();
-
-  if(!name){
-
-    alert("Ürün adı boş bırakılamaz.");
-
-    return;
-  }
-
-  item.name = name;
-  item.qty = Number($("eq").value) || 1;
-  item.price = Number($("ep").value) || 0;
-  item.category = $("ec").value;
-  item.store = $("es").value.trim();
-  item.link = $("el").value.trim();
-  item.note = $("et").value.trim();
-
-  save();
-
-  closeEdit();
-
-  render();
-
-  toast("Değişiklikler kaydedildi.");
-
-}
-
-function closeEdit(){
-
-  $("editModal").style.display="none";
-
-}
-
-
-/* =====================================================
+/* ==============================
    KART
-===================================================== */
+============================== */
 
 function card(item,type){
 
-  return `
+return `
 
-  <div class="item">
+<div class="item">
 
-    ${
-      item.image
-      ?
-      `<img
-        class="photo"
-        src="${item.image}"
-        alt="${esc(item.name)}"
-      >`
-      :
-      `<div class="no-photo">📦</div>`
-    }
+${
+item.image
+?
+`<img
+class="photo"
+src="${item.image}"
+alt="${esc(item.name)}">`
+:
+`<div class="no-photo">📦</div>`
+}
 
-    <div class="info">
+<div class="info">
 
-      <div class="name">
-        ${esc(item.name)}
-      </div>
+<div class="name">
+${esc(item.name)}
+</div>
 
-      <div class="meta">
+<div class="meta">
 
-        <span class="badge">
-          ${item.qty} adet
-        </span>
+<span class="badge">
+${item.qty} adet
+</span>
 
-        ${
-          item.category
-          ?
-          `<span class="badge">
-            ${esc(item.category)}
-          </span>`
-          :
-          ""
-        }
+${
+item.category
+?
+`<span class="badge">
+${esc(item.category)}
+</span>`
+:""
+}
 
-        ${
-          item.price
-          ?
-          `<span class="badge">
-            ${money(item.price)}
-          </span>`
-          :
-          ""
-        }
+${
+item.price
+?
+`<span class="badge">
+${money(item.price)}
+</span>`
+:""
+}
 
-      </div>
+</div>
 
-      ${
-        item.store
-        ?
-        `<div class="meta">
-          🏪 ${esc(item.store)}
-        </div>`
-        :
-        ""
-      }
+${
+item.store
+?
+`<div class="meta">
+🏪 ${esc(item.store)}
+</div>`
+:""
+}
 
-      ${
-        item.note
-        ?
-        `<div class="meta">
-          📝 ${esc(item.note)}
-        </div>`
-        :
-        ""
-      }
+${
+item.note
+?
+`<div class="meta">
+📝 ${esc(item.note)}
+</div>`
+:""
+}
 
-    </div>
+</div>
 
+<div class="actions">
 
-    <div class="actions">
+<button
+class="fav ${
+item.favorite
+?"favorite-active":""
+}"
+onclick="toggleFavorite('${type}','${item.id}')"
+title="Favori">
 
-      <button
-        class="fav ${item.favorite ? "favorite-active" : ""}"
-        onclick="toggleFavorite('${type}','${item.id}')"
-        title="Favori"
-      >
-        ${item.favorite ? "❤️" : "♡"}
-      </button>
+${item.favorite?"❤️":"♡"}
 
-      <button
-        class="detail"
-        onclick="detail('${type}','${item.id}')"
-      >
-        Detay
-      </button>
+</button>
 
-      <button
-        class="edit"
-        onclick="openEdit('${type}','${item.id}')"
-      >
-        ✏️ Düzenle
-      </button>
+<button
+class="detail"
+onclick="showDetail('${type}','${item.id}')">
 
-      ${
-        type === "shopping"
-        ?
-        `<button
-          class="buy"
-          onclick="moveToProducts('${item.id}')"
-        >
-          ✓ Aldım
-        </button>`
-        :
-        ""
-      }
+Detay
 
-      <button
-        class="del"
-        onclick="del('${type}','${item.id}')"
-      >
-        Sil
-      </button>
+</button>
 
-    </div>
+<button
+class="edit"
+onclick="openEdit('${type}','${item.id}')">
 
-  </div>
+✏️ Düzenle
 
-  `;
+</button>
+
+${
+type==="shopping"
+?
+`<button
+class="buy"
+onclick="moveToProducts('${item.id}')">
+
+✓ Aldım
+
+</button>`
+:""
+}
+
+<button
+class="del"
+onclick="del('${type}','${item.id}')">
+
+Sil
+
+</button>
+
+</div>
+
+</div>
+
+`;
 
 }
 
 
-/* =====================================================
-   FİLTRELEME
-===================================================== */
+/* ==============================
+   ALINACAKLAR LİSTESİ
+============================== */
 
-function filtered(type){
+function getShoppingFiltered(){
 
-  let list = [...d[type]];
+let list=[...d.shopping];
 
-  const search =
-    type === "shopping"
-    ? $("searchShopping").value.toLowerCase().trim()
-    : $("searchProducts").value.toLowerCase().trim();
+const search=
+$("searchShopping")
+.value
+.toLowerCase()
+.trim();
 
-  const category =
-    type === "shopping"
-    ? $("filterShoppingCategory").value
-    : $("filterProductsCategory").value;
+const category=
+$("filterShoppingCategory")
+.value;
 
-  if(search){
+if(search){
 
-    list = list.filter(x=>
-      x.name.toLowerCase().includes(search) ||
-      x.store.toLowerCase().includes(search) ||
-      x.note.toLowerCase().includes(search)
-    );
+list=list.filter(item=>{
 
-  }
+return (
 
-  if(category){
+item.name
+.toLowerCase()
+.includes(search)
 
-    list = list.filter(
-      x=>x.category===category
-    );
+||
 
-  }
+item.store
+.toLowerCase()
+.includes(search)
 
-  if(type==="products"){
+||
 
-    const favFilter = $("filterProductsFav").value;
+item.note
+.toLowerCase()
+.includes(search)
 
-    if(favFilter==="fav"){
-      list = list.filter(x=>x.favorite);
-    }
+);
 
-    if(favFilter==="normal"){
-      list = list.filter(x=>!x.favorite);
-    }
+});
 
-  }
+}
 
-  return list;
+if(category){
+
+list=list.filter(
+item=>item.category===category
+);
+
+}
+
+return list;
 
 }
 
 
-/* =====================================================
+function renderShopping(){
+
+const list=getShoppingFiltered();
+
+if(list.length){
+
+$("sl").innerHTML=list
+.map(item=>card(item,"shopping"))
+.join("");
+
+}else{
+
+$("sl").innerHTML=`
+
+<div class="empty">
+
+<div class="big">🛒</div>
+
+Alınacaklar listende henüz ürün yok.
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* ==============================
+   ÜRÜNLER LİSTESİ
+============================== */
+
+function getProductsFiltered(){
+
+let list=[...d.products];
+
+const search=
+$("searchProducts")
+.value
+.toLowerCase()
+.trim();
+
+const category=
+$("filterProductsCategory")
+.value;
+
+const fav=
+$("filterProductsFav")
+.value;
+
+if(search){
+
+list=list.filter(item=>{
+
+return (
+
+item.name
+.toLowerCase()
+.includes(search)
+
+||
+
+item.store
+.toLowerCase()
+.includes(search)
+
+||
+
+item.note
+.toLowerCase()
+.includes(search)
+
+);
+
+});
+
+}
+
+if(category){
+
+list=list.filter(
+item=>item.category===category
+);
+
+}
+
+if(fav==="fav"){
+
+list=list.filter(
+item=>item.favorite
+);
+
+}
+
+if(fav==="normal"){
+
+list=list.filter(
+item=>!item.favorite
+);
+
+}
+
+return list;
+
+}
+
+
+function renderProducts(){
+
+const list=getProductsFiltered();
+
+if(list.length){
+
+$("pl").innerHTML=list
+.map(item=>card(item,"products"))
+.join("");
+
+}else{
+
+$("pl").innerHTML=`
+
+<div class="empty">
+
+<div class="big">📦</div>
+
+Henüz ürün eklenmedi.
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* ==============================
    FAVORİLER
-===================================================== */
+============================== */
 
-function favoriteList(){
+function renderFavorites(){
 
-  const shoppingFavs = d.shopping
-    .filter(x=>x.favorite)
-    .map(x=>({...x,_type:"shopping"}));
+const list=[
 
-  const productFavs = d.products
-    .filter(x=>x.favorite)
-    .map(x=>({...x,_type:"products"}));
+...d.shopping.map(x=>({
+...x,
+_type:"shopping"
+})),
 
-  return [
-    ...shoppingFavs,
-    ...productFavs
-  ];
+...d.products.map(x=>({
+...x,
+_type:"products"
+}))
+
+].filter(
+x=>x.favorite
+);
+
+if(list.length){
+
+$("fl").innerHTML=list
+.map(item=>card(item,item._type))
+.join("");
+
+}else{
+
+$("fl").innerHTML=`
+
+<div class="empty">
+
+<div class="big">❤️</div>
+
+Henüz favori ürün yok.
+
+</div>
+
+`;
+
+}
 
 }
 
 
-/* =====================================================
-   RENDER
-===================================================== */
-
-function render(){
-
-  fillCategories();
-
-  const shoppingList = filtered("shopping");
-
-  $("sl").innerHTML =
-    shoppingList.length
-    ?
-    shoppingList
-      .map(x=>card(x,"shopping"))
-      .join("")
-    :
-    `
-      <div class="empty">
-        <div class="big">🛒</div>
-        Alınacaklar listen henüz boş.
-      </div>
-    `;
-
-
-  const productsList = filtered("products");
-
-  $("pl").innerHTML =
-    productsList.length
-    ?
-    productsList
-      .map(x=>card(x,"products"))
-      .join("")
-    :
-    `
-      <div class="empty">
-        <div class="big">📦</div>
-        Henüz ürün eklenmedi.
-      </div>
-    `;
-
-
-  const favs = favoriteList();
-
-  $("fl").innerHTML =
-    favs.length
-    ?
-    favs
-      .map(x=>card(x,x._type))
-      .join("")
-    :
-    `
-      <div class="empty">
-        <div class="big">❤️</div>
-        Henüz favori ürün yok.
-      </div>
-    `;
-
-
-  updateHome();
-
-}
-
-
-/* =====================================================
+/* ==============================
    ANA SAYFA
-===================================================== */
+============================== */
 
 function updateHome(){
 
-  const shoppingCount = d.shopping.length;
+const shoppingCount=
+d.shopping.length;
 
-  const boughtCount = d.products.length;
+const boughtCount=
+d.products.length;
 
-  const estimated =
-    d.shopping.reduce(
-      (sum,x)=>sum+(Number(x.price)||0)*(Number(x.qty)||1),
-      0
-    );
+const estimated=
+d.shopping.reduce(
+(sum,item)=>
+sum+
+(Number(item.price)||0)*
+(Number(item.qty)||1),
+0
+);
 
-  const spent =
-    d.products.reduce(
-      (sum,x)=>sum+(Number(x.price)||0)*(Number(x.qty)||1),
-      0
-    );
+const spent=
+d.products.reduce(
+(sum,item)=>
+sum+
+(Number(item.price)||0)*
+(Number(item.qty)||1),
+0
+);
 
+$("sShopping").textContent=
+shoppingCount;
 
-  $("sShopping").textContent =
-    shoppingCount;
+$("sBought").textContent=
+boughtCount;
 
-  $("sBought").textContent =
-    boughtCount;
+$("sEstimated").textContent=
+money(estimated)||"₺0,00";
 
-  $("sEstimated").textContent =
-    money(estimated) || "₺0,00";
+$("sSpent").textContent=
+money(spent)||"₺0,00";
 
-  $("sSpent").textContent =
-    money(spent) || "₺0,00";
+const total=
+shoppingCount+boughtCount;
 
+const percent=
+total
+?
+Math.round(
+(boughtCount/total)*100
+)
+:0;
 
-  const total = shoppingCount + boughtCount;
+$("progress").style.width=
+percent+"%";
 
-  const percentage =
-    total
-    ?
-    Math.round((boughtCount/total)*100)
-    :
-    0;
+$("progressText").textContent=
+percent+"% tamamlandı";
 
-  $("progress").style.width =
-    percentage+"%";
+$("budgetInput").value=
+d.budget||"";
 
-  $("progressText").textContent =
-    percentage+"% tamamlandı";
+if(d.budget){
 
+const remaining=
+d.budget-spent;
 
-  $("budgetInput").value =
-    d.budget || "";
+$("budgetInfo").innerHTML=`
 
+<strong>Toplam bütçe:</strong>
+${money(d.budget)}
+<br>
 
-  if(d.budget){
+<strong>Harcanan:</strong>
+${money(spent)}
+<br>
 
-    const remaining =
-      d.budget - spent;
+<strong>Kalan:</strong>
+${money(remaining)}
 
-    $("budgetInfo").innerHTML = `
+`;
 
-      <strong>Toplam bütçe:</strong>
-      ${money(d.budget)}
-      <br>
+}else{
 
-      <strong>Harcanan:</strong>
-      ${money(spent)}
-      <br>
+$("budgetInfo").textContent=
+"Henüz bütçe belirlenmedi.";
 
-      <strong>Kalan:</strong>
-      ${money(remaining)}
-
-    `;
-
-  }else{
-
-    $("budgetInfo").textContent =
-      "Henüz bütçe belirlenmedi.";
-
-  }
+}
 
 }
 
 
-/* =====================================================
+/* ==============================
    BÜTÇE
-===================================================== */
+============================== */
 
 function saveBudget(){
 
-  const value =
-    Number($("budgetInput").value) || 0;
+d.budget=
+Number($("budgetInput").value)||0;
 
-  d.budget = value;
+save();
 
-  save();
+updateHome();
 
-  render();
-
-  toast("💰 Bütçe kaydedildi.");
+toast("💰 Bütçe kaydedildi.");
 
 }
 
 
-/* =====================================================
-   MODAL DIŞINA TIKLAMA
-===================================================== */
+/* ==============================
+   DETAY
+============================== */
 
-$("detailModal").addEventListener(
-  "click",
-  function(e){
+function showDetail(type,id){
 
-    if(e.target === this){
-      closeModal();
-    }
-
-  }
+const item=d[type].find(
+x=>String(x.id)===String(id)
 );
 
-$("editModal").addEventListener(
-  "click",
-  function(e){
+if(!item)return;
 
-    if(e.target === this){
-      closeEdit();
-    }
+$("detailTitle").textContent=
+item.name;
 
-  }
+let html="";
+
+if(item.image){
+
+html+=`
+
+<img
+class="detail-photo"
+src="${item.image}"
+alt="${esc(item.name)}">
+
+`;
+
+}
+
+html+=`
+
+<div class="detail-row">
+<div class="detail-label">Ürün adı</div>
+<div class="detail-value">
+${esc(item.name)}
+</div>
+</div>
+
+<div class="detail-row">
+<div class="detail-label">Miktar</div>
+<div class="detail-value">
+${item.qty} adet
+</div>
+</div>
+
+<div class="detail-row">
+<div class="detail-label">Kategori</div>
+<div class="detail-value">
+${esc(item.category||"Belirtilmedi")}
+</div>
+</div>
+
+<div class="detail-row">
+<div class="detail-label">Fiyat</div>
+<div class="detail-value">
+${item.price?money(item.price):"Belirtilmedi"}
+</div>
+</div>
+
+<div class="detail-row">
+<div class="detail-label">Mağaza</div>
+<div class="detail-value">
+${esc(item.store||"Belirtilmedi")}
+</div>
+</div>
+
+<div class="detail-row">
+<div class="detail-label">Durum</div>
+<div class="detail-value">
+${item.bought?"✅ Alındı":"🛒 Alınacak"}
+</div>
+</div>
+
+<div class="detail-row">
+<div class="detail-label">Favori</div>
+<div class="detail-value">
+${item.favorite?"❤️ Evet":"♡ Hayır"}
+</div>
+</div>
+
+`;
+
+if(item.link){
+
+html+=`
+
+<div class="detail-row">
+
+<div class="detail-label">
+Ürün linki
+</div>
+
+<div class="detail-value">
+
+<a
+class="link"
+href="${esc(item.link)}"
+target="_blank"
+rel="noopener">
+
+Ürüne git ↗
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+if(item.note){
+
+html+=`
+
+<div class="detail-row">
+
+<div class="detail-label">
+Not
+</div>
+
+<div class="detail-value">
+${esc(item.note)}
+</div>
+
+</div>
+
+`;
+
+}
+
+$("detailContent").innerHTML=html;
+
+$("detailModal").style.display="flex";
+
+}
+
+
+function closeModal(){
+
+$("detailModal").style.display="none";
+
+}
+
+
+/* ==============================
+   DÜZENLE
+============================== */
+
+let editType="";
+let editId="";
+
+function openEdit(type,id){
+
+const item=d[type].find(
+x=>String(x.id)===String(id)
 );
 
+if(!item)return;
 
-/* =====================================================
-   BAŞLANGIÇ
-===================================================== */
+editType=type;
+editId=id;
+
+$("en").value=item.name;
+$("eq").value=item.qty;
+$("ep").value=item.price;
+$("ec").value=item.category||"";
+$("es").value=item.store||"";
+$("el").value=item.link||"";
+$("et").value=item.note||"";
+
+$("editModal").style.display="flex";
+
+}
+
+
+function saveEdit(){
+
+const item=d[editType].find(
+x=>String(x.id)===String(editId)
+);
+
+if(!item)return;
+
+const name=
+$("en").value.trim();
+
+if(!name){
+
+alert("Ürün adı boş bırakılamaz.");
+
+return;
+
+}
+
+item.name=name;
+item.qty=
+Number($("eq").value)||1;
+item.price=
+Number($("ep").value)||0;
+item.category=
+$("ec").value;
+item.store=
+$("es").value.trim();
+item.link=
+$("el").value.trim();
+item.note=
+$("et").value.trim();
+
+save();
+
+closeEdit();
+
+renderAll();
+
+toast(
+"Değişiklikler kaydedildi."
+);
+
+}
+
+
+function closeEdit(){
+
+$("editModal").style.display="none";
+
+}
+
+
+/* ==============================
+   HER ŞEYİ YENİLE
+============================== */
+
+function renderAll(){
 
 fillCategories();
-render();
+
+renderShopping();
+
+renderProducts();
+
+renderFavorites();
+
+updateHome();
+
+}
+
+
+/* ==============================
+   MODAL KAPATMA
+============================== */
+
+$("detailModal")
+.addEventListener(
+"click",
+function(e){
+
+if(e.target===this){
+closeModal();
+}
+
+});
+
+$("editModal")
+.addEventListener(
+"click",
+function(e){
+
+if(e.target===this){
+closeEdit();
+}
+
+});
+
+
+/* ==============================
+   BAŞLAT
+============================== */
+
+renderAll();
 
 </script>
 
