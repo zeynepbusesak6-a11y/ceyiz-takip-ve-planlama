@@ -3,10 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Çeyiz Takip ve Planlama</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
@@ -16,23 +20,24 @@ font-family:Arial,sans-serif;
 }
 
 header{
-background:#dda4ab;
+background:linear-gradient(135deg,#d99da5,#e8b8bd);
 color:white;
 text-align:center;
-padding:26px 15px;
+padding:25px 15px;
 }
 
 .logo{
 margin:auto auto 8px;
-width:64px;
-height:64px;
-border:2px solid #fff;
+width:70px;
+height:70px;
+border:2px solid white;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font:42px Georgia;
-color:#fff4cf;
+font:46px Georgia;
+color:#fff3c9;
+text-shadow:0 1px 2px #80632f;
 }
 
 h1{
@@ -40,53 +45,67 @@ margin:0;
 font:30px Georgia;
 }
 
-.sub{
-margin-top:6px;
+.subtitle{
+margin-top:7px;
+font-size:14px;
 }
 
 nav{
 display:flex;
-background:#fff;
+background:white;
 position:sticky;
 top:0;
+z-index:10;
 border-bottom:1px solid #eadbd7;
-z-index:5;
 }
 
 nav button{
 flex:1;
-padding:15px;
 border:0;
-background:#fff;
+background:white;
+padding:15px 8px;
+font-size:15px;
 color:#80675d;
-font-size:16px;
 cursor:pointer;
 }
 
-nav .on{
+nav button.active{
 color:#b76f78;
 font-weight:bold;
 border-bottom:3px solid #dda4ab;
 }
 
 main{
-max-width:950px;
+max-width:1000px;
 margin:auto;
-padding:20px 15px 60px;
+padding:20px 15px 70px;
+}
+
+.section{
+display:block;
+}
+
+.hidden{
+display:none!important;
 }
 
 .box{
-background:#fff;
+background:white;
 border:1px solid #eadbd7;
 border-radius:18px;
 padding:18px;
 margin-bottom:18px;
-box-shadow:0 2px 10px rgba(90,68,59,.04);
+box-shadow:0 3px 12px rgba(90,68,59,.05);
 }
 
 h2{
 font:24px Georgia;
 margin:0 0 15px;
+}
+
+h3{
+font:19px Georgia;
+margin:0 0 12px;
 }
 
 .grid{
@@ -95,7 +114,9 @@ grid-template-columns:2fr 1fr 1fr;
 gap:10px;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
 width:100%;
 padding:13px;
 border:1px solid #dfceca;
@@ -106,7 +127,7 @@ color:#5a443b;
 }
 
 textarea{
-min-height:75px;
+min-height:80px;
 resize:vertical;
 }
 
@@ -114,16 +135,30 @@ resize:vertical;
 grid-column:1/-1;
 }
 
-.add{
+.primary{
 width:100%;
-padding:13px;
+padding:14px;
 border:0;
-border-radius:10px;
+border-radius:11px;
 background:#dda4ab;
-color:#fff;
-font-weight:bold;
+color:white;
 font-size:15px;
+font-weight:bold;
 cursor:pointer;
+}
+
+.secondary{
+border:1px solid #dfceca;
+background:white;
+color:#80675d;
+border-radius:9px;
+padding:10px 13px;
+cursor:pointer;
+}
+
+.cancel{
+background:#f5ebe8;
+margin-top:8px;
 }
 
 .summary{
@@ -140,35 +175,72 @@ padding:15px;
 text-align:center;
 }
 
-.stat b{
+.stat strong{
 display:block;
 font-size:25px;
 color:#b76f78;
-margin-bottom:4px;
+margin-bottom:5px;
 }
 
 .stat span{
-font-size:13px;
+font-size:12px;
 color:#927d74;
+}
+
+.progress{
+height:13px;
+background:#f0e3df;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.progress-bar{
+height:100%;
+background:#dda4ab;
+width:0%;
+transition:.3s;
 }
 
 .tools{
 display:grid;
-grid-template-columns:2fr 1fr;
+grid-template-columns:2fr 1fr 1fr;
 gap:10px;
 margin-bottom:15px;
 }
 
 .item{
+display:flex;
+gap:14px;
 padding:15px 0;
 border-bottom:1px solid #eee2df;
-display:flex;
-gap:12px;
 align-items:center;
 }
 
 .item:last-child{
-border:0;
+border-bottom:0;
+}
+
+.photo{
+width:90px;
+height:90px;
+border-radius:13px;
+object-fit:cover;
+background:#f7eeee;
+border:1px solid #eadbd7;
+flex-shrink:0;
+}
+
+.no-photo{
+width:90px;
+height:90px;
+border-radius:13px;
+background:#f7eeee;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+flex-shrink:0;
 }
 
 .info{
@@ -186,6 +258,7 @@ word-break:break-word;
 font-size:13px;
 color:#927d74;
 margin-top:6px;
+line-height:1.5;
 }
 
 .badge{
@@ -197,10 +270,19 @@ padding:4px 8px;
 margin:2px 4px 2px 0;
 }
 
+.favorite{
+font-size:23px;
+border:0;
+background:transparent;
+cursor:pointer;
+padding:3px;
+}
+
 .actions{
 display:flex;
 gap:6px;
 flex-wrap:wrap;
+justify-content:flex-end;
 }
 
 .actions button{
@@ -218,49 +300,108 @@ color:#587051;
 
 .edit{
 border:1px solid #d8c8c3;
-background:#fff;
+background:white;
 color:#80675d;
 }
 
-.del{
+.delete{
 border:1px solid #e0bfc3;
-background:#fff;
+background:white;
 color:#b26d76;
 }
 
 .empty{
 text-align:center;
 color:#9b8982;
-padding:30px;
+padding:35px 15px;
 }
 
 .big{
-font-size:40px;
+font-size:42px;
+margin-bottom:8px;
 }
 
-.hidden{
-display:none!important;
+.preview{
+width:110px;
+height:110px;
+object-fit:cover;
+border-radius:14px;
+border:1px solid #eadbd7;
+display:none;
+margin-top:8px;
 }
 
-.form-title{
+.fav-filter{
 display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
+gap:8px;
+margin-bottom:15px;
 }
 
-.small-btn{
+.fav-filter button{
+padding:8px 12px;
+border-radius:20px;
 border:1px solid #dfceca;
-background:#fff;
-border-radius:9px;
-padding:8px 10px;
+background:white;
+cursor:pointer;
 color:#80675d;
+}
+
+.fav-filter button.active{
+background:#f5dfe2;
+color:#9a6068;
+}
+
+.detail-modal{
+position:fixed;
+inset:0;
+background:rgba(60,40,35,.45);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:50;
+}
+
+.detail-card{
+background:white;
+width:min(600px,100%);
+max-height:90vh;
+overflow:auto;
+border-radius:20px;
+padding:20px;
+}
+
+.detail-photo{
+width:100%;
+max-height:350px;
+object-fit:contain;
+border-radius:15px;
+background:#faf3f1;
+margin-bottom:15px;
+}
+
+.close{
+float:right;
+border:0;
+background:#f5ebe8;
+border-radius:50%;
+width:35px;
+height:35px;
+font-size:20px;
 cursor:pointer;
 }
 
-@media(max-width:700px){
+.link{
+color:#b76f78;
+text-decoration:none;
+}
 
-.grid,
+@media(max-width:750px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
 .tools{
 grid-template-columns:1fr;
 }
@@ -271,28 +412,55 @@ grid-template-columns:repeat(2,1fr);
 
 .item{
 align-items:flex-start;
-flex-direction:column;
 }
 
 .actions{
+justify-content:flex-start;
 width:100%;
 }
 
 }
+
+@media(max-width:500px){
+
+.item{
+flex-direction:column;
+}
+
+.photo,
+.no-photo{
+width:100%;
+height:180px;
+}
+
+.actions button{
+flex:1;
+}
+
+h1{
+font-size:25px;
+}
+
+}
+
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
-<div class="logo">Ç</div>
+<div class="logo">
+Ç
+</div>
 
 <h1>
 Çeyiz Takip ve Planlama
 </h1>
 
-<div class="sub">
+<div class="subtitle">
 Çeyizini kolayca takip et ♡
 </div>
 
@@ -302,19 +470,35 @@ width:100%;
 <nav>
 
 <button
-id="b1"
-class="on"
-onclick="tab('shopping')">
+id="tabHome"
+class="active"
+onclick="showTab('home')">
+
+🏠 Ana Sayfa
+
+</button>
+
+<button
+id="tabShopping"
+onclick="showTab('shopping')">
 
 🛒 Alınacaklar
 
 </button>
 
 <button
-id="b2"
-onclick="tab('products')">
+id="tabProducts"
+onclick="showTab('products')">
 
 📦 Ürünler
+
+</button>
+
+<button
+id="tabFavorites"
+onclick="showTab('favorites')">
+
+❤️ Favoriler
 
 </button>
 
@@ -323,6 +507,12 @@ onclick="tab('products')">
 
 <main>
 
+
+<!-- ANA SAYFA -->
+
+<section
+id="home"
+class="section">
 
 <div class="box">
 
@@ -334,9 +524,9 @@ onclick="tab('products')">
 
 <div class="stat">
 
-<b id="sCount">
+<strong id="statShopping">
 0
-</b>
+</strong>
 
 <span>
 Alınacak ürün
@@ -347,9 +537,9 @@ Alınacak ürün
 
 <div class="stat">
 
-<b id="pCount">
+<strong id="statProducts">
 0
-</b>
+</strong>
 
 <span>
 Alınmış ürün
@@ -360,12 +550,12 @@ Alınmış ürün
 
 <div class="stat">
 
-<b id="sTotal">
+<strong id="statShoppingMoney">
 ₺0
-</b>
+</strong>
 
 <span>
-Tahmini alışveriş
+Tahmini tutar
 </span>
 
 </div>
@@ -373,12 +563,12 @@ Tahmini alışveriş
 
 <div class="stat">
 
-<b id="pTotal">
+<strong id="statProductsMoney">
 ₺0
-</b>
+</strong>
 
 <span>
-Alınanların toplamı
+Harcanan tutar
 </span>
 
 </div>
@@ -388,9 +578,84 @@ Alınanların toplamı
 </div>
 
 
+<div class="box">
 
-<section id="shopping">
+<h2>
+Çeyiz İlerlemesi
+</h2>
 
+<div id="progressText">
+0% tamamlandı
+</div>
+
+<div class="progress">
+
+<div
+id="progressBar"
+class="progress-bar">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="box">
+
+<h2>
+Bütçe
+</h2>
+
+<div class="grid">
+
+<input
+id="budgetInput"
+type="number"
+min="0"
+placeholder="Toplam çeyiz bütçen (₺)">
+
+<button
+class="primary full"
+onclick="saveBudget()">
+
+💰 Bütçeyi Kaydet
+
+</button>
+
+</div>
+
+<p id="budgetInfo">
+Henüz bütçe belirlenmedi.
+</p>
+
+</div>
+
+
+<div class="box">
+
+<h2>
+Hızlı İşlem
+</h2>
+
+<button
+class="primary"
+onclick="showTab('shopping')">
+
++ Alınacak Ürün Ekle
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ALINACAKLAR -->
+
+<section
+id="shopping"
+class="section hidden">
 
 <div class="box">
 
@@ -402,7 +667,7 @@ Alınacak Ürün Ekle
 
 <button
 id="shoppingCancel"
-class="small-btn hidden"
+class="secondary hidden"
 onclick="cancelEdit('shopping')">
 
 İptal
@@ -442,44 +707,28 @@ placeholder="Tahmini fiyat">
 Kategori seç
 </option>
 
-<option>
-Mutfak
-</option>
-
-<option>
-Yatak Odası
-</option>
-
-<option>
-Banyo
-</option>
-
-<option>
-Salon
-</option>
-
-<option>
-Elektronik
-</option>
-
-<option>
-Temizlik
-</option>
-
-<option>
-Tekstil
-</option>
-
-<option>
-Diğer
-</option>
+<option>Mutfak</option>
+<option>Yatak Odası</option>
+<option>Banyo</option>
+<option>Salon</option>
+<option>Elektronik</option>
+<option>Temizlik</option>
+<option>Tekstil</option>
+<option>Ev & Dekorasyon</option>
+<option>Kişisel Bakım</option>
+<option>Diğer</option>
 
 </select>
 
 
 <input
 id="ss"
-placeholder="Mağaza / link (isteğe bağlı)">
+placeholder="Mağaza">
+
+
+<input
+id="sl"
+placeholder="Ürün linki (isteğe bağlı)">
 
 
 <textarea
@@ -489,10 +738,23 @@ placeholder="Not (isteğe bağlı)">
 </textarea>
 
 
+<input
+id="si"
+class="full"
+type="file"
+accept="image/*"
+onchange="previewImage('si','sPreview')">
+
+
+<img
+id="sPreview"
+class="preview">
+
+
 <button
 id="shoppingAdd"
-class="add full"
-onclick="addOrUpdate('shopping')">
+class="primary full"
+onclick="saveItem('shopping')">
 
 + Alınacaklara Ekle
 
@@ -514,49 +776,43 @@ Alınacaklar
 <div class="tools">
 
 <input
-id="searchS"
+id="searchShopping"
 placeholder="🔎 Alınacaklarda ara..."
 oninput="render()">
 
 
 <select
-id="filterS"
+id="filterShopping"
 onchange="render()">
 
 <option value="">
 Tüm kategoriler
 </option>
 
-<option>
-Mutfak
+<option>Mutfak</option>
+<option>Yatak Odası</option>
+<option>Banyo</option>
+<option>Salon</option>
+<option>Elektronik</option>
+<option>Temizlik</option>
+<option>Tekstil</option>
+<option>Ev & Dekorasyon</option>
+<option>Kişisel Bakım</option>
+<option>Diğer</option>
+
+</select>
+
+
+<select
+id="favoriteShoppingFilter"
+onchange="render()">
+
+<option value="">
+Tümü
 </option>
 
-<option>
-Yatak Odası
-</option>
-
-<option>
-Banyo
-</option>
-
-<option>
-Salon
-</option>
-
-<option>
-Elektronik
-</option>
-
-<option>
-Temizlik
-</option>
-
-<option>
-Tekstil
-</option>
-
-<option>
-Diğer
+<option value="favorite">
+❤️ Favoriler
 </option>
 
 </select>
@@ -564,7 +820,8 @@ Diğer
 </div>
 
 
-<div id="sl"></div>
+<div id="shoppingList">
+</div>
 
 </div>
 
@@ -572,13 +829,13 @@ Diğer
 
 
 
+<!-- ÜRÜNLER -->
+
 <section
 id="products"
-class="hidden">
-
+class="section hidden">
 
 <div class="box">
-
 
 <div class="form-title">
 
@@ -588,7 +845,7 @@ class="hidden">
 
 <button
 id="productsCancel"
-class="small-btn hidden"
+class="secondary hidden"
 onclick="cancelEdit('products')">
 
 İptal
@@ -628,44 +885,28 @@ placeholder="Fiyat">
 Kategori seç
 </option>
 
-<option>
-Mutfak
-</option>
-
-<option>
-Yatak Odası
-</option>
-
-<option>
-Banyo
-</option>
-
-<option>
-Salon
-</option>
-
-<option>
-Elektronik
-</option>
-
-<option>
-Temizlik
-</option>
-
-<option>
-Tekstil
-</option>
-
-<option>
-Diğer
-</option>
+<option>Mutfak</option>
+<option>Yatak Odası</option>
+<option>Banyo</option>
+<option>Salon</option>
+<option>Elektronik</option>
+<option>Temizlik</option>
+<option>Tekstil</option>
+<option>Ev & Dekorasyon</option>
+<option>Kişisel Bakım</option>
+<option>Diğer</option>
 
 </select>
 
 
 <input
 id="ps"
-placeholder="Mağaza (isteğe bağlı)">
+placeholder="Mağaza">
+
+
+<input
+id="pl"
+placeholder="Ürün linki (isteğe bağlı)">
 
 
 <textarea
@@ -675,10 +916,23 @@ placeholder="Not (isteğe bağlı)">
 </textarea>
 
 
+<input
+id="pi"
+class="full"
+type="file"
+accept="image/*"
+onchange="previewImage('pi','pPreview')">
+
+
+<img
+id="pPreview"
+class="preview">
+
+
 <button
 id="productsAdd"
-class="add full"
-onclick="addOrUpdate('products')">
+class="primary full"
+onclick="saveItem('products')">
 
 + Ürünlere Ekle
 
@@ -687,7 +941,6 @@ onclick="addOrUpdate('products')">
 </div>
 
 </div>
-
 
 
 <div class="box">
@@ -700,49 +953,43 @@ onclick="addOrUpdate('products')">
 <div class="tools">
 
 <input
-id="searchP"
+id="searchProducts"
 placeholder="🔎 Ürünlerde ara..."
 oninput="render()">
 
 
 <select
-id="filterP"
+id="filterProducts"
 onchange="render()">
 
 <option value="">
 Tüm kategoriler
 </option>
 
-<option>
-Mutfak
+<option>Mutfak</option>
+<option>Yatak Odası</option>
+<option>Banyo</option>
+<option>Salon</option>
+<option>Elektronik</option>
+<option>Temizlik</option>
+<option>Tekstil</option>
+<option>Ev & Dekorasyon</option>
+<option>Kişisel Bakım</option>
+<option>Diğer</option>
+
+</select>
+
+
+<select
+id="favoriteProductsFilter"
+onchange="render()">
+
+<option value="">
+Tümü
 </option>
 
-<option>
-Yatak Odası
-</option>
-
-<option>
-Banyo
-</option>
-
-<option>
-Salon
-</option>
-
-<option>
-Elektronik
-</option>
-
-<option>
-Temizlik
-</option>
-
-<option>
-Tekstil
-</option>
-
-<option>
-Diğer
+<option value="favorite">
+❤️ Favoriler
 </option>
 
 </select>
@@ -750,7 +997,29 @@ Diğer
 </div>
 
 
-<div id="pl"></div>
+<div id="productList">
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FAVORİLER -->
+
+<section
+id="favorites"
+class="section hidden">
+
+<div class="box">
+
+<h2>
+❤️ Favorilerim
+</h2>
+
+<div id="favoriteList">
+</div>
 
 </div>
 
@@ -761,60 +1030,161 @@ Diğer
 
 
 
+<!-- DETAY PENCERESİ -->
+
+<div
+id="detailModal"
+class="detail-modal hidden"
+onclick="closeDetail(event)">
+
+<div
+class="detail-card"
+onclick="event.stopPropagation()">
+
+<button
+class="close"
+onclick="closeDetail()">
+
+×
+</button>
+
+<div id="detailContent">
+</div>
+
+</div>
+
+</div>
+
+
+
 <script>
 
-const K = "ceyiz_v4";
+
+/* =========================
+   VERİLER
+========================= */
 
 
-let d;
+const STORAGE_KEY =
+"ceyiz_takip_complete_v1";
+
+
+let app;
 
 
 try{
 
-d = JSON.parse(
-localStorage.getItem(K)
-|| '{"shopping":[],"products":[]}'
+app =
+JSON.parse(
+localStorage.getItem(STORAGE_KEY)
+||
+'{"shopping":[],"products":[],"budget":0}'
 );
 
 }catch(error){
 
-d = {
+app={
 shopping:[],
-products:[]
+products:[],
+budget:0
 };
 
 }
 
 
-let editing = {
+let editing={
+shopping:null,
+products:null
+};
+
+
+let imageData={
 shopping:null,
 products:null
 };
 
 
 
-const $ = id =>
-document.getElementById(id);
-
+/* =========================
+   KAYDET
+========================= */
 
 
 function save(){
 
 localStorage.setItem(
-K,
-JSON.stringify(d)
+STORAGE_KEY,
+JSON.stringify(app)
 );
 
 }
 
 
 
+/* =========================
+   SEKME
+========================= */
+
+
+function showTab(tab){
+
+const sections=[
+"home",
+"shopping",
+"products",
+"favorites"
+];
+
+sections.forEach(
+id=>{
+document
+.getElementById(id)
+.classList.toggle(
+"hidden",
+id!==tab
+);
+}
+);
+
+
+document
+.querySelectorAll("nav button")
+.forEach(
+button =>
+button.classList.remove("active")
+);
+
+
+const map={
+home:"tabHome",
+shopping:"tabShopping",
+products:"tabProducts",
+favorites:"tabFavorites"
+};
+
+
+document
+.getElementById(map[tab])
+.classList.add("active");
+
+
+render();
+
+}
+
+
+
+/* =========================
+   GÜVENLİ METİN
+========================= */
+
+
 function esc(value){
 
 return String(value ?? "")
-.replace(/[&<>"']/g,function(match){
+.replace(/[&<>"']/g,function(m){
 
-return {
+return{
 
 "&":"&amp;",
 "<":"&lt;",
@@ -822,7 +1192,7 @@ return {
 '"':"&quot;",
 "'":"&#039;"
 
-}[match];
+}[m];
 
 });
 
@@ -830,9 +1200,14 @@ return {
 
 
 
+/* =========================
+   PARA
+========================= */
+
+
 function money(value){
 
-return Number(value || 0)
+return Number(value||0)
 .toLocaleString(
 "tr-TR",
 {
@@ -845,56 +1220,82 @@ currency:"TRY"
 
 
 
-function tab(type){
+/* =========================
+   RESİM ÖNİZLEME
+========================= */
 
-$("shopping")
-.classList.toggle(
-"hidden",
-type !== "shopping"
-);
 
-$("products")
-.classList.toggle(
-"hidden",
-type !== "products"
-);
+function previewImage(inputId,previewId){
 
-$("b1")
-.classList.toggle(
-"on",
-type === "shopping"
-);
+const input =
+document.getElementById(inputId);
 
-$("b2")
-.classList.toggle(
-"on",
-type === "products"
+const preview =
+document.getElementById(previewId);
+
+
+if(!input.files || !input.files[0]){
+
+return;
+
+}
+
+
+const reader =
+new FileReader();
+
+
+reader.onload=function(e){
+
+preview.src=e.target.result;
+
+preview.style.display="block";
+
+imageData[
+inputId==="si"
+?"shopping"
+:"products"
+]=e.target.result;
+
+};
+
+
+reader.readAsDataURL(
+input.files[0]
 );
 
 }
 
 
 
-function fields(type){
+/* =========================
+   ALANLAR
+========================= */
 
-let p =
-type === "shopping"
-? "s"
-: "p";
 
-return {
+function getFields(type){
 
-name:$(p+"n"),
+const p =
+type==="shopping"
+?"s"
+:"p";
 
-qty:$(p+"q"),
 
-price:$(p+"p"),
+return{
 
-cat:$(p+"c"),
+name:document.getElementById(p+"n"),
 
-store:$(p+"s"),
+qty:document.getElementById(p+"q"),
 
-note:$(p+"t")
+price:document.getElementById(p+"p"),
+
+category:document.getElementById(p+"c"),
+
+store:document.getElementById(p+"s"),
+
+link:document.getElementById(p+"l"),
+
+note:document.getElementById(p+"t")
 
 };
 
@@ -902,60 +1303,108 @@ note:$(p+"t")
 
 
 
+/* =========================
+   FORM TEMİZLE
+========================= */
+
+
 function clearForm(type){
 
-let f =
-fields(type);
-
-f.name.value = "";
-
-f.qty.value = "1";
-
-f.price.value = "";
-
-f.cat.value = "";
-
-f.store.value = "";
-
-f.note.value = "";
-
-editing[type] = null;
+const f =
+getFields(type);
 
 
-$(type === "shopping"
-? "shoppingTitle"
-: "productsTitle")
+f.name.value="";
+
+f.qty.value="1";
+
+f.price.value="";
+
+f.category.value="";
+
+f.store.value="";
+
+f.link.value="";
+
+f.note.value="";
+
+
+const input =
+document.getElementById(
+type==="shopping"
+?"si"
+:"pi"
+);
+
+
+const preview =
+document.getElementById(
+type==="shopping"
+?"sPreview"
+:"pPreview"
+);
+
+
+input.value="";
+
+preview.src="";
+
+preview.style.display="none";
+
+
+imageData[type]=null;
+
+editing[type]=null;
+
+
+document
+.getElementById(
+type==="shopping"
+?"shoppingTitle"
+:"productsTitle"
+)
 .textContent =
-type === "shopping"
-? "Alınacak Ürün Ekle"
-: "Ürün Ekle";
+type==="shopping"
+?"Alınacak Ürün Ekle"
+:"Ürün Ekle";
 
 
-$(type === "shopping"
-? "shoppingAdd"
-: "productsAdd")
+document
+.getElementById(
+type==="shopping"
+?"shoppingAdd"
+:"productsAdd"
+)
 .textContent =
-type === "shopping"
-? "+ Alınacaklara Ekle"
-: "+ Ürünlere Ekle";
+type==="shopping"
+?"+ Alınacaklara Ekle"
+:"+ Ürünlere Ekle";
 
 
-$(type === "shopping"
-? "shoppingCancel"
-: "productsCancel")
+document
+.getElementById(
+type==="shopping"
+?"shoppingCancel"
+:"productsCancel"
+)
 .classList.add("hidden");
 
 }
 
 
 
-function addOrUpdate(type){
+/* =========================
+   ÜRÜN EKLE / GÜNCELLE
+========================= */
 
-let f =
-fields(type);
+
+function saveItem(type){
+
+const f =
+getFields(type);
 
 
-let name =
+const name =
 f.name.value.trim();
 
 
@@ -972,27 +1421,34 @@ return;
 }
 
 
-let obj = {
+const item={
 
 name:name,
 
-qty:Number(f.qty.value) || 1,
+qty:Number(f.qty.value)||1,
 
-price:Number(f.price.value) || 0,
+price:Number(f.price.value)||0,
 
-category:f.cat.value,
+category:f.category.value,
 
 store:f.store.value.trim(),
 
-note:f.note.value.trim()
+link:f.link.value.trim(),
+
+note:f.note.value.trim(),
+
+image:
+imageData[type] || "",
+
+favorite:false
 
 };
 
 
-if(editing[type] !== null){
+if(editing[type]!==null){
 
-let i =
-d[type].findIndex(
+const index =
+app[type].findIndex(
 x =>
 String(x.id)
 ===
@@ -1000,32 +1456,35 @@ String(editing[type])
 );
 
 
-if(i >= 0){
+if(index>=0){
 
-d[type][i] = {
+item.id=
+app[type][index].id;
 
-...d[type][i],
+item.favorite=
+app[type][index].favorite||false;
 
-...obj
+if(!imageData[type]){
 
-};
+item.image=
+app[type][index].image||"";
+
+}
+
+app[type][index]=item;
 
 }
 
 }else{
 
-d[type].push({
-
-id:
+item.id=
 Date.now()
 +
 Math.floor(
-Math.random()*1000
-),
+Math.random()*10000
+);
 
-...obj
-
-});
+app[type].push(item);
 
 }
 
@@ -1040,10 +1499,15 @@ render();
 
 
 
-function edit(type,id){
+/* =========================
+   DÜZENLE
+========================= */
 
-let x =
-d[type].find(
+
+function editItem(type,id){
+
+const item =
+app[type].find(
 x =>
 String(x.id)
 ===
@@ -1051,60 +1515,93 @@ String(id)
 );
 
 
-if(!x){
+if(!item){
 
 return;
 
 }
 
 
-let f =
-fields(type);
+const f =
+getFields(type);
 
 
-f.name.value =
-x.name || "";
+f.name.value=
+item.name||"";
 
-f.qty.value =
-x.qty || 1;
+f.qty.value=
+item.qty||1;
 
-f.price.value =
-x.price || "";
+f.price.value=
+item.price||"";
 
-f.cat.value =
-x.category || "";
+f.category.value=
+item.category||"";
 
-f.store.value =
-x.store || "";
+f.store.value=
+item.store||"";
 
-f.note.value =
-x.note || "";
+f.link.value=
+item.link||"";
+
+f.note.value=
+item.note||"";
 
 
-editing[type] = x.id;
+imageData[type]=
+item.image||null;
 
 
-$(type === "shopping"
-? "shoppingTitle"
-: "productsTitle")
-textContent =
+const preview =
+document.getElementById(
+type==="shopping"
+?"sPreview"
+:"pPreview"
+);
+
+
+if(item.image){
+
+preview.src=item.image;
+
+preview.style.display="block";
+
+}
+
+
+editing[type]=item.id;
+
+
+document
+.getElementById(
+type==="shopping"
+?"shoppingTitle"
+:"productsTitle"
+)
+.textContent=
 "Ürünü Düzenle";
 
 
-$(type === "shopping"
-? "shoppingAdd"
-: "productsAdd")
-textContent =
+document
+.getElementById(
+type==="shopping"
+?"shoppingAdd"
+:"productsAdd"
+)
+.textContent=
 "✓ Değişiklikleri Kaydet";
 
 
-$(type === "shopping"
-? "shoppingCancel"
-: "productsCancel")
-.classList.remove(
-"hidden"
-);
+document
+.getElementById(
+type==="shopping"
+?"shoppingCancel"
+:"productsCancel"
+)
+.classList.remove("hidden");
 
+
+showTab(type);
 
 window.scrollTo({
 top:0,
@@ -1115,6 +1612,11 @@ behavior:"smooth"
 
 
 
+/* =========================
+   DÜZENLEMEYİ İPTAL
+========================= */
+
+
 function cancelEdit(type){
 
 clearForm(type);
@@ -1123,10 +1625,15 @@ clearForm(type);
 
 
 
-function move(id){
+/* =========================
+   FAVORİ
+========================= */
 
-let i =
-d.shopping.findIndex(
+
+function toggleFavorite(type,id){
+
+const item =
+app[type].find(
 x =>
 String(x.id)
 ===
@@ -1134,35 +1641,15 @@ String(id)
 );
 
 
-if(i < 0){
+if(!item){
 
 return;
 
 }
 
 
-let x =
-d.shopping[i];
-
-
-d.products.push({
-
-...x,
-
-id:
-Date.now()
-+
-Math.floor(
-Math.random()*1000
-)
-
-});
-
-
-d.shopping.splice(
-i,
-1
-);
+item.favorite=
+!item.favorite;
 
 
 save();
@@ -1173,7 +1660,72 @@ render();
 
 
 
-function del(type,id){
+/* =========================
+   ALDIM
+========================= */
+
+
+function markBought(id){
+
+const index =
+app.shopping.findIndex(
+x =>
+String(x.id)
+===
+String(id)
+);
+
+
+if(index<0){
+
+return;
+
+}
+
+
+const item =
+app.shopping[index];
+
+
+app.products.push({
+
+...item,
+
+id:
+Date.now()
++
+Math.floor(
+Math.random()*10000
+)
+
+});
+
+
+app.shopping.splice(
+index,
+1
+);
+
+
+save();
+
+render();
+
+
+alert(
+"Ürün, Ürünler bölümüne taşındı. ✓"
+);
+
+}
+
+
+
+/* =========================
+   SİL
+========================= */
+
+
+function deleteItem(type,id){
 
 if(
 !confirm(
@@ -1186,12 +1738,12 @@ return;
 }
 
 
-let oldLength =
-d[type].length;
+const before =
+app[type].length;
 
 
-d[type] =
-d[type].filter(
+app[type]=
+app[type].filter(
 x =>
 String(x.id)
 !==
@@ -1200,7 +1752,7 @@ String(id)
 
 
 if(
-d[type].length === oldLength
+app[type].length===before
 ){
 
 return;
@@ -1216,196 +1768,96 @@ render();
 
 
 
-function card(x,type){
-
-let store = "";
-
-
-if(x.store){
-
-if(
-x.store.startsWith("http://")
-||
-x.store.startsWith("https://")
-){
-
-store =
-' · <a class="link" target="_blank" href="'
-+
-esc(x.store)
-+
-'">Mağaza</a>';
-
-}else{
-
-store =
-" · "
-+
-esc(x.store);
-
-}
-
-}
-
-
-return `
-
-<div class="item">
-
-<div class="info">
-
-<div class="name">
-${esc(x.name)}
-</div>
-
-<div class="meta">
-
-<span class="badge">
-${x.qty} adet
-</span>
-
-${
-x.price
-?
-'<span class="badge">'
-+
-money(x.price)
-+
-'</span>'
-:""
-}
-
-${
-x.category
-?
-'<span class="badge">'
-+
-esc(x.category)
-+
-'</span>'
-:""
-}
-
-${store}
-
-</div>
-
-
-${
-x.note
-?
-'<div class="meta">📝 '
-+
-esc(x.note)
-+
-'</div>'
-:""
-}
-
-</div>
-
-
-<div class="actions">
-
-
-${
-type === "shopping"
-?
-'<button class="buy" onclick="move(\''+
-x.id+
-'\')">✓ Aldım</button>'
-:""
-}
-
-
-<button
-class="edit"
-onclick="edit('"+
-type+
-"','"+
-x.id+
-"')">
-
-✎ Düzenle
-
-</button>
-
-
-<button
-class="del"
-onclick="del('"+
-type+
-"','"+
-x.id+
-"')">
-
-Sil
-
-</button>
-
-
-</div>
-
-</div>
-
-`;
-
-}
-
+/* =========================
+   ARAMA / FİLTRE
+========================= */
 
 
 function filtered(type){
 
-let search =
-$(type === "shopping"
-? "searchS"
-: "searchP")
+const searchId =
+type==="shopping"
+?"searchShopping"
+:"searchProducts";
+
+
+const filterId =
+type==="shopping"
+?"filterShopping"
+:"filterProducts";
+
+
+const favId =
+type==="shopping"
+?"favoriteShoppingFilter"
+:"favoriteProductsFilter";
+
+
+const search =
+document
+.getElementById(searchId)
 .value
 .toLowerCase()
 .trim();
 
 
-let category =
-$(type === "shopping"
-? "filterS"
-: "filterP")
+const category =
+document
+.getElementById(filterId)
 .value;
 
 
-return d[type].filter(x=>{
+const favorite =
+document
+.getElementById(favId)
+.value;
 
-let text =
+
+return app[type].filter(item=>{
+
+const text=
 (
-x.name
+item.name
 +
 " "
 +
-x.store
+item.category
 +
 " "
 +
-x.note
+item.store
 +
 " "
 +
-x.category
-)
-.toLowerCase();
+item.note
+).toLowerCase();
 
 
-return (
+return(
 
 !search
 ||
 text.includes(search)
 
 )
+
 &&
+
 (
 
 !category
 ||
-x.category === category
+item.category===category
+
+)
+
+&&
+
+(
+
+!favorite
+||
+item.favorite===true
 
 );
 
@@ -1415,117 +1867,657 @@ x.category === category
 
 
 
+/* =========================
+   KART
+========================= */
+
+
+function card(item,type){
+
+const photo =
+item.image
+
+?
+
+`<img
+class="photo"
+src="${item.image}"
+alt="${esc(item.name)}">`
+
+:
+
+`<div class="no-photo">
+📦
+</div>`;
+
+
+const store =
+item.store
+?
+(
+item.link
+?
+
+` · <a
+class="link"
+target="_blank"
+href="${esc(item.link)}">
+${esc(item.store)}
+</a>`
+
+:
+
+` · ${esc(item.store)}`
+)
+
+:"";
+
+
+return`
+
+<div class="item">
+
+
+${photo}
+
+
+<div class="info">
+
+
+<div class="name">
+
+${esc(item.name)}
+
+</div>
+
+
+<div class="meta">
+
+
+<span class="badge">
+
+${item.qty} adet
+
+</span>
+
+
+${
+item.price
+?
+
+`<span class="badge">
+${money(item.price)}
+</span>`
+
+:""
+}
+
+
+${
+item.category
+?
+
+`<span class="badge">
+${esc(item.category)}
+</span>`
+
+:""
+}
+
+
+${store}
+
+
+</div>
+
+
+${
+item.note
+?
+
+`<div class="meta">
+📝 ${esc(item.note)}
+</div>`
+
+:""
+}
+
+
+</div>
+
+
+<button
+class="favorite"
+title="Favori">
+
+${item.favorite?"❤️":"♡"}
+
+</button>
+
+
+<div class="actions">
+
+
+<button
+class="edit"
+onclick="openDetail('${type}','${item.id}')">
+
+Detay
+
+</button>
+
+
+<button
+class="edit"
+onclick="editItem('${type}','${item.id}')">
+
+✎ Düzenle
+
+</button>
+
+
+${
+type==="shopping"
+
+?
+
+`<button
+class="buy"
+onclick="markBought('${item.id}')">
+
+✓ Aldım
+
+</button>`
+
+:""
+}
+
+
+<button
+class="delete"
+onclick="deleteItem('${type}','${item.id}')">
+
+Sil
+
+</button>
+
+
+</div>
+
+
+</div>
+
+`;
+
+}
+
+
+
+/* =========================
+   FAVORİ KARTLARI
+========================= */
+
+
+function favoriteCards(){
+
+const all=[
+...app.shopping.map(x=>({...x,_type:"shopping"})),
+...app.products.map(x=>({...x,_type:"products"}))
+];
+
+
+const favorites =
+all.filter(
+x=>x.favorite
+);
+
+
+if(!favorites.length){
+
+return`
+
+<div class="empty">
+
+<div class="big">
+❤️
+</div>
+
+Henüz favori ürünün yok.
+
+</div>
+
+`;
+
+}
+
+
+return favorites
+.map(x=>card(x,x._type))
+.join("");
+
+}
+
+
+
+/* =========================
+   DETAY
+========================= */
+
+
+function openDetail(type,id){
+
+const item =
+app[type].find(
+x =>
+String(x.id)
+===
+String(id)
+);
+
+
+if(!item){
+
+return;
+
+}
+
+
+let html="";
+
+
+if(item.image){
+
+html+=
+`<img
+class="detail-photo"
+src="${item.image}"
+alt="${esc(item.name)}">`;
+
+}else{
+
+html+=
+`<div
+class="no-photo"
+style="width:100%;height:220px;margin-bottom:15px">
+📦
+</div>`;
+
+}
+
+
+html+=
+`<h2>${esc(item.name)}</h2>`;
+
+
+html+=
+`<p>
+<span class="badge">
+${item.qty} adet
+</span>
+</p>`;
+
+
+if(item.category){
+
+html+=
+`<p>
+<b>Kategori:</b>
+${esc(item.category)}
+</p>`;
+
+}
+
+
+if(item.price){
+
+html+=
+`<p>
+<b>Fiyat:</b>
+${money(item.price)}
+</p>`;
+
+}
+
+
+if(item.store){
+
+html+=
+`<p>
+<b>Mağaza:</b>
+${esc(item.store)}
+</p>`;
+
+}
+
+
+if(item.link){
+
+html+=
+`<p>
+<a
+class="link"
+target="_blank"
+href="${esc(item.link)}">
+🔗 Ürün bağlantısını aç
+</a>
+</p>`;
+
+}
+
+
+if(item.note){
+
+html+=
+`<p>
+<b>Not:</b><br>
+${esc(item.note)}
+</p>`;
+
+}
+
+
+html+=
+`<p>
+<b>Durum:</b>
+${type==="shopping"
+?"Alınacak"
+:"Alındı"}
+</p>`;
+
+
+document
+.getElementById("detailContent")
+.innerHTML=html;
+
+
+document
+.getElementById("detailModal")
+.classList.remove("hidden");
+
+}
+
+
+
+/* =========================
+   DETAY KAPAT
+========================= */
+
+
+function closeDetail(event){
+
+if(
+event
+&&
+event.target
+!==
+document.getElementById(
+"detailModal"
+)
+){
+
+return;
+
+}
+
+
+document
+.getElementById("detailModal")
+.classList.add("hidden");
+
+}
+
+
+
+/* =========================
+   BÜTÇE
+========================= */
+
+
+function saveBudget(){
+
+const value =
+Number(
+document
+.getElementById("budgetInput")
+.value
+)||0;
+
+
+app.budget=value;
+
+save();
+
+render();
+
+alert(
+"Bütçe kaydedildi. 💰"
+);
+
+}
+
+
+
+/* =========================
+   ANA ÖZET
+========================= */
+
+
+function updateSummary(){
+
+const shoppingCount =
+app.shopping.length;
+
+
+const productsCount =
+app.products.length;
+
+
+const shoppingMoney =
+app.shopping.reduce(
+(total,item)=>
+total
++
+(
+Number(item.price)||0
+)
+*
+(
+Number(item.qty)||1
+),
+0
+);
+
+
+const productsMoney =
+app.products.reduce(
+(total,item)=>
+total
++
+(
+Number(item.price)||0
+)
+*
+(
+Number(item.qty)||1
+),
+0
+);
+
+
+const total =
+shoppingCount
++
+productsCount;
+
+
+const progress =
+total
+?
+
+Math.round(
+(productsCount/total)*100
+)
+
+:0;
+
+
+document
+.getElementById("statShopping")
+.textContent=
+shoppingCount;
+
+
+document
+.getElementById("statProducts")
+.textContent=
+productsCount;
+
+
+document
+.getElementById("statShoppingMoney")
+.textContent=
+money(shoppingMoney);
+
+
+document
+.getElementById("statProductsMoney")
+.textContent=
+money(productsMoney);
+
+
+document
+.getElementById("progressText")
+.textContent=
+progress
++
+"% tamamlandı";
+
+
+document
+.getElementById("progressBar")
+.style.width=
+progress+"%";
+
+
+const budgetInfo =
+document
+.getElementById("budgetInfo");
+
+
+if(app.budget){
+
+const totalSpent =
+productsMoney;
+
+
+const remaining =
+app.budget-totalSpent;
+
+
+budgetInfo.innerHTML=
+"Toplam bütçe: <b>"
++
+money(app.budget)
++
+"</b><br>"
++
+"Harcanan: <b>"
++
+money(totalSpent)
++
+"</b><br>"
++
+"Kalan: <b>"
++
+money(remaining)
++
+"</b>";
+
+}else{
+
+budgetInfo.textContent=
+"Henüz bütçe belirlenmedi.";
+
+}
+
+}
+
+
+
+/* =========================
+   EKRANI ÇİZ
+========================= */
+
+
 function render(){
 
-let shopping =
+const shopping =
 filtered("shopping");
 
-let products =
+
+const products =
 filtered("products");
 
 
-$("sl").innerHTML =
+document
+.getElementById("shoppingList")
+.innerHTML=
+
 shopping.length
 
 ?
 
 shopping
 .map(
-x =>
-card(x,"shopping")
+x=>card(x,"shopping")
 )
 .join("")
 
 :
 
-`
-
-<div class="empty">
-
-<div class="big">
-🛒
-</div>
-
+`<div class="empty">
+<div class="big">🛒</div>
 Alınacaklar listen boş.
-
-</div>
-
-`;
+</div>`;
 
 
-$("pl").innerHTML =
+document
+.getElementById("productList")
+.innerHTML=
+
 products.length
 
 ?
 
 products
 .map(
-x =>
-card(x,"products")
+x=>card(x,"products")
 )
 .join("")
 
 :
 
-`
-
-<div class="empty">
-
-<div class="big">
-📦
-</div>
-
+`<div class="empty">
+<div class="big">📦</div>
 Henüz ürün eklenmedi.
-
-</div>
-
-`;
+</div>`;
 
 
-$("sCount").textContent =
-d.shopping.length;
+document
+.getElementById("favoriteList")
+.innerHTML=
+favoriteCards();
 
 
-$("pCount").textContent =
-d.products.length;
-
-
-$("sTotal").textContent =
-money(
-d.shopping.reduce(
-(total,x)=>
-total
-+
-(
-Number(x.price)||0
-)
-*
-(
-Number(x.qty)||1
-),
-0
-)
-);
-
-
-$("pTotal").textContent =
-money(
-d.products.reduce(
-(total,x)=>
-total
-+
-(
-Number(x.price)||0
-)
-*
-(
-Number(x.qty)||1
-),
-0
-)
-);
+updateSummary();
 
 }
+
+
+
+/* =========================
+   BAŞLANGIÇ
+========================= */
 
 
 render();
