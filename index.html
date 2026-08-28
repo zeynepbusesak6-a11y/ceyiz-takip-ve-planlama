@@ -85,14 +85,18 @@ main>section:first-of-type:not(:target){display:block !important}
 @media(max-width:800px){.stats,.recent-grid,.favorite-grid{grid-template-columns:repeat(2,1fr)}.category-summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.grid{grid-template-columns:1fr}.item,.catalog-row{align-items:flex-start;flex-direction:column}.actions{width:100%;justify-content:flex-start}.budget-numbers{grid-template-columns:1fr}.stats,.recent-grid,.favorite-grid,.category-summary{grid-template-columns:1fr}nav button{font-size:12px;padding:13px 3px}}
 </style>
-</he
 <style id="budget-enhancements">
 .budget-category-title{display:flex;justify-content:space-between;gap:12px;margin:12px 0 7px;font-weight:700}
 .budget-category-bar{height:8px;background:#eee2df;border-radius:20px;overflow:hidden}
 .budget-category-bar>div{height:100%;background:#dca8af;border-radius:20px}
 .budget-empty{padding:10px 0;color:#927d74}
 </style>
-ad>
+<style id="final-all-features">
+.final-advanced-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:0 0 12px}
+.final-advanced-row select,.final-advanced-row input{width:100%}
+@media(max-width:650px){.final-advanced-row{grid-template-columns:1fr}}
+</style>
+</head>
 <body>
 
 <header>
@@ -2424,9 +2428,7 @@ loadData().then(()=>{
 initNavigation();
 renderAll();
 });
-</script>
-</body>
-</html>
+
 
 /* =========================================================
    BÜTÇE / HARCAMA GELİŞTİRMELERİ
@@ -2468,12 +2470,7 @@ const __renderAllOriginal=window.renderAll;
 if(typeof __renderAllOriginal==='function'){
   window.renderAll=function(){__renderAllOriginal();refreshBudgetDetails();};
 }
-
-<style id="final-all-features">
-.final-advanced-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:0 0 12px}
-.final-advanced-row select,.final-advanced-row input{width:100%}
-@media(max-width:650px){.final-advanced-row{grid-template-columns:1fr}}
-</style>
+</script>
 <script id="final-all-features-js">
 (function(){
 "use strict";
@@ -2539,6 +2536,5 @@ function boot(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,50));else setTimeout(boot,50);
 })();
 </script>
-
 </body>
 </html>
