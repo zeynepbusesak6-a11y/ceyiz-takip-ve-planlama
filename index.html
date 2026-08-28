@@ -79,26 +79,21 @@ textarea{min-height:75px;resize:vertical}.full{grid-column:1/-1}
 #mainNav a{flex:1;padding:15px 8px;border:0;background:#fff;color:#806b64;font-size:15px;text-decoration:none;text-align:center;cursor:pointer}
 #mainNav a.on{color:#aa737b;font-weight:bold;border-bottom:3px solid #dca8af}
 main>section{display:none !important}
-#home{display:block !important}
-body:has(main>section:target) #home{display:none !important}
 main>section:target{display:block !important}
-main>section:target ~ section{display:none !important}
+main>section:first-of-type:not(:target){display:block !important}
+main>section:not(:target){display:none !important}
 
 @media(max-width:800px){.stats,.recent-grid,.favorite-grid{grid-template-columns:repeat(2,1fr)}.category-summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.grid{grid-template-columns:1fr}.item,.catalog-row{align-items:flex-start;flex-direction:column}.actions{width:100%;justify-content:flex-start}.budget-numbers{grid-template-columns:1fr}.stats,.recent-grid,.favorite-grid,.category-summary{grid-template-columns:1fr}nav button{font-size:12px;padding:13px 3px}}
 </style>
-<style id="complete-features-css">
-.advanced-filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 12px}
-.advanced-filters select{width:100%;padding:11px;border:1px solid #dfceca;border-radius:10px;background:#fffdfc;color:#5b4a45}
-.category-spend{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:8px}
-.category-spend .cat{background:#faf7f5;border-radius:12px;padding:11px}
-.category-spend .cat strong{display:block;font-size:13px}
-.category-spend .cat span{display:block;color:#927d74;font-size:12px;margin-top:4px}
-.category-spend .mini{height:6px;background:#eadfdd;border-radius:8px;margin-top:7px;overflow:hidden}
-.category-spend .mini div{height:100%;background:#dca8af}
-@media(max-width:650px){.advanced-filters,.category-spend{grid-template-columns:1fr}}
+</he
+<style id="budget-enhancements">
+.budget-category-title{display:flex;justify-content:space-between;gap:12px;margin:12px 0 7px;font-weight:700}
+.budget-category-bar{height:8px;background:#eee2df;border-radius:20px;overflow:hidden}
+.budget-category-bar>div{height:100%;background:#dca8af;border-radius:20px}
+.budget-empty{padding:10px 0;color:#927d74}
 </style>
-</head>
+ad>
 <body>
 
 <header>
@@ -155,6 +150,7 @@ main>section:target ~ section{display:none !important}
 </div>
 <div id="budgetNumbers" class="budget-numbers"></div>
 <div id="budgetInfo" class="meta" style="margin-top:10px">Henüz bütçe belirlenmedi.</div>
+<div id="budgetCategoryBreakdown" style="margin-top:14px"></div>
 </div>
 
 <div class="box">
@@ -2429,105 +2425,49 @@ loadData().then(()=>{
 initNavigation();
 renderAll();
 });
-(function(){
-  'use strict';
-
-  function esc2(x){return String(x==null?'':x).replace(/[&<>\"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#039;'}[m]));}
-  function money2(x){return Number(x||0).toLocaleString('tr-TR',{style:'currency',currency:'TRY',maximumFractionDigits:2});}
-
-  function analytics(){
-    const home=document.getElementById('home');
-    if(!home || !window.d) return;
-    let box=document.getElementById('budgetAnalytics');
-    if(!box){
-      box=document.createElement('div');
-      box.id='budgetAnalytics';
-      box.className='box';
-      box.innerHTML='<h2>📊 Kategori Bazında Harcama</h2><div id="budgetCategoryGrid"></div>';
-      const budgetBox=document.getElementById('budgetNumbers')?.closest('.box');
-      if(budgetBox && budgetBox.parentNode) budgetBox.parentNode.insertBefore(box,budgetBox.nextSibling);
-      else home.appendChild(box);
-    }
-    const total=Number(d.budget)||0;
-    const by={};
-    (d.products||[]).forEach(x=>{
-      const c=x.category||'Diğer';
-      by[c]=(by[c]||0)+(Number(x.price)||0)*(Number(x.qty)||1);
-    });
-    const entries=Object.entries(by).sort((a,b)=>b[1]-a[1]);
-    const grid=document.getElementById('budgetCategoryGrid');
-    if(!entries.length){grid.innerHTML='<div class="empty">Henüz alınmış ürünlerde fiyat bulunmuyor.</div>';return;}
-    grid.innerHTML='<div class="category-spend">'+entries.map(([c,v])=>{
-      const pct=total?Math.min(100,(v/total)*100):0;
-      return '<div class="cat"><strong>'+esc2(c)+'</strong><span>'+money2(v)+'</span><div class="mini"><div style="width:'+pct+'%"></div></div></div>';
-    }).join('')+'</div>';
-  }
-
-  function addAdvancedFilters(){
-    const defs=[
-      {section:'shopping',list:'shoppingList',search:'searchShopping',cat:'filterShoppingCategory'},
-      {section:'products',list:'productsList',search:'searchProducts',cat:'filterProductsCategory'}
-    ];
-    defs.forEach(def=>{
-      const sec=document.getElementById(def.section);
-      const list=document.getElementById(def.list);
-      if(!sec||!list||sec.querySelector('.advanced-filters')) return;
-      const row=document.createElement('div');
-      row.className='advanced-filters';
-      row.innerHTML='<select class="sort-select"><option value="default">Sıralama: Varsayılan</option><option value="name">Ada göre A-Z</option><option value="priceUp">Fiyata göre düşükten yükseğe</option><option value="priceDown">Fiyata göre yüksekten düşüğe</option></select><select class="fav-select"><option value="">Favoriler: Tümü</option><option value="fav">❤️ Favoriler</option><option value="normal">♡ Favori olmayanlar</option></select>';
-      list.parentNode.insertBefore(row,list);
-      row.addEventListener('change',()=>applyAdvancedFilters(sec));
-    });
-  }
-
-  function applyAdvancedFilters(sec){
-    const row=sec.querySelector('.advanced-filters');
-    const list=sec.querySelector('[id$="List"]');
-    if(!row||!list) return;
-    const fav=row.querySelector('.fav-select')?.value||'';
-    const sort=row.querySelector('.sort-select')?.value||'default';
-    let cards=[...list.children];
-    if(fav){
-      cards.forEach(card=>{
-        const isFav=card.querySelector('.favorite-active')!==null || /❤️/.test(card.innerHTML);
-        card.style.display=(fav==='fav'?isFav:!isFav)?'':'none';
-      });
-    }else cards.forEach(c=>c.style.display='');
-    if(sort!=='default'){
-      cards.sort((a,b)=>{
-        const na=(a.querySelector('.name,.catalog-name')?.textContent||'').localeCompare(b.querySelector('.name,.catalog-name')?.textContent||'','tr');
-        if(sort==='name') return na;
-        const pa=parseFloat((a.textContent.match(/([\d.]+(?:,\d+)?)\s*₺/)||[])[1]?.replace(/\./g,'').replace(',','.')||'0');
-        const pb=parseFloat((b.textContent.match(/([\d.]+(?:,\d+)?)\s*₺/)||[])[1]?.replace(/\./g,'').replace(',','.')||'0');
-        return sort==='priceUp'?pa-pb:pb-pa;
-      });
-      cards.forEach(c=>list.appendChild(c));
-    }
-  }
-
-  const oldUpdateHome=window.updateHome;
-  if(typeof oldUpdateHome==='function'){
-    window.updateHome=function(){
-      oldUpdateHome();
-      analytics();
-      addAdvancedFilters();
-    };
-  }
-
-  const oldRenderShopping=window.renderShopping;
-  if(typeof oldRenderShopping==='function'){
-    window.renderShopping=function(){oldRenderShopping();addAdvancedFilters();applyAdvancedFilters(document.getElementById('shopping'));};
-  }
-  const oldRenderProducts=window.renderProducts;
-  if(typeof oldRenderProducts==='function'){
-    window.renderProducts=function(){oldRenderProducts();addAdvancedFilters();applyAdvancedFilters(document.getElementById('products'));};
-  }
-
-  // Budget analytics also refreshes after any click/save.
-  document.addEventListener('click',()=>setTimeout(analytics,100),true);
-  window.addEventListener('hashchange',()=>setTimeout(()=>{analytics();addAdvancedFilters();},150));
-  setTimeout(()=>{analytics();addAdvancedFilters();},250);
-})();
 </script>
+</body>
+</html>
+
+/* =========================================================
+   BÜTÇE / HARCAMA GELİŞTİRMELERİ
+   - Alınmış ürünlerin fiyat x miktar toplamını kullanır.
+   - Kategori bazında harcamayı gösterir.
+   - Mevcut 412 ürün kataloğunu değiştirmez.
+   ========================================================= */
+function refreshBudgetDetails(){
+  const total=Number(d.budget)||0;
+  const bought=(d.products||[]).filter(x=>Boolean(x.bought));
+  const spent=bought.reduce((sum,x)=>sum+(Number(x.price)||0)*(Number(x.qty)||1),0);
+  const remain=total-spent;
+  const pct=total>0?Math.min(100,Math.max(0,(spent/total)*100)):0;
+  const moneySafe=x=>Number(x||0).toLocaleString('tr-TR',{style:'currency',currency:'TRY'});
+  const info=$('budgetInfo');
+  if(info){
+    info.textContent=total>0
+      ? `Harcanan ${moneySafe(spent)} • Kalan ${moneySafe(remain)} • Bütçenin %${pct.toFixed(0)}'ı kullanıldı`
+      : 'Henüz bütçe belirlenmedi.';
+  }
+  const box=$('budgetCategoryBreakdown');
+  if(!box)return;
+  const by={};
+  bought.forEach(x=>{const c=x.category||'Diğer';by[c]=(by[c]||0)+(Number(x.price)||0)*(Number(x.qty)||1);});
+  const rows=Object.entries(by).sort((a,b)=>b[1]-a[1]);
+  box.innerHTML=rows.length
+    ? '<div style="font-weight:700;margin-bottom:8px">📊 Kategori bazında harcama</div>'+rows.map(([c,v])=>{
+        const cp=total>0?Math.min(100,(v/total)*100):0;
+        return `<div class="budget-category-title"><span>${esc(c)}</span><span>${moneySafe(v)}</span></div><div class="budget-category-bar"><div style="width:${cp}%"></div></div>`;
+      }).join('')
+    : '<div class="budget-empty">Henüz alınmış ürünlerde fiyat girilmedi.</div>';
+}
+const __saveBudgetOriginal=window.saveBudget;
+window.saveBudget=function(){
+  if(typeof __saveBudgetOriginal==='function')__saveBudgetOriginal();
+  setTimeout(refreshBudgetDetails,120);
+};
+const __renderAllOriginal=window.renderAll;
+if(typeof __renderAllOriginal==='function'){
+  window.renderAll=function(){__renderAllOriginal();refreshBudgetDetails();};
+}</script>
 </body>
 </html>
