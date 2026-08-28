@@ -4122,97 +4122,63 @@ $("editModal").style.display="flex";
 
 function closeEdit(){$("editModal").style.display="none";}
 
-async function saveEdit(){
+async async function saveEdit(){
+  if(!editingId)return;
 
-const name=$("en").value.trim();
+  const item=items.find(x=>x.id===editingId);
+  if(!item){
+    toast("Ürün bulunamadı.");
+    return;
+  }
 
-if(!name)return alert("Ürün adı boş bırakılamaz.");
+  const name=(document.getElementById("en")?.value||"").trim();
+  if(!name){
+    toast("Ürün adı boş bırakılamaz.");
+    return;
+  }
 
-const image=await getImage($("editFile"));
+  const oldFavorite=Boolean(item.favorite);
 
-const qty=Number($("eq").value)||1;
+  item.name=name;
+  item.qty=Math.max(1,Number(document.getElementById("eq")?.value||1));
+  item.realPrice=Math.max(0,Number(document.getElementById("ep")?.value||0));
+  item.category=document.getElementById("ec")?.value||"Diğer";
+  item.store=(document.getElementById("es")?.value||"").trim();
+  item.link=(document.getElementById("el")?.value||"").trim();
+  item.status=(document.getElementById("estatus")?.value==="bought")?"bought":"pending";
+  item.purchaseDate=document.getElementById("edate")?.value||"";
+  item.note=(document.getElementById("et")?.value||"").trim();
 
-const price=Number($("ep").value)||0;
+  // Düzenleme işlemi favori durumunu değiştirmez.
+  item.favorite=oldFavorite;
 
-const category=$("ec").value;
+  item.boughtQty=item.status==="bought"?item.qty:0;
+  item.updatedAt=Date.now();
 
-const store=$("es").value.trim();
+  try{
+    const file=document.getElementById("editFile")?.files?.[0];
 
-const link=$("el").value.trim();
+    if(file){
+      const optimized=await optimizeImage(file);
+      item.image=await blobToDataURL(optimized);
+    }
 
-const note=$("et").value.trim();
+    await saveData();
 
-const status=$("estatus").value;
+    closeEdit();
+    renderAll();
 
-const purchaseDate=$("edate").value||"";
+    toast("Değişiklikler kaydedildi ✓");
 
+    // Kaydetme sonrası favorilere değil, ürünün gerçek durumuna git.
+    setTimeout(()=>{
+      tab(item.status==="bought"?"products":"shopping");
+    },120);
 
-if(editType==="catalog"){
-
-const source=d.catalog.find(x=>String(x.id)===String(editId));if(!source)return;
-
-source.name=name;source.qty=qty;source.realPrice=price;source.category=category;
-
-source.store=store;source.note=note;source.purchaseDate=purchaseDate;
-
-if(image)source.image=image;
-
-
-let shopping=d.shopping.find(x=>String(x.catalogId)===String(editId));
-
-let product=d.products.find(x=>String(x.catalogId)===String(editId));
-
-
-if(status==="bought"){
-
-const base=product||shopping||{id:Date.now()+Math.random(),catalogId:source.id,favorite:false};
-
-const updated={...base,name,qty,price,category,subcategory:source.subcategory||"",store,link,note,
-
-image:image||base.image||source.image||"",favorite:Boolean(base.favorite),bought:true,purchaseDate};
-
-if(shopping)d.shopping=d.shopping.filter(x=>x!==shopping);
-
-if(product)Object.assign(product,updated);else d.products.push(updated);
-
-}else{
-
-const base=shopping||product||{id:Date.now()+Math.random(),catalogId:source.id,favorite:false};
-
-const updated={...base,name,qty,price,category,subcategory:source.subcategory||"",store,link,note,
-
-image:image||base.image||source.image||"",favorite:Boolean(base.favorite),bought:false,purchaseDate};
-
-if(product)d.products=d.products.filter(x=>x!==product);
-
-if(shopping)Object.assign(shopping,updated);else d.shopping.push(updated);
-
-}
-
-}else{
-
-const item=d[editType].find(x=>String(x.id)===String(editId));if(!item)return;
-
-item.name=name;item.qty=qty;item.price=price;item.category=category;item.store=store;
-
-item.link=link;item.note=note;item.bought=status==="bought";item.purchaseDate=purchaseDate;
-
-if(image)item.image=image;
-
-}
-
-const ok=await save();
-
-if(ok){
-
-closeEdit();
-
-renderAll();
-
-toast("✓ Ürün bilgileri kaydedildi.");
-
-}
-
+  }catch(error){
+    console.error("Kaydetme hatası:",error);
+    toast("Değişiklikler kaydedilemedi.");
+  }
 }
 
 
@@ -4328,3 +4294,6 @@ renderAll();
 </body>
 
 </html>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{ if(typeof init==='function') init(); });
+</script>
