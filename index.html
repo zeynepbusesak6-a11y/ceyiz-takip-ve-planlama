@@ -40,9 +40,7 @@ margin:0;
 font:30px Georgia
 }
 
-.sub{
-margin-top:7px
-}
+.sub{margin-top:7px}
 
 nav{
 display:flex;
@@ -80,8 +78,7 @@ background:white;
 border:1px solid #eadbd7;
 border-radius:18px;
 padding:18px;
-margin-bottom:18px;
-box-shadow:0 2px 8px rgba(120,80,70,.04)
+margin-bottom:18px
 }
 
 h2{
@@ -126,6 +123,13 @@ font-size:15px;
 cursor:pointer
 }
 
+.filters{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:10px;
+margin-bottom:15px
+}
+
 .item{
 padding:15px 0;
 border-bottom:1px solid #eee2df;
@@ -164,8 +168,7 @@ min-width:0
 
 .name{
 font:19px Georgia;
-font-weight:bold;
-word-break:break-word
+font-weight:bold
 }
 
 .meta{
@@ -187,8 +190,7 @@ margin-bottom:3px
 .actions{
 display:flex;
 gap:6px;
-flex-wrap:wrap;
-justify-content:flex-end
+flex-wrap:wrap
 }
 
 .buy,.del,.edit,.detail,.fav{
@@ -227,11 +229,14 @@ color:#c66c78
 color:#e64f65!important
 }
 
-.filters{
-display:grid;
-grid-template-columns:2fr 1fr 1fr;
-gap:10px;
-margin-bottom:15px
+.empty{
+text-align:center;
+color:#9b8982;
+padding:30px
+}
+
+.big{
+font-size:40px
 }
 
 .summary{
@@ -256,8 +261,7 @@ margin-bottom:5px
 }
 
 .stat span{
-font-size:13px;
-color:#80675d
+font-size:13px
 }
 
 .progress-wrap{
@@ -275,8 +279,7 @@ transition:.3s
 }
 
 .progress-text{
-margin-bottom:8px;
-font-size:14px
+margin-bottom:8px
 }
 
 .budget-info{
@@ -284,21 +287,10 @@ margin-top:12px;
 line-height:1.7
 }
 
-.empty{
-text-align:center;
-color:#9b8982;
-padding:30px
-}
-
-.big{
-font-size:40px
-}
-
 .file-box{
 border:1px dashed #d8bfc0;
 border-radius:10px;
-padding:12px;
-background:#fffdfc
+padding:12px
 }
 
 .link{
@@ -329,8 +321,7 @@ padding:20px
 .modal-head{
 display:flex;
 justify-content:space-between;
-align-items:center;
-margin-bottom:15px
+align-items:center
 }
 
 .close{
@@ -340,7 +331,6 @@ border-radius:50%;
 width:35px;
 height:35px;
 font-size:20px;
-color:#80675d;
 cursor:pointer
 }
 
@@ -349,7 +339,6 @@ width:100%;
 max-height:300px;
 object-fit:contain;
 border-radius:14px;
-background:#faf2ef;
 margin-bottom:15px
 }
 
@@ -400,23 +389,12 @@ flex-wrap:wrap
 }
 
 .actions{
-width:100%;
-justify-content:flex-start
+width:100%
 }
 
 }
 
 @media(max-width:480px){
-
-header{
-padding:20px 10px
-}
-
-.logo{
-width:58px;
-height:58px;
-font-size:38px
-}
 
 h1{
 font-size:25px
@@ -451,7 +429,6 @@ padding:13px 3px
 <section id="home">
 
 <div class="box">
-
 <h2>Çeyiz Özeti</h2>
 
 <div class="summary">
@@ -488,7 +465,7 @@ padding:13px 3px
 </div>
 
 <div class="progress-wrap">
-<div class="progress" id="progress"></div>
+<div id="progress" class="progress"></div>
 </div>
 
 </div>
@@ -497,13 +474,21 @@ padding:13px 3px
 
 <h2>Bütçe</h2>
 
-<input id="budgetInput" type="number" min="0" step=".01" placeholder="Toplam çeyiz bütçeniz (₺)">
+<input
+id="budgetInput"
+type="number"
+min="0"
+step=".01"
+placeholder="Toplam çeyiz bütçeniz (₺)"
+>
 
 <br><br>
 
-<button class="add" onclick="saveBudget()">💰 Bütçeyi Kaydet</button>
+<button class="add" onclick="saveBudget()">
+💰 Bütçeyi Kaydet
+</button>
 
-<div class="budget-info" id="budgetInfo">
+<div id="budgetInfo" class="budget-info">
 Henüz bütçe belirlenmedi.
 </div>
 
@@ -528,6 +513,8 @@ Henüz bütçe belirlenmedi.
 </section>
 
 
+<!-- ALINACAKLAR -->
+
 <section id="shopping" style="display:none">
 
 <div class="box">
@@ -538,9 +525,21 @@ Henüz bütçe belirlenmedi.
 
 <input id="sn" placeholder="Ürün adı">
 
-<input id="sq" type="number" min="1" value="1" placeholder="Miktar">
+<input
+id="sq"
+type="number"
+min="1"
+value="1"
+placeholder="Miktar"
+>
 
-<input id="sp" type="number" min="0" step=".01" placeholder="Tahmini fiyat">
+<input
+id="sp"
+type="number"
+min="0"
+step=".01"
+placeholder="Tahmini fiyat"
+>
 
 <select id="sc">
 <option value="">Kategori seç</option>
@@ -548,15 +547,26 @@ Henüz bütçe belirlenmedi.
 
 <input id="ss" placeholder="Mağaza">
 
-<input id="sl" placeholder="Ürün linki (isteğe bağlı)">
+<input
+id="slink"
+class="full"
+placeholder="Ürün linki (isteğe bağlı)"
+>
 
-<textarea id="st" class="full" placeholder="Not (isteğe bağlı)"></textarea>
+<textarea
+id="st"
+class="full"
+placeholder="Not (isteğe bağlı)"
+></textarea>
 
 <div class="file-box full">
 <input id="sf" type="file" accept="image/*">
 </div>
 
-<button class="add full" onclick="addItem('shopping')">
+<button
+class="add full"
+onclick="addItem('shopping')"
+>
 + Alınacaklara Ekle
 </button>
 
@@ -571,27 +581,39 @@ Henüz bütçe belirlenmedi.
 
 <div class="filters">
 
-<input id="searchShopping"
+<input
+id="searchShopping"
 placeholder="🔎 Alınacaklarda ara..."
-oninput="renderShopping()">
+oninput="renderShopping()"
+>
 
-<select id="filterShoppingCategory" onchange="renderShopping()">
+<select
+id="filterShoppingCategory"
+onchange="renderShopping()"
+>
 <option value="">Tüm kategoriler</option>
 </select>
 
-<select id="filterShoppingStatus" onchange="renderShopping()">
+<select
+id="filterShoppingStatus"
+onchange="renderShopping()"
+>
 <option value="">Tümü</option>
 <option value="waiting">Alınacak</option>
 </select>
 
 </div>
 
-<div id="sl"></div>
+<!-- ÇOK ÖNEMLİ:
+     Liste artık shoppingList -->
+<div id="shoppingList"></div>
 
 </div>
 
 </section>
 
+
+<!-- ÜRÜNLER -->
 
 <section id="products" style="display:none">
 
@@ -603,9 +625,21 @@ oninput="renderShopping()">
 
 <input id="pn" placeholder="Ürün adı">
 
-<input id="pq" type="number" min="1" value="1" placeholder="Miktar">
+<input
+id="pq"
+type="number"
+min="1"
+value="1"
+placeholder="Miktar"
+>
 
-<input id="pp" type="number" min="0" step=".01" placeholder="Fiyat">
+<input
+id="pp"
+type="number"
+min="0"
+step=".01"
+placeholder="Fiyat"
+>
 
 <select id="pc">
 <option value="">Kategori seç</option>
@@ -613,15 +647,26 @@ oninput="renderShopping()">
 
 <input id="ps" placeholder="Mağaza">
 
-<input id="pl" placeholder="Ürün linki (isteğe bağlı)">
+<input
+id="plink"
+class="full"
+placeholder="Ürün linki (isteğe bağlı)"
+>
 
-<textarea id="pt" class="full" placeholder="Not (isteğe bağlı)"></textarea>
+<textarea
+id="pt"
+class="full"
+placeholder="Not (isteğe bağlı)"
+></textarea>
 
 <div class="file-box full">
 <input id="pf" type="file" accept="image/*">
 </div>
 
-<button class="add full" onclick="addItem('products')">
+<button
+class="add full"
+onclick="addItem('products')"
+>
 + Ürünlere Ekle
 </button>
 
@@ -636,15 +681,23 @@ oninput="renderShopping()">
 
 <div class="filters">
 
-<input id="searchProducts"
+<input
+id="searchProducts"
 placeholder="🔎 Ürünlerde ara..."
-oninput="renderProducts">
+oninput="renderProducts()"
+>
 
-<select id="filterProductsCategory" onchange="renderProducts()">
+<select
+id="filterProductsCategory"
+onchange="renderProducts()"
+>
 <option value="">Tüm kategoriler</option>
 </select>
 
-<select id="filterProductsFav" onchange="renderProducts()">
+<select
+id="filterProductsFav"
+onchange="renderProducts()"
+>
 <option value="">Tümü</option>
 <option value="fav">Favoriler</option>
 <option value="normal">Favori olmayanlar</option>
@@ -652,12 +705,16 @@ oninput="renderProducts">
 
 </div>
 
-<div id="pl"></div>
+<!-- ÇOK ÖNEMLİ:
+     Liste artık productsList -->
+<div id="productsList"></div>
 
 </div>
 
 </section>
 
+
+<!-- FAVORİLER -->
 
 <section id="favorites" style="display:none">
 
@@ -665,7 +722,7 @@ oninput="renderProducts">
 
 <h2>❤️ Favorilerim</h2>
 
-<div id="fl"></div>
+<div id="favoritesList"></div>
 
 </div>
 
@@ -674,13 +731,25 @@ oninput="renderProducts">
 </main>
 
 
+<!-- DETAY MODALI -->
+
 <div class="modal-bg" id="detailModal">
 
 <div class="modal">
 
 <div class="modal-head">
-<h2 id="detailTitle">Ürün Detayı</h2>
-<button class="close" onclick="closeModal()">×</button>
+
+<h2 id="detailTitle">
+Ürün Detayı
+</h2>
+
+<button
+class="close"
+onclick="closeModal()"
+>
+×
+</button>
+
 </div>
 
 <div id="detailContent"></div>
@@ -690,22 +759,43 @@ oninput="renderProducts">
 </div>
 
 
+<!-- DÜZENLEME MODALI -->
+
 <div class="modal-bg" id="editModal">
 
 <div class="modal">
 
 <div class="modal-head">
+
 <h2>Ürünü Düzenle</h2>
-<button class="close" onclick="closeEdit()">×</button>
+
+<button
+class="close"
+onclick="closeEdit()"
+>
+×
+</button>
+
 </div>
 
 <div class="grid">
 
 <input id="en" placeholder="Ürün adı">
 
-<input id="eq" type="number" min="1" placeholder="Miktar">
+<input
+id="eq"
+type="number"
+min="1"
+placeholder="Miktar"
+>
 
-<input id="ep" type="number" min="0" step=".01" placeholder="Fiyat">
+<input
+id="ep"
+type="number"
+min="0"
+step=".01"
+placeholder="Fiyat"
+>
 
 <select id="ec"></select>
 
@@ -713,9 +803,16 @@ oninput="renderProducts">
 
 <input id="el" placeholder="Ürün linki">
 
-<textarea id="et" class="full" placeholder="Not"></textarea>
+<textarea
+id="et"
+class="full"
+placeholder="Not"
+></textarea>
 
-<button class="add full" onclick="saveEdit()">
+<button
+class="add full"
+onclick="saveEdit()"
+>
 💾 Değişiklikleri Kaydet
 </button>
 
@@ -726,16 +823,16 @@ oninput="renderProducts">
 </div>
 
 
-<div class="toast" id="toast"></div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
-/* ==============================
-   VERİLER
-============================== */
+/* =========================
+   VERİ
+========================= */
 
-const KEY="ceyiz_final_v2";
+const KEY="ceyiz_final_v3";
 
 const defaultCategories=[
 "Mutfak",
@@ -756,74 +853,39 @@ budget:0
 };
 
 
-/* ==============================
-   ESKİ VERİLERİ AL
-============================== */
+/* =========================
+   VERİYİ YÜKLE
+========================= */
 
 function loadData(){
 
 try{
 
-const current=JSON.parse(
-localStorage.getItem(KEY)||"null"
+const saved=
+JSON.parse(
+localStorage.getItem(KEY)
 );
 
-if(current){
+if(saved){
 
-d=current;
+d=saved;
 
-}else{
+}
 
-const oldKeys=[
-"ceyiz_final_v1",
-"ceyiz_v3",
-"ceyiz_v4",
-"ceyiz_v5",
-"ceyiz_v6"
-];
+}catch(e){
 
-for(const key of oldKeys){
+console.log("Veri yükleme hatası:",e);
 
-try{
+}
 
-const old=JSON.parse(
-localStorage.getItem(key)||"null"
-);
-
-if(old){
-
-d.shopping=Array.isArray(old.shopping)
-?old.shopping.map(normalize)
+d.shopping=
+Array.isArray(d.shopping)
+?d.shopping
 :[];
 
-d.products=Array.isArray(old.products)
-?old.products.map(normalize)
-:[];
-
-if(Array.isArray(old.categories)){
-d.categories=old.categories;
-}
-
-d.budget=Number(old.budget)||0;
-
-break;
-
-}
-
-}catch(e){}
-
-}
-
-}
-
-}catch(e){}
-
-d.shopping=Array.isArray(d.shopping)
-?d.shopping.map(normalize)
-:[];
-
-d.products=Array.isArray(d.products)
-?d.products.map(normalize)
+d.products=
+Array.isArray(d.products)
+?d.products
 :[];
 
 d.categories=
@@ -831,11 +893,19 @@ Array.isArray(d.categories)&&d.categories.length
 ?d.categories
 :[...defaultCategories];
 
-d.budget=Number(d.budget)||0;
+d.budget=
+Number(d.budget)||0;
+
+d.shopping=
+d.shopping.map(normalize);
+
+d.products=
+d.products.map(normalize);
 
 save();
 
 }
+
 
 function normalize(x){
 
@@ -861,13 +931,12 @@ image:String(x.image||""),
 
 favorite:Boolean(x.favorite),
 
-bought:Boolean(x.bought),
-
-created:x.created||new Date().toISOString()
+bought:Boolean(x.bought)
 
 };
 
 }
+
 
 function save(){
 
@@ -878,29 +947,35 @@ JSON.stringify(d)
 
 }
 
+
 loadData();
 
 
-/* ==============================
+/* =========================
    YARDIMCI
-============================== */
+========================= */
 
-const $=id=>document.getElementById(id);
+const $=id=>
+document.getElementById(id);
+
 
 function esc(x){
 
 return String(x||"").replace(
 /[&<>"']/g,
 m=>({
+
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
+
 }[m])
 );
 
 }
+
 
 function money(x){
 
@@ -916,6 +991,7 @@ currency:"TRY"
 
 }
 
+
 function toast(text){
 
 const el=$("toast");
@@ -926,32 +1002,29 @@ el.style.display="block";
 clearTimeout(window.toastTimer);
 
 window.toastTimer=setTimeout(
-()=>el.style.display="none",
+()=>{
+el.style.display="none";
+},
 1800
 );
 
 }
 
 
-/* ==============================
+/* =========================
    SEKME
-============================== */
+========================= */
 
 function tab(name){
 
-const sections=[
-"home",
-"shopping",
-"products",
-"favorites"
-];
-
-sections.forEach(x=>{
+["home","shopping","products","favorites"]
+.forEach(x=>{
 $(x).style.display=
 x===name?"block":"none";
 });
 
-["b1","b2","b3","b4"].forEach(x=>{
+["b1","b2","b3","b4"]
+.forEach(x=>{
 $(x).classList.remove("on");
 });
 
@@ -974,29 +1047,31 @@ behavior:"smooth"
 }
 
 
-/* ==============================
+/* =========================
    KATEGORİLER
-============================== */
+========================= */
 
 function fillCategories(){
 
-const normal=[
+const forms=[
 $("sc"),
-$("pc")
+$("pc"),
+$("ec")
 ];
 
-normal.forEach(select=>{
+forms.forEach(select=>{
 
 if(!select)return;
 
-const value=select.value;
+const old=select.value;
 
 select.innerHTML=
 '<option value="">Kategori seç</option>';
 
 d.categories.forEach(cat=>{
 
-const option=document.createElement("option");
+const option=
+document.createElement("option");
 
 option.value=cat;
 option.textContent=cat;
@@ -1007,9 +1082,9 @@ select.appendChild(option);
 
 if(
 [...select.options]
-.some(o=>o.value===value)
+.some(o=>o.value===old)
 ){
-select.value=value;
+select.value=old;
 }
 
 });
@@ -1024,14 +1099,15 @@ filters.forEach(select=>{
 
 if(!select)return;
 
-const value=select.value;
+const old=select.value;
 
 select.innerHTML=
 '<option value="">Tüm kategoriler</option>';
 
 d.categories.forEach(cat=>{
 
-const option=document.createElement("option");
+const option=
+document.createElement("option");
 
 option.value=cat;
 option.textContent=cat;
@@ -1042,9 +1118,9 @@ select.appendChild(option);
 
 if(
 [...select.options]
-.some(o=>o.value===value)
+.some(o=>o.value===old)
 ){
-select.value=value;
+select.value=old;
 }
 
 });
@@ -1052,15 +1128,19 @@ select.value=value;
 }
 
 
-/* ==============================
+/* =========================
    FOTOĞRAF
-============================== */
+========================= */
 
 function getImage(input){
 
 return new Promise(resolve=>{
 
-if(!input||!input.files||!input.files[0]){
+if(
+!input||
+!input.files||
+!input.files[0]
+){
 
 resolve("");
 
@@ -1068,7 +1148,8 @@ return;
 
 }
 
-const reader=new FileReader();
+const reader=
+new FileReader();
 
 reader.onload=e=>{
 resolve(e.target.result);
@@ -1078,29 +1159,36 @@ reader.onerror=()=>{
 resolve("");
 };
 
-reader.readAsDataURL(input.files[0]);
+reader.readAsDataURL(
+input.files[0]
+);
 
 });
 
 }
 
 
-/* ==============================
+/* =========================
    ÜRÜN EKLE
-============================== */
+========================= */
 
 async function addItem(type){
 
-const prefix=
-type==="shopping"?"s":"p";
+const p=
+type==="shopping"
+?"s"
+:"p";
 
-const name=$(prefix+"n")
+const name=
+$(p+"n")
 .value
 .trim();
 
 if(!name){
 
-alert("Lütfen ürün adını yaz.");
+alert(
+"Lütfen ürün adını yaz."
+);
 
 return;
 
@@ -1108,42 +1196,48 @@ return;
 
 const image=
 await getImage(
-$(prefix+"f")
+$(p+"f")
 );
 
 const item={
 
-id:Date.now()+Math.random(),
+id:
+Date.now()+Math.random(),
 
 name:name,
 
-qty:Number(
-$(prefix+"q").value
+qty:
+Number(
+$(p+"q").value
 )||1,
 
-price:Number(
-$(prefix+"p").value
+price:
+Number(
+$(p+"p").value
 )||0,
 
 category:
-$(prefix+"c").value,
+$(p+"c").value,
 
 store:
-$(prefix+"s").value.trim(),
+$(p+"s").value.trim(),
 
 link:
-$(prefix+"l").value.trim(),
+$(p==="s"
+?"slink"
+:"plink"
+)
+.value.trim(),
 
 note:
-$(prefix+"t").value.trim(),
+$(p+"t").value.trim(),
 
 image:image,
 
 favorite:false,
 
-bought:type==="products",
-
-created:new Date().toISOString()
+bought:
+type==="products"
 
 };
 
@@ -1155,7 +1249,9 @@ clearForm(type);
 
 renderAll();
 
-toast("Ürün başarıyla eklendi.");
+toast(
+"✓ Ürün başarıyla eklendi."
+);
 
 }
 
@@ -1163,35 +1259,42 @@ toast("Ürün başarıyla eklendi.");
 function clearForm(type){
 
 const p=
-type==="shopping"?"s":"p";
+type==="shopping"
+?"s"
+:"p";
 
 $(p+"n").value="";
 $(p+"q").value="1";
 $(p+"p").value="";
 $(p+"c").value="";
 $(p+"s").value="";
-$(p+"l").value="";
 $(p+"t").value="";
 $(p+"f").value="";
+
+if(type==="shopping"){
+$("slink").value="";
+}else{
+$("plink").value="";
+}
 
 }
 
 
-/* ==============================
+/* =========================
    FAVORİ
-============================== */
+========================= */
 
 function toggleFavorite(type,id){
 
-const list=d[type];
-
-const item=list.find(
+const item=
+d[type].find(
 x=>String(x.id)===String(id)
 );
 
 if(!item)return;
 
-item.favorite=!item.favorite;
+item.favorite=
+!item.favorite;
 
 save();
 
@@ -1206,27 +1309,32 @@ item.favorite
 }
 
 
-/* ==============================
+/* =========================
    ALDIM
-============================== */
+========================= */
 
 function moveToProducts(id){
 
-const index=d.shopping.findIndex(
+const index=
+d.shopping.findIndex(
 x=>String(x.id)===String(id)
 );
 
-if(index===-1)return;
+if(index<0)return;
 
-const item=d.shopping[index];
+const item=
+d.shopping[index];
 
-const newItem={
+d.products.push({
+
 ...item,
-id:Date.now()+Math.random(),
-bought:true
-};
 
-d.products.push(newItem);
+id:
+Date.now()+Math.random(),
+
+bought:true
+
+});
 
 d.shopping.splice(index,1);
 
@@ -1234,31 +1342,35 @@ save();
 
 renderAll();
 
-toast("✓ Ürünler bölümüne taşındı.");
+toast(
+"✓ Ürünler bölümüne taşındı."
+);
 
 }
 
 
-/* ==============================
+/* =========================
    SİL
-============================== */
+========================= */
 
 function del(type,id){
 
-const item=d[type].find(
+const item=
+d[type].find(
 x=>String(x.id)===String(id)
 );
 
 if(!item)return;
 
-const ok=confirm(
+if(
+!confirm(
 '"'+item.name+
 '" ürününü silmek istediğine emin misin?'
-);
+)
+)return;
 
-if(!ok)return;
-
-d[type]=d[type].filter(
+d[type]=
+d[type].filter(
 x=>String(x.id)!==String(id)
 );
 
@@ -1266,14 +1378,16 @@ save();
 
 renderAll();
 
-toast("Ürün silindi.");
+toast(
+"🗑️ Ürün silindi."
+);
 
 }
 
 
-/* ==============================
+/* =========================
    KART
-============================== */
+========================= */
 
 function card(item,type){
 
@@ -1284,12 +1398,19 @@ return `
 ${
 item.image
 ?
-`<img
+`
+<img
 class="photo"
 src="${item.image}"
-alt="${esc(item.name)}">`
+alt="${esc(item.name)}"
+>
+`
 :
-`<div class="no-photo">📦</div>`
+`
+<div class="no-photo">
+📦
+</div>
+`
 }
 
 <div class="info">
@@ -1307,18 +1428,22 @@ ${item.qty} adet
 ${
 item.category
 ?
-`<span class="badge">
+`
+<span class="badge">
 ${esc(item.category)}
-</span>`
+</span>
+`
 :""
 }
 
 ${
 item.price
 ?
-`<span class="badge">
+`
+<span class="badge">
 ${money(item.price)}
-</span>`
+</span>
+`
 :""
 }
 
@@ -1327,18 +1452,22 @@ ${money(item.price)}
 ${
 item.store
 ?
-`<div class="meta">
+`
+<div class="meta">
 🏪 ${esc(item.store)}
-</div>`
+</div>
+`
 :""
 }
 
 ${
 item.note
 ?
-`<div class="meta">
+`
+<div class="meta">
 📝 ${esc(item.note)}
-</div>`
+</div>
+`
 :""
 }
 
@@ -1351,48 +1480,68 @@ class="fav ${
 item.favorite
 ?"favorite-active":""
 }"
-onclick="toggleFavorite('${type}','${item.id}')"
-title="Favori">
-
+onclick="
+toggleFavorite(
+'${type}',
+'${item.id}'
+)
+"
+>
 ${item.favorite?"❤️":"♡"}
-
 </button>
 
 <button
 class="detail"
-onclick="showDetail('${type}','${item.id}')">
-
+onclick="
+showDetail(
+'${type}',
+'${item.id}'
+)
+"
+>
 Detay
-
 </button>
 
 <button
 class="edit"
-onclick="openEdit('${type}','${item.id}')">
-
+onclick="
+openEdit(
+'${type}',
+'${item.id}'
+)
+"
+>
 ✏️ Düzenle
-
 </button>
 
 ${
 type==="shopping"
 ?
-`<button
+`
+<button
 class="buy"
-onclick="moveToProducts('${item.id}')">
-
+onclick="
+moveToProducts(
+'${item.id}'
+)
+"
+>
 ✓ Aldım
-
-</button>`
+</button>
+`
 :""
 }
 
 <button
 class="del"
-onclick="del('${type}','${item.id}')">
-
+onclick="
+del(
+'${type}',
+'${item.id}'
+)
+"
+>
 Sil
-
 </button>
 
 </div>
@@ -1404,13 +1553,14 @@ Sil
 }
 
 
-/* ==============================
-   ALINACAKLAR LİSTESİ
-============================== */
+/* =========================
+   ALINACAKLAR
+========================= */
 
-function getShoppingFiltered(){
+function renderShopping(){
 
-let list=[...d.shopping];
+let list=
+[...d.shopping];
 
 const search=
 $("searchShopping")
@@ -1424,9 +1574,7 @@ $("filterShoppingCategory")
 
 if(search){
 
-list=list.filter(item=>{
-
-return (
+list=list.filter(item=>
 
 item.name
 .toLowerCase()
@@ -1446,42 +1594,49 @@ item.note
 
 );
 
-});
-
 }
 
 if(category){
 
 list=list.filter(
-item=>item.category===category
+item=>
+item.category===category
 );
 
 }
 
-return list;
 
-}
+/*
+   BURASI ÖNEMLİ:
+   Artık shoppingList kullanıyoruz.
+*/
 
+const container=
+$("shoppingList");
 
-function renderShopping(){
-
-const list=getShoppingFiltered();
+if(!container)return;
 
 if(list.length){
 
-$("sl").innerHTML=list
-.map(item=>card(item,"shopping"))
+container.innerHTML=
+list
+.map(item=>
+card(item,"shopping")
+)
 .join("");
 
 }else{
 
-$("sl").innerHTML=`
+container.innerHTML=`
 
 <div class="empty">
 
-<div class="big">🛒</div>
+<div class="big">
+🛒
+</div>
 
-Alınacaklar listende henüz ürün yok.
+Alınacaklar listende
+henüz ürün yok.
 
 </div>
 
@@ -1492,13 +1647,14 @@ Alınacaklar listende henüz ürün yok.
 }
 
 
-/* ==============================
-   ÜRÜNLER LİSTESİ
-============================== */
+/* =========================
+   ÜRÜNLER
+========================= */
 
-function getProductsFiltered(){
+function renderProducts(){
 
-let list=[...d.products];
+let list=
+[...d.products];
 
 const search=
 $("searchProducts")
@@ -1516,9 +1672,7 @@ $("filterProductsFav")
 
 if(search){
 
-list=list.filter(item=>{
-
-return (
+list=list.filter(item=>
 
 item.name
 .toLowerCase()
@@ -1538,14 +1692,13 @@ item.note
 
 );
 
-});
-
 }
 
 if(category){
 
 list=list.filter(
-item=>item.category===category
+item=>
+item.category===category
 );
 
 }
@@ -1566,28 +1719,35 @@ item=>!item.favorite
 
 }
 
-return list;
 
-}
+/*
+   BURASI DA ÖNEMLİ:
+   Artık productsList kullanıyoruz.
+*/
 
+const container=
+$("productsList");
 
-function renderProducts(){
-
-const list=getProductsFiltered();
+if(!container)return;
 
 if(list.length){
 
-$("pl").innerHTML=list
-.map(item=>card(item,"products"))
+container.innerHTML=
+list
+.map(item=>
+card(item,"products")
+)
 .join("");
 
 }else{
 
-$("pl").innerHTML=`
+container.innerHTML=`
 
 <div class="empty">
 
-<div class="big">📦</div>
+<div class="big">
+📦
+</div>
 
 Henüz ürün eklenmedi.
 
@@ -1600,41 +1760,49 @@ Henüz ürün eklenmedi.
 }
 
 
-/* ==============================
+/* =========================
    FAVORİLER
-============================== */
+========================= */
 
 function renderFavorites(){
 
 const list=[
 
-...d.shopping.map(x=>({
-...x,
-_type:"shopping"
-})),
+...d.shopping.map(
+x=>({...x,_type:"shopping"})
+),
 
-...d.products.map(x=>({
-...x,
-_type:"products"
-}))
+...d.products.map(
+x=>({...x,_type:"products"})
+)
 
 ].filter(
 x=>x.favorite
 );
 
+const container=
+$("favoritesList");
+
+if(!container)return;
+
 if(list.length){
 
-$("fl").innerHTML=list
-.map(item=>card(item,item._type))
+container.innerHTML=
+list
+.map(item=>
+card(item,item._type)
+)
 .join("");
 
 }else{
 
-$("fl").innerHTML=`
+container.innerHTML=`
 
 <div class="empty">
 
-<div class="big">❤️</div>
+<div class="big">
+❤️
+</div>
 
 Henüz favori ürün yok.
 
@@ -1647,41 +1815,41 @@ Henüz favori ürün yok.
 }
 
 
-/* ==============================
+/* =========================
    ANA SAYFA
-============================== */
+========================= */
 
 function updateHome(){
 
-const shoppingCount=
+const shopping=
 d.shopping.length;
 
-const boughtCount=
+const bought=
 d.products.length;
 
 const estimated=
 d.shopping.reduce(
-(sum,item)=>
+(sum,x)=>
 sum+
-(Number(item.price)||0)*
-(Number(item.qty)||1),
+(Number(x.price)||0)*
+(Number(x.qty)||1),
 0
 );
 
 const spent=
 d.products.reduce(
-(sum,item)=>
+(sum,x)=>
 sum+
-(Number(item.price)||0)*
-(Number(item.qty)||1),
+(Number(x.price)||0)*
+(Number(x.qty)||1),
 0
 );
 
 $("sShopping").textContent=
-shoppingCount;
+shopping;
 
 $("sBought").textContent=
-boughtCount;
+bought;
 
 $("sEstimated").textContent=
 money(estimated)||"₺0,00";
@@ -1690,13 +1858,13 @@ $("sSpent").textContent=
 money(spent)||"₺0,00";
 
 const total=
-shoppingCount+boughtCount;
+shopping+bought;
 
 const percent=
 total
 ?
 Math.round(
-(boughtCount/total)*100
+(bought/total)*100
 )
 :0;
 
@@ -1704,7 +1872,8 @@ $("progress").style.width=
 percent+"%";
 
 $("progressText").textContent=
-percent+"% tamamlandı";
+percent+
+"% tamamlandı";
 
 $("budgetInput").value=
 d.budget||"";
@@ -1739,31 +1908,36 @@ $("budgetInfo").textContent=
 }
 
 
-/* ==============================
+/* =========================
    BÜTÇE
-============================== */
+========================= */
 
 function saveBudget(){
 
 d.budget=
-Number($("budgetInput").value)||0;
+Number(
+$("budgetInput").value
+)||0;
 
 save();
 
 updateHome();
 
-toast("💰 Bütçe kaydedildi.");
+toast(
+"💰 Bütçe kaydedildi."
+);
 
 }
 
 
-/* ==============================
+/* =========================
    DETAY
-============================== */
+========================= */
 
 function showDetail(type,id){
 
-const item=d[type].find(
+const item=
+d[type].find(
 x=>String(x.id)===String(id)
 );
 
@@ -1781,7 +1955,8 @@ html+=`
 <img
 class="detail-photo"
 src="${item.image}"
-alt="${esc(item.name)}">
+alt="${esc(item.name)}"
+>
 
 `;
 
@@ -1790,52 +1965,75 @@ alt="${esc(item.name)}">
 html+=`
 
 <div class="detail-row">
-<div class="detail-label">Ürün adı</div>
+
+<div class="detail-label">
+Ürün adı
+</div>
+
 <div class="detail-value">
 ${esc(item.name)}
 </div>
+
 </div>
 
 <div class="detail-row">
-<div class="detail-label">Miktar</div>
+
+<div class="detail-label">
+Miktar
+</div>
+
 <div class="detail-value">
 ${item.qty} adet
 </div>
+
 </div>
 
 <div class="detail-row">
-<div class="detail-label">Kategori</div>
+
+<div class="detail-label">
+Kategori
+</div>
+
 <div class="detail-value">
 ${esc(item.category||"Belirtilmedi")}
 </div>
+
 </div>
 
 <div class="detail-row">
-<div class="detail-label">Fiyat</div>
+
+<div class="detail-label">
+Fiyat
+</div>
+
 <div class="detail-value">
 ${item.price?money(item.price):"Belirtilmedi"}
 </div>
+
 </div>
 
 <div class="detail-row">
-<div class="detail-label">Mağaza</div>
+
+<div class="detail-label">
+Mağaza
+</div>
+
 <div class="detail-value">
 ${esc(item.store||"Belirtilmedi")}
 </div>
+
 </div>
 
 <div class="detail-row">
-<div class="detail-label">Durum</div>
+
+<div class="detail-label">
+Durum
+</div>
+
 <div class="detail-value">
 ${item.bought?"✅ Alındı":"🛒 Alınacak"}
 </div>
-</div>
 
-<div class="detail-row">
-<div class="detail-label">Favori</div>
-<div class="detail-value">
-${item.favorite?"❤️ Evet":"♡ Hayır"}
-</div>
 </div>
 
 `;
@@ -1856,10 +2054,9 @@ html+=`
 class="link"
 href="${esc(item.link)}"
 target="_blank"
-rel="noopener">
-
+rel="noopener"
+>
 Ürüne git ↗
-
 </a>
 
 </div>
@@ -1890,30 +2087,34 @@ ${esc(item.note)}
 
 }
 
-$("detailContent").innerHTML=html;
+$("detailContent").innerHTML=
+html;
 
-$("detailModal").style.display="flex";
+$("detailModal").style.display=
+"flex";
 
 }
 
 
 function closeModal(){
 
-$("detailModal").style.display="none";
+$("detailModal").style.display=
+"none";
 
 }
 
 
-/* ==============================
+/* =========================
    DÜZENLE
-============================== */
+========================= */
 
 let editType="";
 let editId="";
 
 function openEdit(type,id){
 
-const item=d[type].find(
+const item=
+d[type].find(
 x=>String(x.id)===String(id)
 );
 
@@ -1925,19 +2126,21 @@ editId=id;
 $("en").value=item.name;
 $("eq").value=item.qty;
 $("ep").value=item.price;
-$("ec").value=item.category||"";
-$("es").value=item.store||"";
-$("el").value=item.link||"";
-$("et").value=item.note||"";
+$("ec").value=item.category;
+$("es").value=item.store;
+$("el").value=item.link;
+$("et").value=item.note;
 
-$("editModal").style.display="flex";
+$("editModal").style.display=
+"flex";
 
 }
 
 
 function saveEdit(){
 
-const item=d[editType].find(
+const item=
+d[editType].find(
 x=>String(x.id)===String(editId)
 );
 
@@ -1948,7 +2151,9 @@ $("en").value.trim();
 
 if(!name){
 
-alert("Ürün adı boş bırakılamaz.");
+alert(
+"Ürün adı boş bırakılamaz."
+);
 
 return;
 
@@ -1975,7 +2180,7 @@ closeEdit();
 renderAll();
 
 toast(
-"Değişiklikler kaydedildi."
+"✓ Değişiklikler kaydedildi."
 );
 
 }
@@ -1983,14 +2188,15 @@ toast(
 
 function closeEdit(){
 
-$("editModal").style.display="none";
+$("editModal").style.display=
+"none";
 
 }
 
 
-/* ==============================
-   HER ŞEYİ YENİLE
-============================== */
+/* =========================
+   HEPSİNİ YENİLE
+========================= */
 
 function renderAll(){
 
@@ -2007,36 +2213,9 @@ updateHome();
 }
 
 
-/* ==============================
-   MODAL KAPATMA
-============================== */
-
-$("detailModal")
-.addEventListener(
-"click",
-function(e){
-
-if(e.target===this){
-closeModal();
-}
-
-});
-
-$("editModal")
-.addEventListener(
-"click",
-function(e){
-
-if(e.target===this){
-closeEdit();
-}
-
-});
-
-
-/* ==============================
-   BAŞLAT
-============================== */
+/* =========================
+   BAŞLANGIÇ
+========================= */
 
 renderAll();
 
