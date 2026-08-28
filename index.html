@@ -79,8 +79,8 @@ textarea{min-height:75px;resize:vertical}.full{grid-column:1/-1}
 #mainNav a{flex:1;padding:15px 8px;border:0;background:#fff;color:#806b64;font-size:15px;text-decoration:none;text-align:center;cursor:pointer}
 #mainNav a.on{color:#aa737b;font-weight:bold;border-bottom:3px solid #dca8af}
 main>section{display:none !important}
+body:not(:has(main>section:target)) #home{display:block !important}
 main>section:target{display:block !important}
-main>section:first-of-type:not(:target){display:block !important}
 
 @media(max-width:800px){.stats,.recent-grid,.favorite-grid{grid-template-columns:repeat(2,1fr)}.category-summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.grid{grid-template-columns:1fr}.item,.catalog-row{align-items:flex-start;flex-direction:column}.actions{width:100%;justify-content:flex-start}.budget-numbers{grid-template-columns:1fr}.stats,.recent-grid,.favorite-grid,.category-summary{grid-template-columns:1fr}nav button{font-size:12px;padding:13px 3px}}
@@ -1719,7 +1719,7 @@ try{localStorage.removeItem(KEY);}catch(e){}
 await save();
 }
 function tab(name, updateHash=true){
-const pages=["home","shopping","products","favorites","catalog"];
+const pages=["home","shopping","products","favorites","catalog","finalExtras"];
 if(!pages.includes(name)) name="home";
 
 pages.forEach(id=>{
@@ -1729,14 +1729,7 @@ el.style.display = id===name ? "block" : "none";
 el.hidden = id!==name;
 });
 
-const map={home:"b1",shopping:"b2",products:"b3",favorites:"b4",catalog:"b5"};
-Object.keys(map).forEach(k=>{
-const b=$(map[k]);
-if(b){
-b.classList.toggle("on",k===name);
-b.setAttribute("aria-selected",k===name ? "true" : "false");
-}
-});
+navActive(name);
 
 if(updateHash){
 try{ history.replaceState(null,"","#"+name); }catch(e){}
@@ -1744,6 +1737,16 @@ try{ history.replaceState(null,"","#"+name); }catch(e){}
 
 renderAll();
 window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function navActive(name){
+ const nav=$("mainNav");
+ if(!nav)return;
+ nav.querySelectorAll("[data-tab]").forEach(a=>{
+  const on=a.dataset.tab===name;
+  a.classList.toggle("on",on);
+  a.setAttribute("aria-current",on?"page":"false");
+ });
 }
 
 function getAllCategories(){
@@ -2196,16 +2199,17 @@ function initNavigation(){
 const nav=$("mainNav");
 if(!nav)return;
 nav.querySelectorAll("[data-tab]").forEach(link=>{
-link.addEventListener("click",function(){
+link.addEventListener("click",function(ev){
+ev.preventDefault();
 const name=this.dataset.tab;
-setTimeout(()=>tab(name,false),0);
+tab(name,true);
 });
 });
 const name=(location.hash||"#home").slice(1);
-setTimeout(()=>tab(["home","shopping","products","favorites","catalog"].includes(name)?name:"home",false),0);
+setTimeout(()=>tab(["home","shopping","products","favorites","catalog","finalExtras"].includes(name)?name:"home",false),0);
 window.addEventListener("hashchange",()=>{
 const n=(location.hash||"#home").slice(1);
-if(["home","shopping","products","favorites","catalog"].includes(n)) tab(n,false);
+if(["home","shopping","products","favorites","catalog","finalExtras"].includes(n)) tab(n,false);
 });
 }
 
